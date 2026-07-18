@@ -14,7 +14,7 @@
         <a href="/admin/avis" class="user-nav-link">Avis</a>
         <a href="/admin/employes" class="user-nav-link">Employés</a>
         <a href="/admin/stats" class="user-nav-link active">Statistiques</a>
-        <a href="/deconnexion" class="user-nav-link user-nav-logout">Se déconnecter</a>
+        <form method="POST" action="/deconnexion" style="display:inline;"><?= $_csrf_field ?><button type="submit" class="user-nav-link user-nav-logout">Se déconnecter</button></form>
     </div>
 
     <div class="wrap">

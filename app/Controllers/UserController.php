@@ -20,6 +20,7 @@ class UserController extends Controller
         $this->render('user/index', [
             'title'     => 'Mon compte',
             'commandes' => $commandes,
+            'csrf'      => $this->csrfField(),
         ]);
     }
 
@@ -40,12 +41,14 @@ class UserController extends Controller
             'title'    => 'Détail commande',
             'commande' => $commande,
             'suivi'    => $suivi,
+            'csrf'     => $this->csrfField(),
         ]);
     }
 
     public function cancelCommande(): void
     {
         $this->requireAuth();
+        $this->verifyCsrf();
         $id = (int)($_POST['commande_id'] ?? 0);
 
         $commande = $this->commandeModel->getById($id);
@@ -71,6 +74,7 @@ class UserController extends Controller
         $success = false;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->verifyCsrf();
             $data = [
                 'nom'         => trim($_POST['nom'] ?? ''),
                 'prenom'      => trim($_POST['prenom'] ?? ''),
@@ -92,6 +96,7 @@ class UserController extends Controller
             'user'    => $user,
             'error'   => $error,
             'success' => $success,
+            'csrf'    => $this->csrfField(),
         ]);
     }
 }

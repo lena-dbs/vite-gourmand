@@ -12,7 +12,7 @@
         <a href="/employe" class="user-nav-link">Commandes</a>
         <a href="/employe/menus" class="user-nav-link">Menus</a>
         <a href="/employe/avis" class="user-nav-link active">Avis</a>
-        <a href="/deconnexion" class="user-nav-link user-nav-logout">Se déconnecter</a>
+        <form method="POST" action="/deconnexion" style="display:inline;"><?= $_csrf_field ?><button type="submit" class="user-nav-link user-nav-logout">Se déconnecter</button></form>
     </div>
 
     <div class="wrap">
@@ -34,6 +34,7 @@
                     </p>
                     <div style="display:flex;gap:8px;margin-top:16px;">
                         <form method="POST" action="/employe/avis/update">
+                            <?= $csrf ?>
                             <input type="hidden" name="avis_id" value="<?= $a['avis_id'] ?>">
                             <input type="hidden" name="statut" value="valide">
                             <button type="submit" class="hbtn" style="padding:8px 16px;">
@@ -41,6 +42,7 @@
                             </button>
                         </form>
                         <form method="POST" action="/employe/avis/update">
+                            <?= $csrf ?>
                             <input type="hidden" name="avis_id" value="<?= $a['avis_id'] ?>">
                             <input type="hidden" name="statut" value="refuse">
                             <button type="submit" class="commande-annuler-btn">✗ Refuser</button>

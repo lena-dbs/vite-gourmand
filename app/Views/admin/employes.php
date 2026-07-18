@@ -14,7 +14,7 @@
         <a href="/admin/avis" class="user-nav-link">Avis</a>
         <a href="/admin/employes" class="user-nav-link active">Employés</a>
         <a href="/admin/stats" class="user-nav-link">Statistiques</a>
-        <a href="/deconnexion" class="user-nav-link user-nav-logout">Se déconnecter</a>
+        <form method="POST" action="/deconnexion" style="display:inline;"><?= $_csrf_field ?><button type="submit" class="user-nav-link user-nav-logout">Se déconnecter</button></form>
     </div>
 
     <div class="wrap">
@@ -53,6 +53,7 @@
                             </td>
                             <td>
                                 <form method="POST" action="/admin/employes/toggle" style="display:inline;">
+                                    <?= $csrf ?>
                                     <input type="hidden" name="employe_id" value="<?= $employe['utilisateur_id'] ?>">
                                     <button type="submit" class="commande-annuler-btn">
                                         <?= $employe['actif'] ? 'Désactiver' : 'Activer' ?>

@@ -9,7 +9,11 @@ require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../core/autoload.php';
 
-session_start();
+session_start([
+    'cookie_httponly' => true,
+    'cookie_samesite' => 'Strict',
+    'use_strict_mode' => true,
+]);
 
 require_once __DIR__ . '/../core/Router.php';
 
@@ -25,7 +29,7 @@ $router->add('GET',  '/connexion',   'AuthController', 'login');
 $router->add('POST', '/connexion',   'AuthController', 'login');
 $router->add('GET',  '/inscription', 'AuthController', 'register');
 $router->add('POST', '/inscription', 'AuthController', 'register');
-$router->add('GET',  '/deconnexion', 'AuthController', 'logout');
+$router->add('POST', '/deconnexion', 'AuthController', 'logout');
 
 // Commande
 $router->add('GET',  '/commande', 'CommandeController', 'index');

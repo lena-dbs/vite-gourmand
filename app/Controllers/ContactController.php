@@ -9,9 +9,13 @@ class ContactController extends Controller
         $success = false;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->verifyCsrf();
             $titre   = trim($_POST['titre'] ?? '');
             $message = trim($_POST['message'] ?? '');
             $email   = trim($_POST['email'] ?? '');
+
+            $titre = str_replace(["\r", "\n"], ' ', $titre);
+            $email = str_replace(["\r", "\n"], '', $email);
 
             if (empty($titre) || empty($message) || empty($email)) {
                 $error = 'Tous les champs sont obligatoires.';
@@ -22,7 +26,7 @@ class ContactController extends Controller
                     'jose@vitegourmand.fr',
                     '[Contact] ' . $titre,
                     "De : $email\n\n$message",
-                    "From: $email\r\nReply-To: $email"
+                    "From: noreply@vitegourmand.fr\r\nReply-To: $email"
                 );
                 $success = true;
             }
@@ -32,6 +36,7 @@ class ContactController extends Controller
             'title'   => 'Contact',
             'error'   => $error,
             'success' => $success,
+            'csrf'    => $this->csrfField(),
         ]);
     }
 }

@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 class EmployeController extends Controller
 {
+    private const STATUTS_COMMANDE = ['en_attente', 'en_preparation', 'prete', 'livree', 'retour_materiel', 'terminee', 'annulee'];
+    private const STATUTS_AVIS = ['valide', 'refuse'];
+
     private CommandeModel $commandeModel;
     private MenuModel $menuModel;
 
@@ -34,6 +37,7 @@ class EmployeController extends Controller
             'commandes' => $commandes,
             'statut'    => $statut,
             'search'    => $search,
+            'csrf'      => $this->csrfField(),
         ]);
     }
 
@@ -54,16 +58,23 @@ class EmployeController extends Controller
             'title'    => 'Commande #' . $id,
             'commande' => $commande,
             'suivi'    => $suivi,
+            'csrf'     => $this->csrfField(),
         ]);
     }
 
     public function updateStatut(): void
     {
         $this->requireEmploye();
+        $this->verifyCsrf();
 
         $id          = (int)($_POST['commande_id'] ?? 0);
         $statut      = $_POST['statut'] ?? '';
         $commentaire = trim($_POST['commentaire'] ?? '');
+
+        if (!in_array($statut, self::STATUTS_COMMANDE, true)) {
+            $this->redirect('/employe/commande?id=' . $id);
+            return;
+        }
 
         $this->commandeModel->addSuivi($id, $statut, $commentaire);
 
@@ -78,12 +89,14 @@ class EmployeController extends Controller
         $this->render('employe/menus', [
             'title' => 'Gestion des menus',
             'menus' => $menus,
+            'csrf'  => $this->csrfField(),
         ]);
     }
 
     public function toggleMenu(): void
     {
         $this->requireEmploye();
+        $this->verifyCsrf();
         $id = (int)($_POST['menu_id'] ?? 0);
         $this->menuModel->toggleActif($id);
         $this->redirect('/employe/menus');
@@ -97,14 +110,20 @@ class EmployeController extends Controller
         $this->render('employe/avis', [
             'title' => 'Validation des avis',
             'avis'  => $avis,
+            'csrf'  => $this->csrfField(),
         ]);
     }
 
     public function updateAvis(): void
     {
         $this->requireEmploye();
+        $this->verifyCsrf();
         $id     = (int)($_POST['avis_id'] ?? 0);
         $statut = $_POST['statut'] ?? '';
+        if (!in_array($statut, self::STATUTS_AVIS, true)) {
+            $this->redirect('/employe/avis');
+            return;
+        }
         $this->commandeModel->updateAvis($id, $statut);
         $this->redirect('/employe/avis');
     }

@@ -19,6 +19,7 @@
             <?php endif; ?>
 
             <form method="POST" action="/mot-de-passe-oublie">
+                <?= $csrf ?>
                 <div class="form-group">
                     <label for="email">Votre email</label>
                     <input type="email" id="email" name="email" required

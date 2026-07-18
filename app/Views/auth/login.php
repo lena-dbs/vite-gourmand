@@ -19,6 +19,7 @@
         <?php endif; ?>
 
         <form method="POST" action="/connexion">
+            <?= $csrf ?>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required 

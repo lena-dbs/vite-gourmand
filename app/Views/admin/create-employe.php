@@ -15,7 +15,7 @@
         <a href="/admin/avis" class="user-nav-link">Avis</a>
         <a href="/admin/employes" class="user-nav-link active">Employés</a>
         <a href="/admin/stats" class="user-nav-link">Statistiques</a>
-        <a href="/deconnexion" class="user-nav-link user-nav-logout">Se déconnecter</a>
+        <form method="POST" action="/deconnexion" style="display:inline;"><?= $_csrf_field ?><button type="submit" class="user-nav-link user-nav-logout">Se déconnecter</button></form>
     </div>
 
     <div class="wrap">
@@ -24,6 +24,7 @@
         <?php endif; ?>
 
         <form method="POST" action="/admin/employes/create" style="max-width:480px;">
+            <?= $csrf ?>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required

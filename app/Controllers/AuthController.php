@@ -15,12 +15,14 @@ class AuthController extends Controller
         $error = null;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->verifyCsrf();
             $email    = trim($_POST['email'] ?? '');
             $password = trim($_POST['password'] ?? '');
 
             $user = $this->userModel->findByEmail($email);
 
             if ($user && password_verify($password, $user['password'])) {
+                session_regenerate_id(true);
                 $_SESSION['user'] = [
                     'id'     => $user['utilisateur_id'],
                     'nom'    => $user['nom'],
@@ -44,6 +46,7 @@ class AuthController extends Controller
         $this->render('auth/login', [
             'title' => 'Connexion',
             'error' => $error,
+            'csrf'  => $this->csrfField(),
         ]);
     }
 
@@ -52,6 +55,7 @@ class AuthController extends Controller
         $error = null;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->verifyCsrf();
             $data = [
                 'email'       => trim($_POST['email'] ?? ''),
                 'password'    => trim($_POST['password'] ?? ''),
@@ -77,11 +81,13 @@ class AuthController extends Controller
         $this->render('auth/register', [
             'title' => 'Créer un compte',
             'error' => $error,
+            'csrf'  => $this->csrfField(),
         ]);
     }
 
     public function logout(): void
     {
+        $this->verifyCsrf();
         session_destroy();
         $this->redirect('/');
     }
@@ -93,6 +99,7 @@ class AuthController extends Controller
     $success = false;
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $this->verifyCsrf();
         $email = trim($_POST['email'] ?? '');
         $user  = $this->userModel->findByEmail($email);
 
@@ -118,6 +125,7 @@ class AuthController extends Controller
         'title'   => 'Mot de passe oublié',
         'error'   => $error,
         'success' => $success,
+        'csrf'    => $this->csrfField(),
     ]);
 }
 
@@ -138,6 +146,7 @@ public function resetPassword(): void
     }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $this->verifyCsrf();
         $password = trim($_POST['password'] ?? '');
 
         if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{10,}$/', $password)) {
@@ -153,6 +162,7 @@ public function resetPassword(): void
         'title' => 'Réinitialiser le mot de passe',
         'error' => $error,
         'token' => $token,
+        'csrf'  => $this->csrfField(),
     ]);
 }
 

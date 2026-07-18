@@ -35,4 +35,26 @@ abstract class Controller
             $this->redirect('/connexion');
         }
     }
+
+    protected function generateCsrfToken(): string
+    {
+        if (empty($_SESSION['csrf_token'])) {
+            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+        }
+        return $_SESSION['csrf_token'];
+    }
+
+    protected function csrfField(): string
+    {
+        return '<input type="hidden" name="csrf_token" value="' . htmlspecialchars($this->generateCsrfToken()) . '">';
+    }
+
+    protected function verifyCsrf(): void
+    {
+        $token = $_POST['csrf_token'] ?? '';
+        if (!hash_equals($_SESSION['csrf_token'] ?? '', $token)) {
+            http_response_code(403);
+            die('Jeton de sécurité invalide. Veuillez rafraîchir la page et réessayer.');
+        }
+    }
 }

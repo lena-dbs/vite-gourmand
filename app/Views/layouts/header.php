@@ -1,4 +1,9 @@
-<?php declare(strict_types=1); ?>
+<?php declare(strict_types=1);
+$_csrf_field = '';
+if (isset($_SESSION['csrf_token'])) {
+    $_csrf_field = '<input type="hidden" name="csrf_token" value="' . htmlspecialchars($_SESSION['csrf_token']) . '">';
+}
+?>
 
 <!DOCTYPE html>
 <html lang="fr">

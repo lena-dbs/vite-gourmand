@@ -52,6 +52,7 @@
              <?php $dernierStatut = !empty($suivi) ? $suivi[count($suivi)-1]['statut'] : 'en_attente';
 if ($dernierStatut === 'en_attente'): ?>
                 <form method="POST" action="/mon-compte/annuler" style="margin-top: 24px;">
+                    <?= $csrf ?>
                     <input type="hidden" name="commande_id" value="<?= $commande['commande_id'] ?>">
                     <div class="form-group">
                         <label for="motif">Motif d'annulation</label>
@@ -71,7 +72,7 @@ if ($dernierStatut === 'en_attente'): ?>
                     <div class="suivi-etape">
                         <div class="suivi-dot"></div>
                         <div class="suivi-content">
-                            <p class="suivi-statut"><?= ucfirst(str_replace('_', ' ', $etape['statut'])) ?></p>
+                            <p class="suivi-statut"><?= htmlspecialchars(ucfirst(str_replace('_', ' ', $etape['statut']))) ?></p>
                             <?php if ($etape['commentaire']): ?>
                                 <p class="suivi-commentaire"><?= htmlspecialchars($etape['commentaire']) ?></p>
                             <?php endif; ?>

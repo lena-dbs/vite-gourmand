@@ -13,7 +13,7 @@
     <div class="user-nav">
         <a href="/mon-compte" class="user-nav-link active">Mes commandes</a>
         <a href="/mon-compte/profil" class="user-nav-link">Mon profil</a>
-        <a href="/deconnexion" class="user-nav-link user-nav-logout">Se déconnecter</a>
+        <form method="POST" action="/deconnexion" style="display:inline;"><?= $_csrf_field ?><button type="submit" class="user-nav-link user-nav-logout">Se déconnecter</button></form>
     </div>
 
     <!-- Contenu -->
@@ -34,8 +34,8 @@
                     <div class="commande-card-body">
                         <div class="commande-card-head">
                             <h2 class="commande-card-titre"><?= htmlspecialchars($commande['menu_titre']) ?></h2>
-                            <span class="commande-statut commande-statut-<?= $commande['statut_actuel'] ?>">
-                                <?= ucfirst(str_replace('_', ' ', $commande['statut_actuel'])) ?>
+                            <span class="commande-statut commande-statut-<?= htmlspecialchars($commande['statut_actuel']) ?>">
+                                <?= htmlspecialchars(ucfirst(str_replace('_', ' ', $commande['statut_actuel']))) ?>
                             </span>
                         </div>
                         <div class="commande-card-infos">

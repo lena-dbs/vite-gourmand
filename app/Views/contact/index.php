@@ -26,6 +26,7 @@
                 <?php endif; ?>
 
                 <form method="POST" action="/contact">
+                    <?= $csrf ?>
                     <div class="form-group">
                         <label for="titre">Sujet</label>
                         <input type="text" id="titre" name="titre" required

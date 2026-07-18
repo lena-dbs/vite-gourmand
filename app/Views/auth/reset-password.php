@@ -14,6 +14,7 @@
 
         <?php if ($token): ?>
             <form method="POST" action="/reinitialiser-mot-de-passe?token=<?= htmlspecialchars($token) ?>">
+                <?= $csrf ?>
                 <div class="form-group">
                     <label for="password">Nouveau mot de passe</label>
                     <input type="password" id="password" name="password" required

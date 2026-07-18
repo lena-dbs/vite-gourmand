@@ -1248,6 +1248,12 @@ footer {
     align-items: center;
     align-self: center;
     margin-top: 0;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    font-size: .85rem;
+    letter-spacing: .03em;
+    text-transform: uppercase;
 }
 
 .user-nav-logout:hover {

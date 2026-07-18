@@ -12,7 +12,7 @@
         <a href="/employe" class="user-nav-link active">Commandes</a>
         <a href="/employe/menus" class="user-nav-link">Menus</a>
         <a href="/employe/avis" class="user-nav-link">Avis</a>
-        <a href="/deconnexion" class="user-nav-link user-nav-logout">Se déconnecter</a>
+        <form method="POST" action="/deconnexion" style="display:inline;"><?= $_csrf_field ?><button type="submit" class="user-nav-link user-nav-logout">Se déconnecter</button></form>
     </div>
 
     <div class="wrap">
@@ -70,8 +70,8 @@
                             <td><?= $commande['nb_personnes'] ?></td>
                             <td><?= number_format($commande['prix_total'], 2, ',', ' ') ?> €</td>
                             <td>
-                                <span class="commande-statut commande-statut-<?= $commande['statut_actuel'] ?>">
-                                    <?= ucfirst(str_replace('_', ' ', $commande['statut_actuel'])) ?>
+                                <span class="commande-statut commande-statut-<?= htmlspecialchars($commande['statut_actuel']) ?>">
+                                    <?= htmlspecialchars(ucfirst(str_replace('_', ' ', $commande['statut_actuel']))) ?>
                                 </span>
                             </td>
                             <td>

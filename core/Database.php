@@ -39,7 +39,8 @@ class Database
                 ]
             );
         } catch(PDOException $e) {
-            die('Erreur de connexion : ' . $e->getMessage());
+            error_log('Database connection error: ' . $e->getMessage());
+            die('Erreur de connexion à la base de données. Veuillez réessayer plus tard.');
         }
     }
 

@@ -13,6 +13,7 @@
         <?php endif; ?>
 
         <form method="POST" action="/inscription">
+            <?= $csrf ?>
             <div class="form-row">
                 <div class="form-group">
                     <label for="prenom">Prénom</label>

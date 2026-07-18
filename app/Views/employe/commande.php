@@ -12,7 +12,7 @@
         <a href="/employe" class="user-nav-link active">Commandes</a>
         <a href="/employe/menus" class="user-nav-link">Menus</a>
         <a href="/employe/avis" class="user-nav-link">Avis</a>
-        <a href="/deconnexion" class="user-nav-link user-nav-logout">Se déconnecter</a>
+        <form method="POST" action="/deconnexion" style="display:inline;"><?= $_csrf_field ?><button type="submit" class="user-nav-link user-nav-logout">Se déconnecter</button></form>
     </div>
 
     <div class="wrap">
@@ -94,6 +94,7 @@
                     </div>
                     <div class="detail-card-body">
                         <form method="POST" action="/employe/statut">
+                            <?= $csrf ?>
                             <input type="hidden" name="commande_id" value="<?= $commande['commande_id'] ?>">
                             <div class="form-group">
                                 <label>Nouveau statut</label>
@@ -129,7 +130,7 @@
                             <div class="suivi-etape">
                                 <div class="suivi-dot"></div>
                                 <div class="suivi-content">
-                                    <p class="suivi-statut"><?= ucfirst(str_replace('_', ' ', $etape['statut'])) ?></p>
+                                    <p class="suivi-statut"><?= htmlspecialchars(ucfirst(str_replace('_', ' ', $etape['statut']))) ?></p>
                                     <?php if ($etape['commentaire']): ?>
                                         <p class="suivi-commentaire"><?= htmlspecialchars($etape['commentaire']) ?></p>
                                     <?php endif; ?>

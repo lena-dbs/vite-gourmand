@@ -11,6 +11,7 @@
     <div class="wrap">
 
         <form method="POST" action="/commande" class="commande-form">
+            <?= $csrf ?>
 
             <!-- Menu choisi -->
             <div class="commande-section">

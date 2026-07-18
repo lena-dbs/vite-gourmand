@@ -23,12 +23,14 @@ class CommandeController extends Controller
             'title' => 'Passer commande',
             'menu'  => $menu,
             'menus' => $this->menuModel->getAll(),
+            'csrf'  => $this->csrfField(),
         ]);
     }
 
     public function store(): void
     {
         $this->requireAuth();
+        $this->verifyCsrf();
 
         $userId  = $_SESSION['user']['id'];
         $menuId  = (int)$_POST['menu_id'];

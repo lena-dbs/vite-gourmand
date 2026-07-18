@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 class AdminController extends Controller
 {
+    private const STATUTS_COMMANDE = ['en_attente', 'en_preparation', 'prete', 'livree', 'retour_materiel', 'terminee', 'annulee'];
+    private const STATUTS_AVIS = ['valide', 'refuse'];
+
     private UserModel $userModel;
     private CommandeModel $commandeModel;
     private MenuModel $menuModel;
@@ -35,6 +38,7 @@ class AdminController extends Controller
             'commandes' => $commandes,
             'statut'    => $statut,
             'search'    => $search,
+            'csrf'      => $this->csrfField(),
         ]);
     }
 
@@ -55,15 +59,21 @@ class AdminController extends Controller
             'title'    => 'Commande #' . $id,
             'commande' => $commande,
             'suivi'    => $suivi,
+            'csrf'     => $this->csrfField(),
         ]);
     }
 
     public function updateStatut(): void
     {
         $this->requireAdmin();
+        $this->verifyCsrf();
         $id          = (int)($_POST['commande_id'] ?? 0);
         $statut      = $_POST['statut'] ?? '';
         $commentaire = trim($_POST['commentaire'] ?? '');
+        if (!in_array($statut, self::STATUTS_COMMANDE, true)) {
+            $this->redirect('/admin/commande?id=' . $id);
+            return;
+        }
         $this->commandeModel->addSuivi($id, $statut, $commentaire);
         $this->redirect('/admin/commande?id=' . $id);
     }
@@ -75,12 +85,14 @@ class AdminController extends Controller
         $this->render('admin/menus', [
             'title' => 'Gestion des menus',
             'menus' => $menus,
+            'csrf'  => $this->csrfField(),
         ]);
     }
 
     public function toggleMenu(): void
     {
         $this->requireAdmin();
+        $this->verifyCsrf();
         $id = (int)($_POST['menu_id'] ?? 0);
         $this->menuModel->toggleActif($id);
         $this->redirect('/admin/menus');
@@ -93,14 +105,20 @@ class AdminController extends Controller
         $this->render('admin/avis', [
             'title' => 'Validation des avis',
             'avis'  => $avis,
+            'csrf'  => $this->csrfField(),
         ]);
     }
 
     public function updateAvis(): void
     {
         $this->requireAdmin();
+        $this->verifyCsrf();
         $id     = (int)($_POST['avis_id'] ?? 0);
         $statut = $_POST['statut'] ?? '';
+        if (!in_array($statut, self::STATUTS_AVIS, true)) {
+            $this->redirect('/admin/avis');
+            return;
+        }
         $this->commandeModel->updateAvis($id, $statut);
         $this->redirect('/admin/avis');
     }
@@ -112,6 +130,7 @@ class AdminController extends Controller
         $this->render('admin/employes', [
             'title'    => 'Gestion des employés',
             'employes' => $employes,
+            'csrf'     => $this->csrfField(),
         ]);
     }
 
@@ -121,10 +140,13 @@ class AdminController extends Controller
         $error = null;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->verifyCsrf();
             $email    = trim($_POST['email'] ?? '');
             $password = trim($_POST['password'] ?? '');
 
-            if ($this->userModel->findByEmail($email)) {
+            if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{10,}$/', $password)) {
+                $error = 'Le mot de passe doit contenir au moins 10 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.';
+            } elseif ($this->userModel->findByEmail($email)) {
                 $error = 'Un compte existe déjà avec cet email.';
             } else {
                 $this->userModel->createEmploye($email, $password);
@@ -135,12 +157,14 @@ class AdminController extends Controller
         $this->render('admin/create-employe', [
             'title' => 'Créer un employé',
             'error' => $error,
+            'csrf'  => $this->csrfField(),
         ]);
     }
 
     public function toggleEmploye(): void
     {
         $this->requireAdmin();
+        $this->verifyCsrf();
         $id = (int)($_POST['employe_id'] ?? 0);
         $this->userModel->toggleActif($id);
         $this->redirect('/admin/employes');

@@ -11,7 +11,7 @@
     <div class="user-nav">
         <a href="/mon-compte" class="user-nav-link">Mes commandes</a>
         <a href="/mon-compte/profil" class="user-nav-link active">Mon profil</a>
-        <a href="/deconnexion" class="user-nav-link user-nav-logout">Se déconnecter</a>
+        <form method="POST" action="/deconnexion" style="display:inline;"><?= $_csrf_field ?><button type="submit" class="user-nav-link user-nav-logout">Se déconnecter</button></form>
     </div>
 
     <div class="wrap">
@@ -24,6 +24,7 @@
         <?php endif; ?>
 
         <form method="POST" action="/mon-compte/profil" class="profil-form">
+            <?= $csrf ?>
             <div class="form-row">
                 <div class="form-group">
                     <label for="prenom">Prénom</label>
