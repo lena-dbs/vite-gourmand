@@ -587,11 +587,17 @@ html.js .reveal-r.in { opacity: 1; transform: none; }
     text-transform: uppercase;
     padding: 3px 10px;
     border-radius: 40px;
+    background: #F3EDE4;
+    color: #6B5444;
+    border: 1px solid rgba(184,168,152,.3);
 }
-.mtag-noel   { background: #FEF0E0; color: #8B3A00; border: 1px solid rgba(196,82,10,.18); }
-.mtag-paques { background: #EAF3DE; color: #3B6D11; border: 1px solid rgba(92,138,74,.2); }
-.mtag-event  { background: #E8F0FE; color: #185FA5; border: 1px solid rgba(24,95,165,.15); }
-.mtag-reg    { background: #F3EDE4; color: #8A6A50; border: 1px solid rgba(184,168,152,.3); }
+.mtag-noel           { background: #FEF0E0; color: #8B3A00; border-color: rgba(196,82,10,.18); }
+.mtag-paques         { background: #EAF3DE; color: #3B6D11; border-color: rgba(92,138,74,.2); }
+.mtag-evenement      { background: #E8F0FE; color: #185FA5; border-color: rgba(24,95,165,.15); }
+.mtag-anniversaire   { background: #FDEBEF; color: #A33553; border-color: rgba(163,53,83,.15); }
+.mtag-mariage        { background: #F6EDFB; color: #6D3B8E; border-color: rgba(109,59,142,.15); }
+.mtag-apero-dinatoire { background: #FFF6DC; color: #8A6D1A; border-color: rgba(138,109,26,.2); }
+.mtag-reg            { background: #F3EDE4; color: #8A6A50; border-color: rgba(184,168,152,.3); }
 
 .menu-price {
     font-family: 'Fraunces', Georgia, serif;
@@ -1034,42 +1040,45 @@ footer {
 }
 .menu-detail-back:hover { color: #C4520A; }
 
-.menu-detail-header { margin-bottom: 52px; }
-
-.menu-detail-titre {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(34px, 5vw, 72px);
-    font-weight: 300;
-    color: #261A0D;
-    margin: 16px 0 12px;
-    line-height: 1.05;
+/* Bandeau vert de la page détail menu */
+.user-header.menu-hero {
+    padding-bottom: 48px;
 }
 
-.menu-detail-desc {
-    font-size: 16px;
+.menu-hero .menu-tags {
+    margin-bottom: 16px;
+}
+
+.menu-hero .sec-h2 {
+    margin-bottom: 14px;
+}
+
+.menu-hero-desc {
+    font-size: 15px;
     font-weight: 300;
-    color: #6B5444;
+    color: rgba(247, 241, 232, .65);
     line-height: 1.8;
-    max-width: 600px;
-    margin-bottom: 24px;
+    max-width: 620px;
+    margin-bottom: 26px;
 }
 
-.menu-detail-prix {
+.menu-hero-prix {
     font-family: 'Fraunces', Georgia, serif;
-    font-size: 42px;
+    font-size: 40px;
     font-weight: 500;
-    color: #C4520A;
+    color: #E8B86D;
     line-height: 1;
 }
 
-.menu-detail-prix span {
+.menu-hero-prix span {
     font-size: 14px;
     font-weight: 300;
-    color: #776855;
+    color: rgba(247, 241, 232, .5);
     margin-left: 8px;
 }
 
 .menu-detail-grid {
+    margin-top: 52px;
     display: grid;
     grid-template-columns: 1fr 360px;
     gap: 52px;

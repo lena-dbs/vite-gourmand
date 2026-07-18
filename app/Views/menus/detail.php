@@ -2,38 +2,32 @@
 
 <section class="menu-detail-s">
 
-    <div class="user-header reveal">
+    <div class="user-header menu-hero reveal">
         <div class="wrap">
             <a href="/menus" class="menu-detail-back">← Retour aux menus</a>
-            <p class="kicker">Notre carte</p>
-            <h1 class="sec-h2"><?= htmlspecialchars($menu['titre']) ?></h1>
-        </div>
-    </div>
-
-    <div class="wrap">
-
-        <?php if (!empty($_SESSION['flash_error'])): ?>
-            <div class="auth-error" style="margin-bottom:24px;"><?= htmlspecialchars($_SESSION['flash_error']) ?></div>
-            <?php unset($_SESSION['flash_error']); ?>
-        <?php endif; ?>
-
-        <!-- Header du menu -->
-        <div class="menu-detail-header reveal">
             <div class="menu-tags">
-                <span class="mtag mtag-<?= strtolower(str_replace(' ', '-', $menu['theme'])) ?>">
+                <span class="mtag mtag-<?= strtr(mb_strtolower($menu['theme']), ['é' => 'e', 'è' => 'e', 'ê' => 'e', 'ë' => 'e', 'à' => 'a', 'â' => 'a', 'ô' => 'o', 'ç' => 'c', ' ' => '-']) ?>">
                     <?= htmlspecialchars($menu['theme']) ?>
                 </span>
                 <span class="mtag mtag-reg">
                     <?= htmlspecialchars($menu['regime']) ?>
                 </span>
             </div>
-            <h1 class="menu-detail-titre"><?= htmlspecialchars($menu['titre']) ?></h1>
-            <p class="menu-detail-desc"><?= htmlspecialchars($menu['description']) ?></p>
-            <div class="menu-detail-prix">
+            <h1 class="sec-h2"><?= htmlspecialchars($menu['titre']) ?></h1>
+            <p class="menu-hero-desc"><?= htmlspecialchars($menu['description']) ?></p>
+            <div class="menu-hero-prix">
                 <?= number_format($menu['prix_base'], 0, ',', ' ') ?> €
                 <span>/ <?= $menu['nb_personnes_min'] ?> personnes minimum</span>
             </div>
         </div>
+    </div>
+
+    <div class="wrap">
+
+        <?php if (!empty($_SESSION['flash_error'])): ?>
+            <div class="auth-error" style="margin:32px 0 0;"><?= htmlspecialchars($_SESSION['flash_error']) ?></div>
+            <?php unset($_SESSION['flash_error']); ?>
+        <?php endif; ?>
 
         <div class="menu-detail-grid">
 

@@ -59,7 +59,7 @@
                     <div>
                         <div class="menu-row-head">
                             <div class="menu-tags">
-                                <span class="mtag mtag-<?= strtolower(str_replace(' ', '-', $menu['theme'])) ?>">
+                                <span class="mtag mtag-<?= strtr(mb_strtolower($menu['theme']), ['é' => 'e', 'è' => 'e', 'ê' => 'e', 'ë' => 'e', 'à' => 'a', 'â' => 'a', 'ô' => 'o', 'ç' => 'c', ' ' => '-']) ?>">
                                     <?= htmlspecialchars($menu['theme']) ?>
                                 </span>
                                 <span class="mtag mtag-reg">
