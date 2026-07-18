@@ -45,10 +45,16 @@ Write-Host "4/6 Déploiement fly.io..." -ForegroundColor Cyan
 flyctl deploy -a $App
 Stop-OnError "flyctl deploy"
 
-# 5. Migration BDD (table login_attempt, idempotente)
+# 5. Migration BDD (idempotente). flyctl ssh émet un faux "Descripteur non valide"
+# sur Windows après la commande : on juge sur la sortie, pas sur le code retour.
 Write-Host "5/6 Migration base de données..." -ForegroundColor Cyan
-flyctl ssh console -a $App -C "php /var/www/html/database/migrate.php"
-Stop-OnError "migration"
+$sortie = flyctl ssh console -a $App -C "php /var/www/html/database/migrate.php" 2>&1 | Out-String
+if ($sortie -notmatch "Migration OK") {
+    Write-Host $sortie -ForegroundColor Red
+    Write-Host "ÉCHEC à l'étape : migration" -ForegroundColor Red
+    exit 1
+}
+Write-Host "Migration OK"
 
 # 6. Vérifications post-déploiement
 Write-Host "6/6 Vérifications..." -ForegroundColor Cyan
