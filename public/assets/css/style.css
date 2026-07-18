@@ -837,7 +837,7 @@ footer {
 }
 
 /* PAGE DÉTAIL MENU */
-.menu-detail-s { padding: 48px 0 96px; margin-top: 75px; }
+.menu-detail-s { padding: 0 0 96px; margin-top: 75px; }
 
 .menu-detail-back {
     display: inline-flex;
@@ -1191,8 +1191,10 @@ footer {
 
 .user-header {
     background: #2E4035;
-    padding: 48px 52px 0;
+    padding: 36px 52px 0;
     margin-bottom: 0;
+    opacity: 1;
+    transform: none;
 }
 
 .user-header .kicker {
@@ -1221,6 +1223,8 @@ footer {
     border-bottom: 2px solid rgba(232,184,109,.3);
 }
 
+.user-nav > form { margin-left: auto; display: flex; align-items: center; }
+
 .user-nav-link {
     padding: 16px 24px;
     font-size: 11px;
@@ -1239,7 +1243,6 @@ footer {
 .user-nav-link.active { color: #E8B86D; border-color: #E8B86D; }
 
 .user-nav-logout {
-    margin-left: auto;
     color: #fff !important;
     background: #C4520A;
     border-radius: 2px;
@@ -1524,7 +1527,7 @@ footer {
 
 /* PAGE PASSER COMMANDE */
 .commande-s {
-    padding: 48px 0 96px;
+    padding: 0 0 96px;
     margin-top: 75px;
 }
 
@@ -1674,7 +1677,7 @@ footer {
 }
 
 /*  PAGES LÉGALES */
-.legal-s { padding: 48px 0 96px; margin-top: 75px; }
+.legal-s { padding: 0 0 96px; margin-top: 75px; }
 
 .legal-content h2 {
     font-family: 'Fraunces', Georgia, serif;
@@ -1697,7 +1700,7 @@ footer {
 
 /*   PAGE CONTACT */
 .contact-s {
-    padding: 48px 0 96px;
+    padding: 0 0 96px;
     margin-top: 75px;
 }
 
