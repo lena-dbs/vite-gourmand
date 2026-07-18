@@ -1,0 +1,6 @@
+Options -Indexes
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} !^/vite-gourmand/public/
+RewriteCond %{REQUEST_URI} !^/vite-gourmand/assets/
+RewriteRule ^vite-gourmand/(.*)$ /vite-gourmand/public/$1 [L,R=301]
