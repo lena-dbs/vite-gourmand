@@ -26,31 +26,37 @@
 
         <div class="menu-detail-grid">
 
-            <!-- Colonne gauche : plats -->
-            <div class="menu-detail-plats reveal">
-                <h2 class="menu-detail-section-title">Au menu</h2>
+          <!-- Colonne gauche : plats -->
+<div class="menu-detail-plats reveal">
+    <h2 class="menu-detail-section-title">Au menu</h2>
 
-                <?php foreach ($plats as $plat): ?>
-                <div class="menu-detail-plat">
-                    <div class="menu-detail-plat-type"><?= htmlspecialchars($plat['type']) ?></div>
-                    <div class="menu-detail-plat-info">
-                        <h3 class="menu-detail-plat-nom"><?= htmlspecialchars($plat['nom']) ?></h3>
-                        <?php if ($plat['description']): ?>
-                            <p class="menu-detail-plat-desc"><?= htmlspecialchars($plat['description']) ?></p>
-                        <?php endif; ?>
-                        <?php if (!empty($plat['allergenes'])): ?>
-                            <div class="menu-detail-allergenes">
-                                <span class="allergene-label">Allergènes :</span>
-                                <?php foreach ($plat['allergenes'] as $allergene): ?>
-                                    <span class="allergene-tag"><?= htmlspecialchars($allergene['libelle']) ?></span>
-                                <?php endforeach; ?>
-                            </div>
-                        <?php endif; ?>
-                    </div>
+    <?php foreach ($plats as $plat): ?>
+    <div class="plat-card">
+        <?php if ($plat['photo']): ?>
+        <div class="plat-card-img">
+            <img src="<?= htmlspecialchars($plat['photo']) ?>" 
+                 alt="<?= htmlspecialchars($plat['nom']) ?>"
+                 loading="lazy">
+        </div>
+        <?php endif; ?>
+        <div class="plat-card-body">
+            <div class="menu-detail-plat-type"><?= htmlspecialchars($plat['type']) ?></div>
+            <h3 class="menu-detail-plat-nom"><?= htmlspecialchars($plat['nom']) ?></h3>
+            <?php if ($plat['description']): ?>
+                <p class="menu-detail-plat-desc"><?= htmlspecialchars($plat['description']) ?></p>
+            <?php endif; ?>
+            <?php if (!empty($plat['allergenes'])): ?>
+                <div class="menu-detail-allergenes">
+                    <span class="allergene-label">Allergènes :</span>
+                    <?php foreach ($plat['allergenes'] as $allergene): ?>
+                        <span class="allergene-tag"><?= htmlspecialchars($allergene['libelle']) ?></span>
+                    <?php endforeach; ?>
                 </div>
-                <?php endforeach; ?>
-            </div>
-
+            <?php endif; ?>
+        </div>
+    </div>
+    <?php endforeach; ?>
+</div>
             <!-- Colonne droite : conditions + commande -->
             <div class="menu-detail-aside reveal">
 

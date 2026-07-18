@@ -20,13 +20,12 @@
     <ul class="nav-links">
         <li><a href="/menus">Menus</a></li>
         <li><a href="/#histoire">Histoire</a></li>
-        <li><a href="/#cuisine">La cuisine</a></li>
         <li><a href="/#avis">Avis</a></li>
         <li><a href="/contact">Contact</a></li>
     </ul>
     <?php if (isset($_SESSION['user'])): ?>
-        <a href="/mon-compte" class="nav-btn"><?= htmlspecialchars($_SESSION['user']['prenom']) ?></a>
-    <?php else: ?>
-        <a href="/connexion" class="nav-btn">Connexion</a>
-    <?php endif; ?>
+    <a href="/mon-compte" class="nav-btn"><span><?= htmlspecialchars($_SESSION['user']['prenom']) ?></span></a>
+<?php else: ?>
+    <a href="/connexion" class="nav-btn"><span>Connexion</span></a>
+<?php endif; ?>
 </nav>

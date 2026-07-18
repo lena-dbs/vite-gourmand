@@ -1,6 +1,7 @@
 <main>
-<section class="auth-s">
-    <div class="auth-card">
+<section class="auth-s"style="background-image: url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1800&q=85&auto=format&fit=crop'); background-size: cover; background-position: center;">
+    <div class="auth-overlay"></div>
+<div class="auth-card">
         
         <div class="auth-header">
             <p class="kicker">Espace membre</p>

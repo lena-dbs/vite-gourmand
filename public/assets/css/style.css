@@ -11,9 +11,9 @@ html{
     scroll-behavior: smooth;
 }
 
-body{
+body {
     font-family: 'DM Sans', system-ui, sans-serif;
-    background: #F7F1E8;
+    background: #E8DDD0;
     color: #261A0D;
     overflow-x: hidden;
 }
@@ -35,20 +35,17 @@ img{
     right: 0;
     z-index: 500;
     padding: 0 52px;
-    height: 70px;
+    height: 75px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    background: rgba(247, 241, 232, .95);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(38, 26, 13, .08);
+    justify-content: space-between;
+    background: #F7F1E8;
+    border-bottom: 2px solid #c4520a;
 }
 
 .nav-logo {
-    position: relative;
-    z-index: 1;
     font-family: 'Fraunces', Georgia, serif;
-    font-size: 20px;
+    font-size: 22px;
     font-style: italic;
     font-weight: 300;
     color: #261A0D;
@@ -56,35 +53,68 @@ img{
 }
 
 .nav-logo em {
-    color: #E8B86D;
+    color: #C4520A;
     font-style: normal;
     font-weight: 700;
+    font-size: 26px;
 }
 
 .nav-links {
-    position: relative;
-    z-index: 1;
     display: flex;
-    gap: 28px;
+    gap: 42px;
     list-style: none;
 }
 
 .nav-links a {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: .1em;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .18em;
     text-transform: uppercase;
-    color: rgba(38, 26, 13, .5);
-    transition: color .3s;
+    color: #776855;
+    transition: color .2s;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: #C4520A;
+    transition: width .3s ease;
 }
 
 .nav-links a:hover { color: #C4520A; }
+.nav-links a:hover::after { width: 100%; }
 
 .nav-btn {
+    padding: 8px 20px;
+    background: #C4520A;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: background .25s;
     position: relative;
-    z-index: 1;
-    padding: 9px 22px;
-    border: 1.5px solid rgba(196, 82, 10, .4);}
+    overflow: hidden;
+}
+
+.nav-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #8B3A00;
+    transform: translateY(102%);
+    transition: transform .3s cubic-bezier(.4,0,.2,1);
+}
+
+.nav-btn span { position: relative; z-index: 1; }
+.nav-btn:hover::after { transform: translateY(0); }
 
 /* Hero */
 .hero {
@@ -104,7 +134,7 @@ img{
     background-position: center 30%;
     will-change: transform;
     transform: scale(1.06);
-    transition: transform 10s cubic-bezier(.25, .46, .45, .94);
+    transition: transform 5s cubic-bezier(.25, .46, .45, .94);
 }
 
 .hero-bg.go { transform: scale(1); }
@@ -189,14 +219,14 @@ img{
     border-radius: 2px;
 }
 
-.hbtn::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: #8B3A00;
-    transform: translateY(102%);
-    transition: transform .38s cubic-bezier(.4, 0, .2, 1);
+   .hbtn::after {
+    content: none;
 }
+
+.hbtn:hover {
+    background: #8B3A00;
+}
+
 
 .hbtn:hover::after { transform: translateY(0); }
 .hbtn span { position: relative; z-index: 1; }
@@ -916,6 +946,45 @@ footer {
     color: #C4520A;
 }
 
+/* CARDS PLATS */
+.plat-card {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0;
+    border: 1px solid #EDE3D5;
+    overflow: hidden;
+    margin-bottom: 3px;
+    transition: border-color .3s;
+}
+
+.plat-card:hover { border-color: #D4A87A; }
+
+.plat-card-img {
+    height: 160px;
+    overflow: hidden;
+}
+
+.plat-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s ease;
+}
+
+.plat-card:hover .plat-card-img img { transform: scale(1.05); }
+
+.plat-card-body {
+    padding: 20px 24px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+}
+
+
+
+
 /*AUTH */
 .auth-s {
     min-height: 100vh;
@@ -923,14 +992,24 @@ footer {
     align-items: center;
     justify-content: center;
     padding: 96px 52px;
+    position: relative;
+}
+
+.auth-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(38,26,13,0.6);
 }
 
 .auth-card {
-    background: #fff;
+    position: relative;
+    z-index: 1;
+    background: rgba(247,241,232,0.95);
     border: 1px solid #EDE3D5;
     padding: 48px;
     width: 100%;
     max-width: 480px;
+    backdrop-filter: blur(8px);
 }
 
 .auth-header { margin-bottom: 32px; }
@@ -1029,9 +1108,6 @@ footer {
 }
 
 /* Utilisateur */
-/* ══════════════════════════════
-   ESPACE UTILISATEUR
-══════════════════════════════ */
 .user-s { padding: 96px 0; }
 
 .user-header { margin-bottom: 40px; }
@@ -1319,4 +1395,83 @@ footer {
     color: #6B5444;
     line-height: 1.85;
     margin-bottom: 16px;
+}
+
+
+/*   PAGE CONTACT */
+.contact-s { 
+    padding: 96px 0; 
+    background: #F2EAE0;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+}
+
+.contact-info-card {
+    background: #fff;
+    border: 1px solid #EDE3D5;
+    padding: 32px;
+    margin-bottom: 24px;
+}
+
+.contact-info-titre {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: #261A0D;
+    margin-bottom: 28px;
+    margin-top: 8px;
+}
+
+.contact-info-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #F2EAE0;
+}
+
+.contact-info-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.contact-info-icon {
+    font-size: 20px;
+    width: 32px;
+    flex-shrink: 0;
+}
+
+.contact-info-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #C4520A;
+    margin-bottom: 4px;
+}
+
+.contact-info-val {
+    font-size: 14px;
+    font-weight: 300;
+    color: #6B5444;
+    line-height: 1.7;
+}
+
+.contact-info-link {
+    color: #261A0D;
+    font-weight: 500;
+    transition: color .2s;
+}
+.contact-info-link:hover { color: #C4520A; }
+
+.contact-map {
+    border: 1px solid #EDE3D5;
+    overflow: hidden;
 }

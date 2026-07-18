@@ -3,6 +3,10 @@
         <div>
             <p class="f-logo">Vite <em>&</em> Gourmand</p>
             <p class="f-tagline">Traiteur artisanal à Bordeaux depuis 1999.<br>Julie et José au service de vos événements.</p>
+            <p class="f-tagline" style="margin-top:12px;"> 1 rue Sainte-Catherine, 33000 Bordeaux 
+                <br>
+                <a href="tel: +33600000001" style="color:rgba(247,241,232,.38);">06 00 00 00 01</a>
+        </p>
         </div>
         <div class="f-col">
             <p class="f-col-t">Navigation</p>
