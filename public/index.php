@@ -1,10 +1,12 @@
 <?php
 declare(strict_types=1);
 
-// Autoloading Composer 
+// Autoloading Composer
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../config/config.php';
 
+// Charger les variables d'environnement
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->safeLoad();
 
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../core/autoload.php';
