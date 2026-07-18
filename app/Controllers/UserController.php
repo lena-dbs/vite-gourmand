@@ -36,13 +36,44 @@ class UserController extends Controller
         }
 
         $suivi = $this->commandeModel->getSuivi($id);
+        $avis  = $this->commandeModel->getAvisForCommande($id);
+
+        $dernierStatut = !empty($suivi) ? end($suivi)['statut'] : 'en_attente';
+        $peutNoter = !$avis && in_array($dernierStatut, ['livree', 'retour_materiel', 'terminee'], true);
 
         $this->render('user/commande', [
-            'title'    => 'Détail commande',
-            'commande' => $commande,
-            'suivi'    => $suivi,
-            'csrf'     => $this->csrfField(),
+            'title'     => 'Détail commande',
+            'commande'  => $commande,
+            'suivi'     => $suivi,
+            'avis'      => $avis,
+            'peutNoter' => $peutNoter,
+            'csrf'      => $this->csrfField(),
         ]);
+    }
+
+    public function createAvis(): void
+    {
+        $this->requireAuth();
+        $this->verifyCsrf();
+
+        $id          = (int)($_POST['commande_id'] ?? 0);
+        $note        = (int)($_POST['note'] ?? 0);
+        $commentaire = trim($_POST['commentaire'] ?? '');
+
+        $commande = $this->commandeModel->getById($id);
+        if (!$commande || (int)$commande['utilisateur_id'] !== $_SESSION['user']['id']) {
+            $this->redirect('/mon-compte');
+            return;
+        }
+
+        $statutOk = in_array($this->commandeModel->getDernierStatut($id), ['livree', 'retour_materiel', 'terminee'], true);
+        $dejaNote = (bool)$this->commandeModel->getAvisForCommande($id);
+
+        if ($statutOk && !$dejaNote && $note >= 1 && $note <= 5 && $commentaire !== '' && mb_strlen($commentaire) <= 1000) {
+            $this->commandeModel->createAvis($_SESSION['user']['id'], $id, $note, $commentaire);
+        }
+
+        $this->redirect('/mon-compte/commandes/' . $id);
     }
 
     public function cancelCommande(): void

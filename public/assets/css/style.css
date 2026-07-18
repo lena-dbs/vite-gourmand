@@ -386,17 +386,18 @@ img{
     font-family: 'DM Sans', system-ui, sans-serif;
 }
 
-   .hbtn::after {
-    content: none;
-}
-
 .hbtn:hover {
     background: #8B3A00;
 }
 
-
-.hbtn:hover::after { transform: translateY(0); }
 .hbtn span { position: relative; z-index: 1; }
+
+.hbtn-off {
+    display: inline-block;
+    background: #B8AC9C;
+    cursor: not-allowed;
+}
+.hbtn-off:hover { background: #B8AC9C; }
 
 .hbtn-ghost {
     padding: 13px 34px;
@@ -823,6 +824,19 @@ html.js .reveal-r.in { opacity: 1; transform: none; }
     border-color: #D4A87A;
     box-shadow: 0 8px 32px rgba(196,82,10,.08);
     transform: translateY(-2px);
+}
+
+.avis-form-bloc {
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(38, 26, 13, .1);
+}
+
+.avis-attente {
+    font-size: 12px;
+    font-style: italic;
+    color: #776855;
+    margin-top: 10px;
 }
 
 .avis-c-stars {

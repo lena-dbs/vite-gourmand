@@ -64,6 +64,7 @@ $router->add('POST', '/commande', 'CommandeController', 'store');
 $router->add('GET',  '/mon-compte',               'UserController', 'index');
 $router->add('GET',  '/mon-compte/commandes/:id', 'UserController', 'commande');
 $router->add('POST', '/mon-compte/annuler',       'UserController', 'cancelCommande');
+$router->add('POST', '/mon-compte/avis',          'UserController', 'createAvis');
 $router->add('GET',  '/mon-compte/profil',        'UserController', 'profil');
 $router->add('POST', '/mon-compte/profil',        'UserController', 'profil');
 

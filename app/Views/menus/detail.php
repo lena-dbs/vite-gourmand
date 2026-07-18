@@ -12,6 +12,11 @@
 
     <div class="wrap">
 
+        <?php if (!empty($_SESSION['flash_error'])): ?>
+            <div class="auth-error" style="margin-bottom:24px;"><?= htmlspecialchars($_SESSION['flash_error']) ?></div>
+            <?php unset($_SESSION['flash_error']); ?>
+        <?php endif; ?>
+
         <!-- Header du menu -->
         <div class="menu-detail-header reveal">
             <div class="menu-tags">
@@ -78,20 +83,23 @@
                 </div>
                 <?php endif; ?>
 
-                <!-- Stock -->
-                <?php if ($menu['stock'] <= 3): ?>
-                    <p class="menu-stock-alert">⚠ Plus que <?= $menu['stock'] ?> disponible(s)</p>
-                <?php endif; ?>
-
-                <!-- Bouton commander -->
-                <?php if (isset($_SESSION['user'])): ?>
-                    <a href="/commande?menu_id=<?= $menu['menu_id'] ?>" class="hbtn">
-                        <span>Commander ce menu</span>
-                    </a>
+                <!-- Stock + bouton commander -->
+                <?php if ($menu['stock'] <= 0): ?>
+                    <p class="menu-stock-alert">Ce menu est épuisé pour le moment.</p>
+                    <span class="hbtn hbtn-off"><span>Épuisé</span></span>
                 <?php else: ?>
-                    <a href="/connexion?redirect=<?= urlencode('/commande?menu_id=' . $menu['menu_id']) ?>" class="hbtn">
-                        <span>Se connecter pour commander</span>
-                    </a>
+                    <?php if ($menu['stock'] <= 3): ?>
+                        <p class="menu-stock-alert">⚠ Plus que <?= $menu['stock'] ?> disponible(s)</p>
+                    <?php endif; ?>
+                    <?php if (isset($_SESSION['user'])): ?>
+                        <a href="/commande?menu_id=<?= $menu['menu_id'] ?>" class="hbtn">
+                            <span>Commander ce menu</span>
+                        </a>
+                    <?php else: ?>
+                        <a href="/connexion?redirect=<?= urlencode('/commande?menu_id=' . $menu['menu_id']) ?>" class="hbtn">
+                            <span>Se connecter pour commander</span>
+                        </a>
+                    <?php endif; ?>
                 <?php endif; ?>
 
             </div>

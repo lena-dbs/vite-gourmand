@@ -75,7 +75,7 @@ class CommandeModel extends Model
         return $stmt->fetchAll();
     }
 
-    public function canCancel(int $commandeId): bool
+    public function getDernierStatut(int $commandeId): string
     {
         $stmt = $this->db->prepare('
             SELECT statut FROM suivi_commande
@@ -85,7 +85,12 @@ class CommandeModel extends Model
         ');
         $stmt->execute([':id' => $commandeId]);
         $suivi = $stmt->fetch();
-        return $suivi && $suivi['statut'] === 'en_attente';
+        return $suivi ? $suivi['statut'] : 'en_attente';
+    }
+
+    public function canCancel(int $commandeId): bool
+    {
+        return $this->getDernierStatut($commandeId) === 'en_attente';
     }
 
     public function cancel(int $commandeId, string $motif): bool
@@ -203,6 +208,44 @@ class CommandeModel extends Model
             UPDATE avis SET statut = :statut WHERE avis_id = :id
         ');
         return $stmt->execute([':statut' => $statut, ':id' => $id]);
+    }
+
+    public function getAvisForCommande(int $commandeId): array|false
+    {
+        $stmt = $this->db->prepare('
+            SELECT * FROM avis WHERE commande_id = :id LIMIT 1
+        ');
+        $stmt->execute([':id' => $commandeId]);
+        return $stmt->fetch();
+    }
+
+    public function createAvis(int $userId, int $commandeId, int $note, string $commentaire): bool
+    {
+        $stmt = $this->db->prepare('
+            INSERT INTO avis (utilisateur_id, commande_id, note, commentaire)
+            VALUES (:utilisateur_id, :commande_id, :note, :commentaire)
+        ');
+        return $stmt->execute([
+            ':utilisateur_id' => $userId,
+            ':commande_id'    => $commandeId,
+            ':note'           => $note,
+            ':commentaire'    => $commentaire,
+        ]);
+    }
+
+    public function getAvisValides(int $limit = 3): array
+    {
+        $stmt = $this->db->prepare('
+            SELECT a.note, a.commentaire, a.created_at, u.prenom, u.nom, m.titre AS menu_titre
+            FROM avis a
+            JOIN utilisateur u ON a.utilisateur_id = u.utilisateur_id
+            JOIN commande c ON a.commande_id = c.commande_id
+            JOIN menu m ON c.menu_id = m.menu_id
+            WHERE a.statut = "valide"
+            ORDER BY a.created_at DESC
+            LIMIT ' . $limit);
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 
     public function getStatsByMenu(): array

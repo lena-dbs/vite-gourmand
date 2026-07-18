@@ -59,8 +59,8 @@
                 </table>
 
                 <!-- Annulation -->
-             <?php $dernierStatut = !empty($suivi) ? $suivi[count($suivi)-1]['statut'] : 'en_attente';
-if ($dernierStatut === 'en_attente'): ?>
+                <?php $dernierStatut = !empty($suivi) ? $suivi[count($suivi) - 1]['statut'] : 'en_attente'; ?>
+                <?php if ($dernierStatut === 'en_attente'): ?>
                 <form method="POST" action="/mon-compte/annuler" style="margin-top: 24px;">
                     <?= $csrf ?>
                     <input type="hidden" name="commande_id" value="<?= $commande['commande_id'] ?>">
@@ -71,6 +71,44 @@ if ($dernierStatut === 'en_attente'): ?>
                     </div>
                     <button type="submit" class="commande-annuler-btn">Annuler la commande</button>
                 </form>
+                <?php endif; ?>
+
+                <!-- Avis -->
+                <?php if ($peutNoter): ?>
+                <div class="avis-form-bloc">
+                    <h2 class="menu-detail-section-title">Votre avis</h2>
+                    <form method="POST" action="/mon-compte/avis">
+                        <?= $csrf ?>
+                        <input type="hidden" name="commande_id" value="<?= $commande['commande_id'] ?>">
+                        <div class="form-group">
+                            <label for="note">Note</label>
+                            <select id="note" name="note" required>
+                                <option value="5">★★★★★ — Excellent</option>
+                                <option value="4">★★★★☆ — Très bien</option>
+                                <option value="3">★★★☆☆ — Bien</option>
+                                <option value="2">★★☆☆☆ — Moyen</option>
+                                <option value="1">★☆☆☆☆ — Décevant</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="commentaire">Commentaire</label>
+                            <textarea id="commentaire" name="commentaire" rows="4" required
+                                      maxlength="1000" placeholder="Racontez-nous votre expérience..."></textarea>
+                        </div>
+                        <button type="submit" class="hbtn"><span>Publier mon avis</span></button>
+                    </form>
+                </div>
+                <?php elseif ($avis): ?>
+                <div class="avis-form-bloc">
+                    <h2 class="menu-detail-section-title">Votre avis</h2>
+                    <div class="avis-c-stars"><?= str_repeat('★', (int)$avis['note']) . str_repeat('☆', 5 - (int)$avis['note']) ?></div>
+                    <blockquote class="avis-c-q">"<?= htmlspecialchars($avis['commentaire']) ?>"</blockquote>
+                    <?php if ($avis['statut'] === 'en_attente'): ?>
+                        <p class="avis-attente">En attente de validation par notre équipe.</p>
+                    <?php elseif ($avis['statut'] === 'refuse'): ?>
+                        <p class="avis-attente">Cet avis n'a pas été retenu pour publication.</p>
+                    <?php endif; ?>
+                </div>
                 <?php endif; ?>
             </div>
 

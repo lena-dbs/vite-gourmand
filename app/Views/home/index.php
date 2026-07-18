@@ -131,21 +131,38 @@
             </div>
         </div>
         <div class="avis-grid reveal">
-            <div class="avis-card">
-                <div class="avis-c-stars">★★★★★</div>
-                <blockquote class="avis-c-q">"Un brunch frais et coloré, parfait pour fêter Pâques en famille. Les sablés décorés maison ont fait l'unanimité."</blockquote>
-                <p class="avis-c-auth"><strong>Marie D.</strong> · Avril 2026</p>
-            </div>
-            <div class="avis-card">
-                <div class="avis-c-stars">★★★★★</div>
-                <blockquote class="avis-c-q">"La livraison était ponctuelle, la présentation soignée comme dans un grand restaurant. Nos invités ont été subjugués."</blockquote>
-                <p class="avis-c-auth"><strong>Famille Leroy</strong> · Avril 2024</p>
-            </div>
-            <div class="avis-card">
-                <div class="avis-c-stars">★★★★★</div>
-                <blockquote class="avis-c-q">"Julie et José ont su adapter le menu pour nos convives végétariens sans compromettre le goût ni l'élégance."</blockquote>
-                <p class="avis-c-auth"><strong>Martine & Paul D.</strong> · Juin 2024</p>
-            </div>
+            <?php if (!empty($avisValides)): ?>
+                <?php
+                $mois = ['', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+                         'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+                ?>
+                <?php foreach ($avisValides as $avis): ?>
+                <div class="avis-card">
+                    <div class="avis-c-stars"><?= str_repeat('★', (int)$avis['note']) . str_repeat('☆', 5 - (int)$avis['note']) ?></div>
+                    <blockquote class="avis-c-q">"<?= htmlspecialchars($avis['commentaire']) ?>"</blockquote>
+                    <p class="avis-c-auth">
+                        <strong><?= htmlspecialchars($avis['prenom'] . ' ' . mb_substr($avis['nom'], 0, 1)) ?>.</strong>
+                        · <?= $mois[(int)date('n', strtotime($avis['created_at']))] . ' ' . date('Y', strtotime($avis['created_at'])) ?>
+                    </p>
+                </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="avis-card">
+                    <div class="avis-c-stars">★★★★★</div>
+                    <blockquote class="avis-c-q">"Un brunch frais et coloré, parfait pour fêter Pâques en famille. Les sablés décorés maison ont fait l'unanimité."</blockquote>
+                    <p class="avis-c-auth"><strong>Marie D.</strong> · Avril 2026</p>
+                </div>
+                <div class="avis-card">
+                    <div class="avis-c-stars">★★★★★</div>
+                    <blockquote class="avis-c-q">"La livraison était ponctuelle, la présentation soignée comme dans un grand restaurant. Nos invités ont été subjugués."</blockquote>
+                    <p class="avis-c-auth"><strong>Famille Leroy</strong> · Avril 2024</p>
+                </div>
+                <div class="avis-card">
+                    <div class="avis-c-stars">★★★★★</div>
+                    <blockquote class="avis-c-q">"Julie et José ont su adapter le menu pour nos convives végétariens sans compromettre le goût ni l'élégance."</blockquote>
+                    <p class="avis-c-auth"><strong>Martine & Paul D.</strong> · Juin 2024</p>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>

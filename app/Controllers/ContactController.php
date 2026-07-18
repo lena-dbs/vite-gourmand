@@ -33,10 +33,11 @@ class ContactController extends Controller
         }
 
         $this->render('contact/index', [
-            'title'   => 'Contact',
-            'error'   => $error,
-            'success' => $success,
-            'csrf'    => $this->csrfField(),
+            'title'    => 'Contact',
+            'error'    => $error,
+            'success'  => $success,
+            'horaires' => (new HoraireModel())->getLignes(),
+            'csrf'     => $this->csrfField(),
         ]);
     }
 }

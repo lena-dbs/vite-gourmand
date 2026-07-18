@@ -86,7 +86,15 @@
                         <div class="contact-info-icon" role="img" aria-label="Horaires">🕐</div>
                         <div>
                             <p class="contact-info-label">Horaires</p>
-                            <p class="contact-info-val">Lun–Ven : 9h – 18h<br>Samedi : 10h – 20h<br>Dimanche : fermé</p>
+                            <p class="contact-info-val"><?php
+                                $lignesHoraires = array_map(
+                                    fn($l) => htmlspecialchars($l['jours'] . ' : ' . $l['heures']),
+                                    $horaires ?? []
+                                );
+                                echo $lignesHoraires
+                                    ? implode('<br>', $lignesHoraires)
+                                    : 'Lun–Ven : 9h – 18h<br>Samedi : 10h – 20h<br>Dimanche : fermé';
+                            ?></p>
                         </div>
                     </div>
                 </div>

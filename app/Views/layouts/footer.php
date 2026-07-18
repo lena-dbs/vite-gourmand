@@ -1,3 +1,10 @@
+<?php
+try {
+    $horaireLignes = (new HoraireModel())->getLignes();
+} catch (Throwable $e) {
+    $horaireLignes = [];
+}
+?>
 <footer>
     <div class="footer-grid">
         <div>
@@ -25,9 +32,15 @@
         </div>
         <div class="f-col">
             <p class="f-col-t">Horaires</p>
-            <p>Lun–Ven : 9h – 18h</p>
-            <p>Samedi : 10h – 20h</p>
-            <p>Dimanche : fermé</p>
+            <?php if ($horaireLignes): ?>
+                <?php foreach ($horaireLignes as $ligne): ?>
+                    <p><?= htmlspecialchars($ligne['jours']) ?> : <?= htmlspecialchars($ligne['heures']) ?></p>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>Lun–Ven : 9h – 18h</p>
+                <p>Samedi : 10h – 20h</p>
+                <p>Dimanche : fermé</p>
+            <?php endif; ?>
         </div>
     </div>
     <div class="footer-bottom">
