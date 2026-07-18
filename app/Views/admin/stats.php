@@ -1,22 +1,23 @@
 <main>
 <section class="employe-s">
-    <div class="wrap">
 
-        <div class="user-header reveal">
+    <div class="user-header reveal">
+        <div class="wrap">
             <p class="kicker">Espace administrateur</p>
             <h1 class="sec-h2">Statistiques <em>& chiffres</em></h1>
         </div>
+    </div>
 
-        <div class="user-nav">
-            <a href="/admin" class="user-nav-link">Commandes</a>
-            <a href="/admin/menus" class="user-nav-link">Menus</a>
-            <a href="/admin/avis" class="user-nav-link">Avis</a>
-            <a href="/admin/employes" class="user-nav-link">Employés</a>
-            <a href="/admin/stats" class="user-nav-link active">Statistiques</a>
-            <a href="/deconnexion" class="user-nav-link user-nav-logout">Se déconnecter</a>
-        </div>
+    <div class="user-nav">
+        <a href="/admin" class="user-nav-link">Commandes</a>
+        <a href="/admin/menus" class="user-nav-link">Menus</a>
+        <a href="/admin/avis" class="user-nav-link">Avis</a>
+        <a href="/admin/employes" class="user-nav-link">Employés</a>
+        <a href="/admin/stats" class="user-nav-link active">Statistiques</a>
+        <a href="/deconnexion" class="user-nav-link user-nav-logout">Se déconnecter</a>
+    </div>
 
-        <!-- Tableau des stats -->
+    <div class="wrap">
         <div class="employe-table-wrap" style="margin-bottom:48px;">
             <table class="employe-table">
                 <thead>
@@ -38,13 +39,12 @@
             </table>
         </div>
 
-        <!-- Graphique -->
         <div class="stats-chart-wrap reveal">
             <h2 class="menu-detail-section-title">Commandes par menu</h2>
             <canvas id="statsChart" height="100"></canvas>
         </div>
-
     </div>
+
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

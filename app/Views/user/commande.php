@@ -1,14 +1,15 @@
 <main>
 <section class="user-s">
-    <div class="wrap">
 
-        <a href="/mon-compte" class="menu-detail-back">← Retour à mes commandes</a>
-
-        <div class="user-header reveal">
+    <div class="user-header reveal">
+        <div class="wrap">
+            <a href="/mon-compte" class="menu-detail-back">← Retour à mes commandes</a>
             <p class="kicker">Détail commande #<?= $commande['commande_id'] ?></p>
             <h1 class="sec-h2"><?= htmlspecialchars($commande['menu_titre']) ?></h1>
         </div>
+    </div>
 
+    <div class="wrap">
         <div class="commande-detail-grid">
 
             <!-- Infos commande -->

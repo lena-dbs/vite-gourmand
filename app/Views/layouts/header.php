@@ -23,9 +23,16 @@
         <li><a href="/#avis">Avis</a></li>
         <li><a href="/contact">Contact</a></li>
     </ul>
-    <?php if (isset($_SESSION['user'])): ?>
-    <a href="/mon-compte" class="nav-btn"><span><?= htmlspecialchars($_SESSION['user']['prenom']) ?></span></a>
-<?php else: ?>
-    <a href="/connexion" class="nav-btn"><span>Connexion</span></a>
-<?php endif; ?>
+    <div class="nav-actions">
+        <?php if (isset($_SESSION['user'])): ?>
+            <?php if ($_SESSION['user']['role'] === 'administrateur'): ?>
+                <a href="/admin" class="nav-link-admin">Espace admin</a>
+            <?php elseif ($_SESSION['user']['role'] === 'employe'): ?>
+                <a href="/employe" class="nav-link-admin">Espace employé</a>
+            <?php endif; ?>
+            <a href="/mon-compte" class="nav-btn"><span><?= htmlspecialchars($_SESSION['user']['prenom']) ?></span></a>
+        <?php else: ?>
+            <a href="/connexion" class="nav-btn"><span>Connexion</span></a>
+        <?php endif; ?>
+    </div>
 </nav>

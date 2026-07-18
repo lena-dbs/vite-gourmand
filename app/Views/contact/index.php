@@ -1,15 +1,19 @@
 <main>
 <section class="contact-s">
+
+    <div class="user-header reveal">
+        <div class="wrap">
+            <p class="kicker">Nous écrire</p>
+            <h1 class="sec-h2">Nous <em>contacter</em></h1>
+        </div>
+    </div>
+
     <div class="wrap">
 
         <div class="contact-grid">
 
             <!-- Formulaire -->
             <div class="contact-form-col reveal">
-                <div class="user-header">
-                    <p class="kicker">Nous écrire</p>
-                    <h1 class="sec-h2">Nous <em>contacter</em></h1>
-                </div>
 
                 <?php if ($success): ?>
                     <div class="auth-success" style="margin-bottom:24px;">
@@ -38,7 +42,7 @@
                         <label for="message">Message</label>
                         <textarea id="message" name="message" required
                                   placeholder="Votre message..."
-                                  rows="6" style="padding:12px 16px;border:1px solid #EDE3D5;background:#F7F1E8;font-family:'DM Sans',sans-serif;font-size:14px;color:#261A0D;outline:none;width:100%;resize:vertical;transition:border-color .2s;"><?= htmlspecialchars($_POST['message'] ?? '') ?></textarea>
+                                  rows="6"><?= htmlspecialchars($_POST['message'] ?? '') ?></textarea>
                     </div>
                     <button type="submit" class="hbtn">
                         <span>Envoyer le message</span>

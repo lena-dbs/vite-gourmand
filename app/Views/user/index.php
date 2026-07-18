@@ -1,18 +1,23 @@
 <main>
 <section class="user-s">
-    <div class="wrap">
 
-        <div class="user-header reveal">
+    <!-- Header vert pleine largeur -->
+    <div class="user-header reveal">
+        <div class="wrap">
             <p class="kicker">Espace personnel</p>
             <h1 class="sec-h2">Bonjour, <em><?= htmlspecialchars($_SESSION['user']['prenom']) ?></em></h1>
         </div>
+    </div>
 
-        <div class="user-nav">
-            <a href="/mon-compte" class="user-nav-link active">Mes commandes</a>
-            <a href="/mon-compte/profil" class="user-nav-link">Mon profil</a>
-            <a href="/deconnexion" class="user-nav-link user-nav-logout">Se déconnecter</a>
-        </div>
+    <!-- Nav verte pleine largeur -->
+    <div class="user-nav">
+        <a href="/mon-compte" class="user-nav-link active">Mes commandes</a>
+        <a href="/mon-compte/profil" class="user-nav-link">Mon profil</a>
+        <a href="/deconnexion" class="user-nav-link user-nav-logout">Se déconnecter</a>
+    </div>
 
+    <!-- Contenu -->
+    <div class="wrap">
         <?php if (empty($commandes)): ?>
             <div class="user-empty">
                 <p>Vous n'avez pas encore passé de commande.</p>
@@ -46,7 +51,7 @@
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-
     </div>
+
 </section>
 </main>

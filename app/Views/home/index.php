@@ -108,7 +108,7 @@
                 </div>
             </div>
             <div class="artisans-text-col reveal-r">
-                <p class="kicker" style="color:#E8B86D;">Notre histoire</p>
+                <p class="kicker">Notre histoire</p>
                 <blockquote class="artisans-quote">"Nous ne cuisinons pas des repas. Nous créons des souvenirs."</blockquote>
                 <p class="artisans-body">Julie et José se sont rencontrés dans les cuisines d'un grand restaurant bordelais en 1997. Deux ans plus tard, ils fondaient Vite & Gourmand avec une conviction : chaque événement mérite une cuisine à la hauteur de l'émotion qu'il représente. 25 ans de circuit court, de producteurs locaux et de passion.</p>
                 <div class="artisans-stats">

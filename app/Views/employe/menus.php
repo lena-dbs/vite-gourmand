@@ -1,19 +1,21 @@
 <main>
 <section class="employe-s">
-    <div class="wrap">
 
-        <div class="user-header reveal">
+    <div class="user-header reveal">
+        <div class="wrap">
             <p class="kicker">Espace employé</p>
             <h1 class="sec-h2">Gestion des <em>menus</em></h1>
         </div>
+    </div>
 
-        <div class="user-nav">
-            <a href="/employe" class="user-nav-link">Commandes</a>
-            <a href="/employe/menus" class="user-nav-link active">Menus</a>
-            <a href="/employe/avis" class="user-nav-link">Avis</a>
-            <a href="/deconnexion" class="user-nav-link user-nav-logout">Se déconnecter</a>
-        </div>
+    <div class="user-nav">
+        <a href="/employe" class="user-nav-link">Commandes</a>
+        <a href="/employe/menus" class="user-nav-link active">Menus</a>
+        <a href="/employe/avis" class="user-nav-link">Avis</a>
+        <a href="/deconnexion" class="user-nav-link user-nav-logout">Se déconnecter</a>
+    </div>
 
+    <div class="wrap">
         <div class="employe-table-wrap">
             <table class="employe-table">
                 <thead>
@@ -56,7 +58,7 @@
                 </tbody>
             </table>
         </div>
-
     </div>
+
 </section>
 </main>

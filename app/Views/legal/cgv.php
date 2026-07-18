@@ -1,11 +1,14 @@
 <main>
 <section class="legal-s">
-    <div class="wrap" style="max-width:800px;margin:0 auto;">
 
-        <div class="user-header reveal">
+    <div class="user-header reveal">
+        <div class="wrap">
             <p class="kicker">Conditions commerciales</p>
             <h1 class="sec-h2">Conditions Générales <em>de Vente</em></h1>
         </div>
+    </div>
+
+    <div class="wrap" style="max-width:800px;margin:0 auto;">
 
         <div class="legal-content reveal">
 

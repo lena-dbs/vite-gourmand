@@ -1,18 +1,20 @@
 <main>
 <section class="user-s">
-    <div class="wrap">
 
-        <div class="user-header reveal">
+    <div class="user-header reveal">
+        <div class="wrap">
             <p class="kicker">Espace personnel</p>
             <h1 class="sec-h2">Mon <em>profil</em></h1>
         </div>
+    </div>
 
-        <div class="user-nav">
-            <a href="/mon-compte" class="user-nav-link">Mes commandes</a>
-            <a href="/mon-compte/profil" class="user-nav-link active">Mon profil</a>
-            <a href="/deconnexion" class="user-nav-link user-nav-logout">Se déconnecter</a>
-        </div>
+    <div class="user-nav">
+        <a href="/mon-compte" class="user-nav-link">Mes commandes</a>
+        <a href="/mon-compte/profil" class="user-nav-link active">Mon profil</a>
+        <a href="/deconnexion" class="user-nav-link user-nav-logout">Se déconnecter</a>
+    </div>
 
+    <div class="wrap">
         <?php if ($success): ?>
             <div class="auth-success">Profil mis à jour avec succès !</div>
         <?php endif; ?>

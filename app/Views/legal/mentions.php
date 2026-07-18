@@ -1,12 +1,15 @@
 
 <main>
 <section class="legal-s">
-    <div class="wrap" style="max-width:800px;margin:0 auto;">
 
-        <div class="user-header reveal">
+    <div class="user-header reveal">
+        <div class="wrap">
             <p class="kicker">Informations légales</p>
             <h1 class="sec-h2">Mentions <em>légales</em></h1>
         </div>
+    </div>
+
+    <div class="wrap" style="max-width:800px;margin:0 auto;">
 
         <div class="legal-content reveal">
 

@@ -1,11 +1,14 @@
 <main>
 <section class="commande-s">
-    <div class="wrap">
 
-        <div class="commande-header reveal">
+    <div class="user-header reveal">
+        <div class="wrap">
             <p class="kicker">Réservation</p>
             <h1 class="sec-h2">Passer <em>commande</em></h1>
         </div>
+    </div>
+
+    <div class="wrap">
 
         <form method="POST" action="/commande" class="commande-form">
 

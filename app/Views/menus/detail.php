@@ -1,10 +1,16 @@
 <main>
 
 <section class="menu-detail-s">
-    <div class="wrap">
 
-        <!-- Retour -->
-        <a href="/menus" class="menu-detail-back">← Retour aux menus</a>
+    <div class="user-header reveal">
+        <div class="wrap">
+            <a href="/menus" class="menu-detail-back">← Retour aux menus</a>
+            <p class="kicker">Notre carte</p>
+            <h1 class="sec-h2"><?= htmlspecialchars($menu['titre']) ?></h1>
+        </div>
+    </div>
+
+    <div class="wrap">
 
         <!-- Header du menu -->
         <div class="menu-detail-header reveal">

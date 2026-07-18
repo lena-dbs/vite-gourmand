@@ -1,13 +1,15 @@
 <main>
 
 <section class="menus-page-s">
-    <div class="wrap">
-        
-        <!-- Titre -->
-        <div class="menus-page-header reveal">
+
+    <div class="user-header reveal">
+        <div class="wrap">
             <p class="kicker">Notre carte</p>
             <h1 class="sec-h2">Tous nos <em>menus</em></h1>
         </div>
+    </div>
+
+    <div class="wrap">
 
         <!-- Filtres -->
         <div class="filtres reveal">

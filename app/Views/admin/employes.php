@@ -1,21 +1,23 @@
 <main>
 <section class="employe-s">
-    <div class="wrap">
 
-        <div class="user-header reveal">
+    <div class="user-header reveal">
+        <div class="wrap">
             <p class="kicker">Espace administrateur</p>
             <h1 class="sec-h2">Gestion des <em>employés</em></h1>
         </div>
+    </div>
 
-        <div class="user-nav">
-            <a href="/admin" class="user-nav-link">Commandes</a>
-            <a href="/admin/menus" class="user-nav-link">Menus</a>
-            <a href="/admin/avis" class="user-nav-link">Avis</a>
-            <a href="/admin/employes" class="user-nav-link active">Employés</a>
-            <a href="/admin/stats" class="user-nav-link">Statistiques</a>
-            <a href="/deconnexion" class="user-nav-link user-nav-logout">Se déconnecter</a>
-        </div>
+    <div class="user-nav">
+        <a href="/admin" class="user-nav-link">Commandes</a>
+        <a href="/admin/menus" class="user-nav-link">Menus</a>
+        <a href="/admin/avis" class="user-nav-link">Avis</a>
+        <a href="/admin/employes" class="user-nav-link active">Employés</a>
+        <a href="/admin/stats" class="user-nav-link">Statistiques</a>
+        <a href="/deconnexion" class="user-nav-link user-nav-logout">Se déconnecter</a>
+    </div>
 
+    <div class="wrap">
         <div style="margin-bottom: 24px;">
             <a href="/admin/employes/create" class="hbtn"><span>+ Créer un employé</span></a>
         </div>
@@ -63,7 +65,7 @@
                 </tbody>
             </table>
         </div>
-
     </div>
+
 </section>
 </main>

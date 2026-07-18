@@ -1,14 +1,24 @@
 <main>
-<section class="user-s">
-    <div class="wrap">
+<section class="employe-s">
 
-        <a href="/admin/employes" class="menu-detail-back">← Retour aux employés</a>
-
-        <div class="user-header reveal">
+    <div class="user-header reveal">
+        <div class="wrap">
+            <a href="/admin/employes" class="menu-detail-back">← Retour aux employés</a>
             <p class="kicker">Espace administrateur</p>
             <h1 class="sec-h2">Créer un <em>employé</em></h1>
         </div>
+    </div>
 
+    <div class="user-nav">
+        <a href="/admin" class="user-nav-link">Commandes</a>
+        <a href="/admin/menus" class="user-nav-link">Menus</a>
+        <a href="/admin/avis" class="user-nav-link">Avis</a>
+        <a href="/admin/employes" class="user-nav-link active">Employés</a>
+        <a href="/admin/stats" class="user-nav-link">Statistiques</a>
+        <a href="/deconnexion" class="user-nav-link user-nav-logout">Se déconnecter</a>
+    </div>
+
+    <div class="wrap">
         <?php if ($error): ?>
             <div class="auth-error"><?= htmlspecialchars($error) ?></div>
         <?php endif; ?>
@@ -30,7 +40,7 @@
                 <span>Créer le compte employé</span>
             </button>
         </form>
-
     </div>
+
 </section>
 </main>
