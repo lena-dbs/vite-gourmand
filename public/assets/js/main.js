@@ -46,6 +46,18 @@ const io = new IntersectionObserver(es => {
 }, {threshold:.1, rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => io.observe(el));
 
+/* COOKIES */
+(function () {
+  var banner = document.getElementById('cookie-banner');
+  if (!banner || document.cookie.indexOf('cookies_ok=1') !== -1) return;
+  banner.hidden = false;
+  document.getElementById('cookie-ok').addEventListener('click', function () {
+    var secure = location.protocol === 'https:' ? '; Secure' : '';
+    document.cookie = 'cookies_ok=1; Max-Age=15552000; Path=/; SameSite=Strict' + secure;
+    banner.hidden = true;
+  });
+})();
+
 /* CURSEUR */
 if (matchMedia('(pointer: fine)').matches) {
   const dot  = document.createElement('div');

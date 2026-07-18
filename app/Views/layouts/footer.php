@@ -49,6 +49,15 @@ try {
     </div>
 </footer>
 
+<div class="cookie-banner" id="cookie-banner" role="region" aria-label="Information sur les cookies" hidden>
+    <p>
+        Ce site utilise uniquement des cookies techniques nécessaires à son fonctionnement
+        (session de connexion). Aucun cookie publicitaire ni de suivi.
+        <a href="/mentions-legales">En savoir plus</a>
+    </p>
+    <button type="button" id="cookie-ok" class="cookie-ok">J'ai compris</button>
+</div>
+
 <script src="/assets/js/main.js"></script>
 </body>
 </html>
