@@ -49,13 +49,17 @@ try {
     </div>
 </footer>
 
-<div class="cookie-banner" id="cookie-banner" role="region" aria-label="Information sur les cookies" hidden>
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-modal="false" aria-labelledby="cookie-title" aria-describedby="cookie-description" hidden>
     <p>
-        Ce site utilise uniquement des cookies techniques nécessaires à son fonctionnement
+        <strong id="cookie-title">Vos préférences de cookies</strong>
+        <span id="cookie-description">Ce site utilise uniquement des cookies techniques nécessaires à son fonctionnement
         (session de connexion). Aucun cookie publicitaire ni de suivi.
-        <a href="/mentions-legales">En savoir plus</a>
+        <a href="/mentions-legales">En savoir plus</a>.</span>
     </p>
-    <button type="button" id="cookie-ok" class="cookie-ok">J'ai compris</button>
+    <div class="cookie-actions">
+        <button type="button" id="cookie-essential" class="cookie-essential">Continuer</button>
+        <button type="button" id="cookie-ok" class="cookie-ok">J'ai compris</button>
+    </div>
 </div>
 
 <script src="/assets/js/main.js"></script>

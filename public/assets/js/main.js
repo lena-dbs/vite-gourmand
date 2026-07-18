@@ -49,13 +49,14 @@ document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => io.observ
 /* COOKIES */
 (function () {
   var banner = document.getElementById('cookie-banner');
-  if (!banner || document.cookie.indexOf('cookies_ok=1') !== -1) return;
+  if (!banner || sessionStorage.getItem('vg_cookie_notice') === '1') return;
   banner.hidden = false;
-  document.getElementById('cookie-ok').addEventListener('click', function () {
-    var secure = location.protocol === 'https:' ? '; Secure' : '';
-    document.cookie = 'cookies_ok=1; Max-Age=15552000; Path=/; SameSite=Strict' + secure;
+  function closeBanner() {
+    sessionStorage.setItem('vg_cookie_notice', '1');
     banner.hidden = true;
-  });
+  }
+  document.getElementById('cookie-ok').addEventListener('click', closeBanner);
+  document.getElementById('cookie-essential').addEventListener('click', closeBanner);
 })();
 
 /* CURSEUR */

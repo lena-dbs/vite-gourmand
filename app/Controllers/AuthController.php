@@ -40,6 +40,7 @@ class AuthController extends Controller
             if (password_verify($password, $hash) && $user) {
                 $this->userModel->clearAttempts($email, 'login');
                 session_regenerate_id(true);
+                $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
                 $_SESSION['user'] = [
                     'id'     => $user['utilisateur_id'],
                     'nom'    => $user['nom'],
@@ -100,7 +101,7 @@ class AuthController extends Controller
                 $error = 'Le mot de passe doit contenir au moins 10 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.';
             } elseif ($data['password'] !== ($_POST['password_confirm'] ?? '')) {
                 $error = 'Les mots de passe ne correspondent pas.';
-            } elseif ($this->userModel->findByEmail($data['email'])) {
+            } elseif ($this->userModel->emailExists($data['email'])) {
                 $error = 'Un compte existe déjà avec cet email.';
             } else {
                 $this->userModel->create($data);

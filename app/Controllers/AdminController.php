@@ -160,7 +160,7 @@ class AdminController extends Controller
                 $error = 'Adresse email invalide.';
             } elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{10,}$/', $password)) {
                 $error = 'Le mot de passe doit contenir au moins 10 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.';
-            } elseif ($this->userModel->findByEmail($email)) {
+            } elseif ($this->userModel->emailExists($email)) {
                 $error = 'Un compte existe déjà avec cet email.';
             } else {
                 $this->userModel->createEmploye($email, $password);

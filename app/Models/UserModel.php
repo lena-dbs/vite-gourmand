@@ -15,6 +15,13 @@ class UserModel extends Model
         return $stmt->fetch();
     }
 
+    public function emailExists(string $email): bool
+    {
+        $stmt = $this->db->prepare('SELECT 1 FROM utilisateur WHERE email = :email LIMIT 1');
+        $stmt->execute([':email' => $email]);
+        return (bool) $stmt->fetchColumn();
+    }
+
     public function create(array $data): bool
     {
         $stmt = $this->db->prepare('
@@ -114,7 +121,7 @@ class UserModel extends Model
         ');
         return $stmt->execute([
             ':user_id'    => $userId,
-            ':token'      => $token,
+            ':token'      => hash('sha256', $token),
             ':expires_at' => $expiresAt,
         ]);
     }
@@ -127,7 +134,7 @@ class UserModel extends Model
             AND used = 0
             AND expires_at > NOW()
         ');
-        $stmt->execute([':token' => $token]);
+        $stmt->execute([':token' => hash('sha256', $token)]);
         return $stmt->fetch();
     }
 

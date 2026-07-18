@@ -19,19 +19,13 @@
     </div>
 </section>
 
-<!-- Marquee -->
-<div class="marquee-outer" role="marquee" aria-label="Points forts de Vite & Gourmand">
+<!-- Signature -->
+<div class="marquee-outer" aria-label="Ce qui distingue Vite & Gourmand">
     <div class="marquee-track">
         <div class="m-item">Traiteur artisanal<div class="m-dot"></div></div>
         <div class="m-item">Bordeaux depuis 1999<div class="m-dot"></div></div>
         <div class="m-item">Noël · Pâques · Événements<div class="m-dot"></div></div>
         <div class="m-item">Livraison à domicile<div class="m-dot"></div></div>
-        <div class="m-item">+500 événements réalisés<div class="m-dot"></div></div>
-        <div class="m-item">Traiteur artisanal<div class="m-dot"></div></div>
-        <div class="m-item">Bordeaux depuis 1999<div class="m-dot"></div></div>
-        <div class="m-item">Noël · Pâques · Événements<div class="m-dot"></div></div>
-        <div class="m-item">Livraison à domicile<div class="m-dot"></div></div>
-        <div class="m-item">+500 événements réalisés<div class="m-dot"></div></div>
     </div>
 </div>
 
@@ -103,18 +97,13 @@
                 <img id="tilt" src="/assets/images/chef-cuisine.jpg" alt="Chef en cuisine" loading="lazy">
                 <div class="img-deco"></div>
                 <div class="img-badge">
-                    <div class="img-badge-n">25</div>
-                    <div class="img-badge-l">ans de<br>passion</div>
+                    <div class="img-badge-l">Depuis 1999<br>à Bordeaux</div>
                 </div>
             </div>
             <div class="artisans-text-col reveal-r">
                 <p class="kicker">Notre histoire</p>
-                <blockquote class="artisans-quote">"Nous ne cuisinons pas des repas. Nous créons des souvenirs."</blockquote>
+                <blockquote class="artisans-quote">"Une table de fête se prépare avec autant d'attention qu'un plat."</blockquote>
                 <p class="artisans-body">Julie et José se sont rencontrés dans les cuisines d'un grand restaurant bordelais en 1997. Deux ans plus tard, ils fondaient Vite & Gourmand avec une conviction : chaque événement mérite une cuisine à la hauteur de l'émotion qu'il représente. 25 ans de circuit court, de producteurs locaux et de passion.</p>
-                <div class="artisans-stats">
-                    <div class="a-stat"><div class="a-stat-n">+500</div><div class="a-stat-l">Événements</div></div>
-                    <div class="a-stat"><div class="a-stat-n">100%</div><div class="a-stat-l">Circuit court</div></div>
-                </div>
                 <a href="/contact" class="art-cta">Nous rencontrer →</a>
             </div>
         </div>

@@ -65,7 +65,11 @@ class CommandeController extends Controller
             return;
         }
 
-        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $dateLivraison) || !strtotime($dateLivraison)) {
+        $date = \DateTimeImmutable::createFromFormat('!Y-m-d', $dateLivraison);
+        $dateErrors = \DateTimeImmutable::getLastErrors();
+        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $dateLivraison)
+            || !$date
+            || ($dateErrors !== false && ($dateErrors['warning_count'] > 0 || $dateErrors['error_count'] > 0))) {
             $_SESSION['flash_error'] = 'Date de livraison invalide.';
             $this->redirect('/commande?menu_id=' . $menuId);
             return;
@@ -102,24 +106,38 @@ class CommandeController extends Controller
 
         $prixTotal = $prixMenu + $prixLivraison - $prixReduction;
 
-        // Décrément atomique : échoue si le stock est tombé à 0 entre-temps
-        if (!$this->menuModel->decrementStock($menuId)) {
-            $_SESSION['flash_error'] = 'Ce menu n\'est plus disponible (stock épuisé).';
-            $this->redirect('/menus/' . $menuId);
+        $db = Database::getInstance();
+        try {
+            $db->beginTransaction();
+
+            if (!$this->menuModel->decrementStock($menuId)) {
+                $db->rollBack();
+                $_SESSION['flash_error'] = 'Ce menu n\'est plus disponible (stock épuisé).';
+                $this->redirect('/menus/' . $menuId);
+                return;
+            }
+
+            $commandeId = $this->commandeModel->create([
+                ':utilisateur_id' => $userId,
+                ':menu_id'        => $menuId,
+                ':nb_personnes'   => $nbPersonnes,
+                ':date_livraison' => $dateLivraison,
+                ':heure_livraison'=> $heureLivraison,
+                ':prix_menu'      => $prixMenu,
+                ':prix_livraison' => $prixLivraison,
+                ':prix_reduction' => $prixReduction,
+                ':prix_total'     => $prixTotal,
+            ]);
+            $db->commit();
+        } catch (\Throwable $e) {
+            if ($db->inTransaction()) {
+                $db->rollBack();
+            }
+            error_log('Order creation error: ' . $e->getMessage());
+            $_SESSION['flash_error'] = 'Votre commande n\'a pas pu être enregistrée. Veuillez réessayer.';
+            $this->redirect('/commande?menu_id=' . $menuId);
             return;
         }
-
-        $commandeId = $this->commandeModel->create([
-            ':utilisateur_id' => $userId,
-            ':menu_id'        => $menuId,
-            ':nb_personnes'   => $nbPersonnes,
-            ':date_livraison' => $dateLivraison,
-            ':heure_livraison'=> $heureLivraison,
-            ':prix_menu'      => $prixMenu,
-            ':prix_livraison' => $prixLivraison,
-            ':prix_reduction' => $prixReduction,
-            ':prix_total'     => $prixTotal,
-        ]);
 
         $this->commandeModel->saveStatToMongo($commandeId, $menuId, $menu['titre'], $prixTotal);
 

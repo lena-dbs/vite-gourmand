@@ -249,9 +249,9 @@ INSERT INTO `horaire` (`jour`, `heure_ouverture`, `heure_fermeture`, `ferme`) VA
 
 -- Données pour la table utilisateur 
 INSERT INTO `utilisateur` (`role_id`, `email`, `password`, `nom`, `prenom`, `telephone`, `adresse`, `ville`, `code_postal`, `pays`, `actif`) VALUES
-(1, 'jose@vitegourmand.fr', '$2y$12$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Santos', 'José', '0600000001', '1 rue Sainte-Catherine', 'Bordeaux', '33000', 'France', 1),
-(2, 'julie@vitegourmand.fr', '$2y$12$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Santos', 'Julie', '0600000002', '1 rue Sainte-Catherine', 'Bordeaux', '33000', 'France', 1),
-(3, 'test@email.fr', '$2y$12$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Durand', 'Marie', '0600000003', '3 rue Courbin', 'Bordeaux', '33000', 'France', 1);
+(1, 'admin@example.invalid', '$2y$10$llIvzTaYButq8kehBEVtleX0/pZL1yKBeJCiIe0R26DRlBLt67GVe', 'Administrateur', 'Compte', '', '', '', '', 'France', 0),
+(2, 'employe@example.invalid', '$2y$10$NHQ2tSj5Qj7.wC2aGuNjYO59EvCr5cHygt6SJh4zayLWg5q3VPsfu', 'Employé', 'Compte', '', '', '', '', 'France', 0),
+(3, 'client@example.invalid', '$2y$10$n/C//PZMlhlqSlI6llGb0O4nLWlnniHAsIgiccyhphtxXj2Umnhui', 'Client', 'Compte', '', '', '', '', 'France', 0);
 
 
 -- Données pour la table plat 

@@ -53,16 +53,16 @@ Ou via phpMyAdmin :
 
 ### 4. Configurer les variables d'environnement
 
-Créer un fichier `.env` à la racine du projet :
+Copier `.env.example` vers `.env`, puis renseigner les valeurs propres à votre environnement. Le fichier `.env` est ignoré par Git et ne doit jamais être partagé ni versionné.
 
 ```env
 DB_HOST=localhost
 DB_NAME=vite_gourmand
 DB_USER=root
-DB_PASS=
+DB_PASS=à-renseigner-localement
 DB_PORT=3306
 
-MONGO_URI=mongodb://localhost:27017
+MONGO_URI=à-renseigner-localement
 
 APP_URL=http://localhost
 ```
@@ -110,9 +110,7 @@ fly launch
 
 ### 3. Configurer les secrets
 
-```bash
-fly secrets set DB_HOST=your-db-host DB_NAME=vite_gourmand DB_USER=user DB_PASS=password DB_PORT=3306 MONGO_URI=mongodb+srv://... APP_URL=https://your-app.fly.dev
-```
+Configurer les variables `DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASS`, `DB_PORT`, `MONGO_URI` et `APP_URL` dans le gestionnaire de secrets de Fly.io. Ne les ajoutez jamais au dépôt, au README ou aux scripts de déploiement.
 
 ### 4. Déployer
 
@@ -166,14 +164,6 @@ vite-gourmand/
 └── README.md              # Ce fichier
 ```
 
-## Identifiants de démonstration
-
-| Rôle | Email | Mot de passe |
-|---|---|---|
-| Administrateur | jose@vitegourmand.fr | password |
-| Employé | julie@vitegourmand.fr | password |
-| Utilisateur | test@email.fr | password |
-
 ## Sécurité
 
 - Tokens CSRF sur tous les formulaires POST
@@ -183,6 +173,7 @@ vite-gourmand/
 - Headers HTTP de sécurité (CSP, X-Frame-Options, HSTS, etc.)
 - Session sécurisée (httponly, samesite Strict, timeout 30 min)
 - Variables d'environnement via `.env` (phpdotenv)
+- Aucun identifiant ni secret de démonstration n'est publié dans ce dépôt
 
 ## Licence
 
