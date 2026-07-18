@@ -11,7 +11,7 @@
     <div class="user-nav">
         <a href="/mon-compte" class="user-nav-link">Mes commandes</a>
         <a href="/mon-compte/profil" class="user-nav-link active">Mon profil</a>
-        <form method="POST" action="/deconnexion" style="display:inline;"><?= $_csrf_field ?><button type="submit" class="user-nav-link user-nav-logout">Se déconnecter</button></form>
+        <form method="POST" action="/deconnexion" style="display:inline;"><?= $csrf ?><button type="submit" class="user-nav-link user-nav-logout">Se déconnecter</button></form>
     </div>
 
     <div class="wrap">
@@ -66,6 +66,38 @@
             </div>
             <button type="submit" class="hbtn">
                 <span>Sauvegarder</span>
+            </button>
+        </form>
+
+        <hr style="border:none; border-top:1px solid #e5ddd3; margin:40px 0;">
+
+        <h2 class="menu-detail-section-title" style="margin-bottom:20px;">Changer le mot de passe</h2>
+
+        <?php if (!empty($passwordSuccess)): ?>
+            <div class="auth-success">Mot de passe modifié avec succès !</div>
+        <?php endif; ?>
+        <?php if (!empty($passwordError)): ?>
+            <div class="auth-error"><?= htmlspecialchars($passwordError) ?></div>
+        <?php endif; ?>
+
+        <form method="POST" action="/mon-compte/profil" class="profil-form">
+            <?= $csrf ?>
+            <input type="hidden" name="action" value="password">
+            <div class="form-group">
+                <label for="current_password">Mot de passe actuel</label>
+                <input type="password" id="current_password" name="current_password" required placeholder="••••••••••">
+            </div>
+            <div class="form-group">
+                <label for="new_password">Nouveau mot de passe</label>
+                <input type="password" id="new_password" name="new_password" required placeholder="••••••••••">
+                <span class="form-hint">10 caractères min., une majuscule, une minuscule, un chiffre et un caractère spécial.</span>
+            </div>
+            <div class="form-group">
+                <label for="new_password_confirm">Confirmer le nouveau mot de passe</label>
+                <input type="password" id="new_password_confirm" name="new_password_confirm" required placeholder="••••••••••">
+            </div>
+            <button type="submit" class="hbtn">
+                <span>Changer le mot de passe</span>
             </button>
         </form>
 

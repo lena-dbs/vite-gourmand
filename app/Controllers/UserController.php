@@ -30,7 +30,7 @@ class UserController extends Controller
         $id       = (int)($_GET['id'] ?? 0);
         $commande = $this->commandeModel->getById($id);
 
-        if (!$commande || $commande['utilisateur_id'] != $_SESSION['user']['id']) {
+        if (!$commande || (int)$commande['utilisateur_id'] !== $_SESSION['user']['id']) {
             $this->redirect('/mon-compte');
             return;
         }
@@ -53,7 +53,7 @@ class UserController extends Controller
 
         $commande = $this->commandeModel->getById($id);
 
-        if (!$commande || $commande['utilisateur_id'] != $_SESSION['user']['id']) {
+        if (!$commande || (int)$commande['utilisateur_id'] !== $_SESSION['user']['id']) {
             $this->redirect('/mon-compte');
             return;
         }
@@ -72,31 +72,72 @@ class UserController extends Controller
         $user  = $this->userModel->getById($_SESSION['user']['id']);
         $error = null;
         $success = false;
+        $passwordError = null;
+        $passwordSuccess = false;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->verifyCsrf();
-            $data = [
-                'nom'         => trim($_POST['nom'] ?? ''),
-                'prenom'      => trim($_POST['prenom'] ?? ''),
-                'telephone'   => trim($_POST['telephone'] ?? ''),
-                'adresse'     => trim($_POST['adresse'] ?? ''),
-                'ville'       => trim($_POST['ville'] ?? ''),
-                'code_postal' => trim($_POST['code_postal'] ?? ''),
-            ];
+            $action = $_POST['action'] ?? 'profile';
 
-            $this->userModel->update($_SESSION['user']['id'], $data);
-            $_SESSION['user']['nom']    = $data['nom'];
-            $_SESSION['user']['prenom'] = $data['prenom'];
-            $success = true;
-            $user    = $this->userModel->getById($_SESSION['user']['id']);
+            if ($action === 'password') {
+                $currentPassword = $_POST['current_password'] ?? '';
+                $newPassword     = $_POST['new_password'] ?? '';
+
+                if (!password_verify($currentPassword, $user['password'])) {
+                    $passwordError = 'Le mot de passe actuel est incorrect.';
+                } elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{10,}$/', $newPassword)) {
+                    $passwordError = 'Le nouveau mot de passe doit contenir au moins 10 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.';
+                } elseif ($newPassword !== ($_POST['new_password_confirm'] ?? '')) {
+                    $passwordError = 'Les mots de passe ne correspondent pas.';
+                } else {
+                    $this->userModel->updatePassword($_SESSION['user']['id'], $newPassword);
+                    $passwordSuccess = true;
+
+                    $userEmail = $_SESSION['user']['email'] ?? '';
+                    if ($userEmail) {
+                        @mail(
+                            $userEmail,
+                            'Mot de passe modifié — Vite & Gourmand',
+                            "Bonjour " . ($_SESSION['user']['prenom'] ?? '') . ",\n\n"
+                            . "Votre mot de passe a été modifié avec succès le " . date('d/m/Y à H:i') . ".\n\n"
+                            . "Si vous n'êtes pas à l'origine de cette modification, contactez-nous immédiatement à jose@vitegourmand.fr ou changez votre mot de passe.\n\n"
+                            . "L'équipe Vite & Gourmand",
+                            "From: noreply@vitegourmand.fr"
+                        );
+                    }
+                }
+            } else {
+                $data = [
+                    'nom'         => trim($_POST['nom'] ?? ''),
+                    'prenom'      => trim($_POST['prenom'] ?? ''),
+                    'telephone'   => trim($_POST['telephone'] ?? ''),
+                    'adresse'     => trim($_POST['adresse'] ?? ''),
+                    'ville'       => trim($_POST['ville'] ?? ''),
+                    'code_postal' => trim($_POST['code_postal'] ?? ''),
+                ];
+
+                if (!preg_match('/^(?:0|\+33\s?)[1-9](?:[\s.-]?\d{2}){4}$/', $data['telephone'])) {
+                    $error = 'Numéro de téléphone invalide (format attendu : 06 00 00 00 00).';
+                } else {
+                    $this->userModel->update($_SESSION['user']['id'], $data);
+                    $_SESSION['user']['nom']    = $data['nom'];
+                    $_SESSION['user']['prenom'] = $data['prenom'];
+                    $_SESSION['user']['ville']  = $data['ville'];
+                    $success = true;
+                }
+            }
+
+            $user = $this->userModel->getById($_SESSION['user']['id']);
         }
 
         $this->render('user/profil', [
-            'title'   => 'Mon profil',
-            'user'    => $user,
-            'error'   => $error,
-            'success' => $success,
-            'csrf'    => $this->csrfField(),
+            'title'           => 'Mon profil',
+            'user'            => $user,
+            'error'           => $error,
+            'success'         => $success,
+            'passwordError'   => $passwordError,
+            'passwordSuccess' => $passwordSuccess,
+            'csrf'            => $this->csrfField(),
         ]);
     }
 }

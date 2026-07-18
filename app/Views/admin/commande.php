@@ -57,7 +57,7 @@
                         </div>
                         <div class="detail-row">
                             <span class="detail-label">Heure</span>
-                            <span class="detail-value"><?= $commande['heure_livraison'] ?></span>
+                            <span class="detail-value"><?= htmlspecialchars($commande['heure_livraison']) ?></span>
                         </div>
                         <div class="detail-row">
                             <span class="detail-label">Personnes</span>

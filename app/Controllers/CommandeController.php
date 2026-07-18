@@ -33,7 +33,7 @@ class CommandeController extends Controller
         $this->verifyCsrf();
 
         $userId  = $_SESSION['user']['id'];
-        $menuId  = (int)$_POST['menu_id'];
+        $menuId  = (int)($_POST['menu_id'] ?? 0);
         $menu    = $this->menuModel->getById($menuId);
 
         if (!$menu) {
@@ -41,12 +41,56 @@ class CommandeController extends Controller
             return;
         }
 
-        $nbPersonnes   = (int)$_POST['nb_personnes'];
-        $dateLivraison = $_POST['date_livraison'];
-        $heureLivraison= $_POST['heure_livraison'];
-        $ville         = trim($_POST['ville']);
+        if ($menu['stock'] <= 0) {
+            $_SESSION['flash_error'] = 'Ce menu n\'est plus disponible (stock épuisé).';
+            $this->redirect('/menus/' . $menuId);
+            return;
+        }
 
-        // Calcul prix
+        $nbPersonnes = (int)($_POST['nb_personnes'] ?? 0);
+
+        if ($nbPersonnes < (int)$menu['nb_personnes_min']) {
+            $_SESSION['flash_error'] = 'Le nombre de personnes minimum pour ce menu est de ' . $menu['nb_personnes_min'] . '.';
+            $this->redirect('/commande?menu_id=' . $menuId);
+            return;
+        }
+
+        $dateLivraison  = $_POST['date_livraison'] ?? '';
+        $heureLivraison = $_POST['heure_livraison'] ?? '';
+        $ville          = trim($_POST['ville'] ?? '');
+
+        if ($ville === '') {
+            $_SESSION['flash_error'] = 'La ville de livraison est obligatoire.';
+            $this->redirect('/commande?menu_id=' . $menuId);
+            return;
+        }
+
+        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $dateLivraison) || !strtotime($dateLivraison)) {
+            $_SESSION['flash_error'] = 'Date de livraison invalide.';
+            $this->redirect('/commande?menu_id=' . $menuId);
+            return;
+        }
+
+        if (!preg_match('/^\d{2}:\d{2}$/', $heureLivraison)) {
+            $_SESSION['flash_error'] = 'Heure de livraison invalide.';
+            $this->redirect('/commande?menu_id=' . $menuId);
+            return;
+        }
+
+        $heureInt = (int)str_replace(':', '', $heureLivraison);
+        if ($heureInt < 900 || $heureInt > 2000) {
+            $_SESSION['flash_error'] = 'L\'heure de livraison doit être entre 09:00 et 20:00.';
+            $this->redirect('/commande?menu_id=' . $menuId);
+            return;
+        }
+
+        $minDate = date('Y-m-d', strtotime('+3 days'));
+        if ($dateLivraison < $minDate) {
+            $_SESSION['flash_error'] = 'La date de livraison doit être au minimum dans 3 jours (à partir du ' . date('d/m/Y', strtotime('+3 days')) . ').';
+            $this->redirect('/commande?menu_id=' . $menuId);
+            return;
+        }
+
         $prixMenu      = (float)$menu['prix_base'];
         $prixLivraison = strtolower($ville) === 'bordeaux' ? 0.00 : 5.00;
         $prixReduction = 0.00;
@@ -57,6 +101,13 @@ class CommandeController extends Controller
         }
 
         $prixTotal = $prixMenu + $prixLivraison - $prixReduction;
+
+        // Décrément atomique : échoue si le stock est tombé à 0 entre-temps
+        if (!$this->menuModel->decrementStock($menuId)) {
+            $_SESSION['flash_error'] = 'Ce menu n\'est plus disponible (stock épuisé).';
+            $this->redirect('/menus/' . $menuId);
+            return;
+        }
 
         $commandeId = $this->commandeModel->create([
             ':utilisateur_id' => $userId,
@@ -70,14 +121,23 @@ class CommandeController extends Controller
             ':prix_total'     => $prixTotal,
         ]);
 
-// Sauvegarder dans MongoDB
-$this->commandeModel->saveStatToMongo(
-    $commandeId,
-    $menuId,
-    $menu['titre'],
-    $prixTotal
-);
+        $this->commandeModel->saveStatToMongo($commandeId, $menuId, $menu['titre'], $prixTotal);
 
-      $this->redirect('/mon-compte/commandes/' . $commandeId);
+        $userEmail = $_SESSION['user']['email'] ?? '';
+        if ($userEmail) {
+            $sujet = 'Confirmation de commande #' . $commandeId . ' — Vite & Gourmand';
+            $corps = "Bonjour " . ($_SESSION['user']['prenom'] ?? '') . ",\n\n"
+                   . "Votre commande #$commandeId a bien été enregistrée.\n\n"
+                   . "Menu : " . $menu['titre'] . "\n"
+                   . "Date de livraison : " . date('d/m/Y', strtotime($dateLivraison)) . " à $heureLivraison\n"
+                   . "Personnes : $nbPersonnes\n"
+                   . "Total : " . number_format($prixTotal, 2, ',', ' ') . " €\n"
+                   . "Paiement : à la livraison (espèces ou CB)\n\n"
+                   . "Vous pouvez suivre votre commande depuis votre espace personnel.\n\n"
+                   . "Merci pour votre confiance !\nL'équipe Vite & Gourmand";
+            @mail($userEmail, $sujet, $corps, "From: noreply@vitegourmand.fr");
+        }
+
+        $this->redirect('/mon-compte/commandes/' . $commandeId);
     }
 }

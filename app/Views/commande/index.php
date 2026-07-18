@@ -10,7 +10,12 @@
 
     <div class="wrap">
 
-        <form method="POST" action="/commande" class="commande-form">
+        <?php if (!empty($_SESSION['flash_error'])): ?>
+            <div class="auth-error"><?= htmlspecialchars($_SESSION['flash_error']) ?></div>
+            <?php unset($_SESSION['flash_error']); ?>
+        <?php endif; ?>
+
+        <form method="POST" action="/commande" class="commande-form" id="commande-form">
             <?= $csrf ?>
 
             <!-- Menu choisi -->
@@ -85,7 +90,13 @@
                     <span>Total</span>
                     <span id="recap-total">—</span>
                 </div>
+                <div class="recap-ligne" style="margin-top:12px;padding-top:12px;border-top:1px solid #e5ddd3;">
+                    <span>Paiement</span>
+                    <span>À la livraison</span>
+                </div>
             </div>
+
+            <p class="form-hint" style="margin-bottom:16px;">Le paiement s'effectue à la livraison, en espèces ou par carte bancaire.</p>
 
             <button type="submit" class="hbtn">
                 <span>Confirmer la commande</span>
@@ -94,4 +105,83 @@
         </form>
     </div>
 </section>
+
+<script nonce="<?= CSP_NONCE ?>">
+(function() {
+    var form = document.getElementById('commande-form');
+    var menuSelect = document.getElementById('menu_id');
+    var villeInput = document.getElementById('ville');
+    var nbInput = document.getElementById('nb_personnes');
+    var recapMenu = document.getElementById('recap-menu');
+    var recapLivraison = document.getElementById('recap-livraison');
+    var recapReduction = document.getElementById('recap-reduction');
+    var recapReductionLigne = document.getElementById('recap-reduction-ligne');
+    var recapTotal = document.getElementById('recap-total');
+
+    var menus = <?= json_encode(array_map(fn($m) => [
+        'id' => $m['menu_id'],
+        'prix' => (float)$m['prix_base'],
+        'min' => (int)$m['nb_personnes_min']
+    ], $menus)) ?>;
+
+    function getMenu() {
+        var id = parseInt(menuSelect.value);
+        for (var i = 0; i < menus.length; i++) {
+            if (menus[i].id === id) return menus[i];
+        }
+        return null;
+    }
+
+    function fmt(n) { return n.toFixed(2).replace('.', ',') + ' €'; }
+
+    function updateRecap() {
+        var m = getMenu();
+        if (!m) return;
+        var prix = m.prix;
+        var ville = villeInput.value.trim().toLowerCase();
+        var livraison = ville === 'bordeaux' ? 0 : 5;
+        var nb = parseInt(nbInput.value) || m.min;
+        var reduction = nb >= m.min + 5 ? prix * 0.10 : 0;
+        var total = prix + livraison - reduction;
+
+        recapMenu.textContent = fmt(prix);
+        recapLivraison.textContent = livraison === 0 ? 'Gratuite' : fmt(livraison);
+        if (reduction > 0) {
+            recapReductionLigne.style.display = 'flex';
+            recapReduction.textContent = '- ' + fmt(reduction);
+        } else {
+            recapReductionLigne.style.display = 'none';
+        }
+        recapTotal.textContent = fmt(total);
+
+        nbInput.min = m.min;
+    }
+
+    menuSelect.addEventListener('change', updateRecap);
+    villeInput.addEventListener('input', updateRecap);
+    nbInput.addEventListener('input', updateRecap);
+    updateRecap();
+
+    form.addEventListener('submit', function(e) {
+        var menuText = menuSelect.options[menuSelect.selectedIndex].text;
+        var date = form.querySelector('#date_livraison').value;
+        var heure = form.querySelector('#heure_livraison').value;
+        var nb = nbInput.value;
+        var ville = villeInput.value;
+        var total = recapTotal.textContent.trim();
+
+        var msg = 'Confirmez-vous cette commande ?\n\n'
+            + 'Menu : ' + menuText + '\n'
+            + 'Date : ' + date + ' à ' + heure + '\n'
+            + 'Personnes : ' + nb + '\n'
+            + 'Ville : ' + ville + '\n'
+            + 'Total : ' + total + '\n'
+            + 'Paiement : à la livraison';
+
+        if (!confirm(msg)) {
+            e.preventDefault();
+        }
+    });
+})();
+</script>
 </main>

@@ -1,5 +1,5 @@
 <main>
-<section class="auth-s"style="background-image: url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1800&q=85&auto=format&fit=crop'); background-size: cover; background-position: center;">
+<section class="auth-s"style="background-image: url('/assets/images/auth-bg.jpg'); background-size: cover; background-position: center;">
     <div class="auth-overlay"></div>
 <div class="auth-card">
         
@@ -18,8 +18,11 @@
             <div class="auth-error"><?= htmlspecialchars($error) ?></div>
         <?php endif; ?>
 
-        <form method="POST" action="/connexion">
+        <form method="POST" action="/connexion<?= !empty($_GET['redirect']) ? '?redirect=' . htmlspecialchars(urlencode($_GET['redirect'])) : '' ?>">
             <?= $csrf ?>
+            <?php if (!empty($_GET['redirect'])): ?>
+                <input type="hidden" name="redirect" value="<?= htmlspecialchars($_GET['redirect']) ?>">
+            <?php endif; ?>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required 

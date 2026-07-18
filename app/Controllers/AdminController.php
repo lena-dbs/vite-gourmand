@@ -31,14 +31,16 @@ class AdminController extends Controller
 
         $statut    = $_GET['statut'] ?? '';
         $search    = $_GET['search'] ?? '';
-        $commandes = $this->commandeModel->getAllFiltered($statut, $search);
+        $page      = max(1, (int)($_GET['page'] ?? 1));
+        $result    = $this->commandeModel->getAllFiltered($statut, $search, $page);
 
         $this->render('admin/index', [
-            'title'     => 'Espace administrateur',
-            'commandes' => $commandes,
-            'statut'    => $statut,
-            'search'    => $search,
-            'csrf'      => $this->csrfField(),
+            'title'      => 'Espace administrateur',
+            'commandes'  => $result['data'],
+            'statut'     => $statut,
+            'search'     => $search,
+            'pagination' => $result,
+            'csrf'       => $this->csrfField(),
         ]);
     }
 
@@ -81,7 +83,7 @@ class AdminController extends Controller
     public function menus(): void
     {
         $this->requireAdmin();
-        $menus = $this->menuModel->getAll();
+        $menus = $this->menuModel->getAllAdmin();
         $this->render('admin/menus', [
             'title' => 'Gestion des menus',
             'menus' => $menus,
@@ -95,6 +97,16 @@ class AdminController extends Controller
         $this->verifyCsrf();
         $id = (int)($_POST['menu_id'] ?? 0);
         $this->menuModel->toggleActif($id);
+        $this->redirect('/admin/menus');
+    }
+
+    public function updateStock(): void
+    {
+        $this->requireAdmin();
+        $this->verifyCsrf();
+        $id    = (int)($_POST['menu_id'] ?? 0);
+        $stock = max(0, (int)($_POST['stock'] ?? 0));
+        $this->menuModel->updateStock($id, $stock);
         $this->redirect('/admin/menus');
     }
 
@@ -142,9 +154,11 @@ class AdminController extends Controller
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->verifyCsrf();
             $email    = trim($_POST['email'] ?? '');
-            $password = trim($_POST['password'] ?? '');
+            $password = $_POST['password'] ?? '';
 
-            if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{10,}$/', $password)) {
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $error = 'Adresse email invalide.';
+            } elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{10,}$/', $password)) {
                 $error = 'Le mot de passe doit contenir au moins 10 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.';
             } elseif ($this->userModel->findByEmail($email)) {
                 $error = 'Un compte existe déjà avec cet email.';
@@ -175,11 +189,7 @@ class AdminController extends Controller
         $this->requireAdmin();
 
         $statsMongoRaw = $this->commandeModel->getStatsFromMongo();
-
         $stats = !empty($statsMongoRaw) ? $statsMongoRaw : $this->commandeModel->getStatsByMenu();
-
-        $stats = $this->commandeModel->getStatsByMenu();
-
 
         $this->render('admin/stats', [
             'title' => 'Statistiques',

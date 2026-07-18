@@ -39,7 +39,19 @@ CREATE TABLE `password_reset` (
     `expires_at`      DATETIME     NOT NULL,
     `used`            BOOLEAN      NOT NULL DEFAULT 0,
     PRIMARY KEY (`token_id`),
-    CONSTRAINT `fk_token_utilisateur` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur`(`utilisateur_id`) 
+    CONSTRAINT `fk_token_utilisateur` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur`(`utilisateur_id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+
+-- Table login_attempt (limitation des tentatives de connexion / reset)
+CREATE TABLE `login_attempt` (
+    `attempt_id`      INT          NOT NULL AUTO_INCREMENT,
+    `email`           VARCHAR(255) NOT NULL,
+    `ip`              VARCHAR(45)  NOT NULL,
+    `type`            VARCHAR(20)  NOT NULL DEFAULT 'login',
+    `created_at`      DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`attempt_id`),
+    INDEX `idx_attempt_email` (`email`, `created_at`),
+    INDEX `idx_attempt_ip` (`ip`, `created_at`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 

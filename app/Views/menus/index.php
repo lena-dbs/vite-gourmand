@@ -100,7 +100,7 @@
     </div>
 </section>
 
-<script>
+<script nonce="<?= CSP_NONCE ?>">
 // Filtres dynamiques sans rechargement
 const filtreTheme     = document.getElementById('filtre-theme');
 const filtreRegime    = document.getElementById('filtre-regime');

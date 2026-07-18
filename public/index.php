@@ -1,21 +1,44 @@
 <?php
 declare(strict_types=1);
 
-// Autoloading Composer
 require_once __DIR__ . '/../vendor/autoload.php';
 
-// Charger les variables d'environnement
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->safeLoad();
 
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../core/autoload.php';
 
-session_start([
-    'cookie_httponly' => true,
-    'cookie_samesite' => 'Strict',
-    'use_strict_mode' => true,
-]);
+$isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+        || ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https';
+
+define('CSP_NONCE', base64_encode(random_bytes(16)));
+
+header('X-Content-Type-Options: nosniff');
+header('X-Frame-Options: DENY');
+header('Referrer-Policy: strict-origin-when-cross-origin');
+header("Content-Security-Policy: default-src 'self'; script-src 'self' 'nonce-" . CSP_NONCE . "' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://plus.unsplash.com https://images.pexels.com; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'");
+if ($isHttps) {
+    header('Strict-Transport-Security: max-age=31536000; includeSubDomains');
+}
+
+$sessionOptions = [
+    'cookie_httponly'  => true,
+    'cookie_secure'    => $isHttps,
+    'cookie_samesite'  => 'Strict',
+    'use_strict_mode'  => true,
+    'gc_maxlifetime'   => 1800,
+    'cookie_lifetime'  => 0,
+];
+
+session_start($sessionOptions);
+
+if (isset($_SESSION['last_activity']) && time() - $_SESSION['last_activity'] > 1800) {
+    session_unset();
+    session_destroy();
+    session_start($sessionOptions);
+}
+$_SESSION['last_activity'] = time();
 
 require_once __DIR__ . '/../core/Router.php';
 
@@ -59,6 +82,7 @@ $router->add('GET',  '/admin/commande',         'AdminController', 'commande');
 $router->add('POST', '/admin/statut',           'AdminController', 'updateStatut');
 $router->add('GET',  '/admin/menus',            'AdminController', 'menus');
 $router->add('POST', '/admin/menus/toggle',     'AdminController', 'toggleMenu');
+$router->add('POST', '/admin/menus/stock',      'AdminController', 'updateStock');
 $router->add('GET',  '/admin/avis',             'AdminController', 'avis');
 $router->add('POST', '/admin/avis/update',      'AdminController', 'updateAvis');
 $router->add('GET',  '/admin/employes',         'AdminController', 'employes');
@@ -81,8 +105,5 @@ $router->add('GET',  '/mot-de-passe-oublie',          'AuthController', 'forgotP
 $router->add('POST', '/mot-de-passe-oublie',          'AuthController', 'forgotPassword');
 $router->add('GET',  '/reinitialiser-mot-de-passe',   'AuthController', 'resetPassword');
 $router->add('POST', '/reinitialiser-mot-de-passe',   'AuthController', 'resetPassword');
-
-
-
 
 $router->dispatch();

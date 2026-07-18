@@ -96,138 +96,167 @@ class CommandeModel extends Model
         ');
         $stmt->execute([':motif' => $motif, ':id' => $commandeId]);
 
-        $suivi = $this->db->prepare('
-            INSERT INTO suivi_commande (commande_id, statut, commentaire)
-            VALUES (:commande_id, "annulee", :commentaire)
-        ');
-        return $suivi->execute([
-            ':commande_id' => $commandeId,
-            ':commentaire' => $motif,
-        ]);
+        return $this->addSuivi($commandeId, 'annulee', $motif);
     }
 
-    public function getAllFiltered(string $statut = '', string $search = ''): array
-{
-    $sql = '
-        SELECT c.*, m.titre AS menu_titre,
-               u.nom, u.prenom, u.email, u.telephone,
-               s.statut AS statut_actuel
-        FROM commande c
-        JOIN menu m ON c.menu_id = m.menu_id
-        JOIN utilisateur u ON c.utilisateur_id = u.utilisateur_id
-        LEFT JOIN suivi_commande s ON s.suivi_id = (
-            SELECT MAX(suivi_id) FROM suivi_commande WHERE commande_id = c.commande_id
-        )
-        WHERE 1=1
-    ';
+    public function getAllFiltered(string $statut = '', string $search = '', int $page = 1, int $perPage = 15): array
+    {
+        $where = ' WHERE 1=1';
+        $params = [];
 
-    $params = [];
+        if ($statut) {
+            $where .= ' AND s.statut = :statut';
+            $params[':statut'] = $statut;
+        }
 
-    if ($statut) {
-        $sql .= ' AND s.statut = :statut';
-        $params[':statut'] = $statut;
-    }
+        if ($search) {
+            $where .= ' AND (u.nom LIKE :search OR u.prenom LIKE :search OR u.email LIKE :search)';
+            $params[':search'] = '%' . $search . '%';
+        }
 
-    if ($search) {
-        $sql .= ' AND (u.nom LIKE :search OR u.prenom LIKE :search OR u.email LIKE :search)';
-        $params[':search'] = '%' . $search . '%';
-    }
+        $from = '
+            FROM commande c
+            JOIN menu m ON c.menu_id = m.menu_id
+            JOIN utilisateur u ON c.utilisateur_id = u.utilisateur_id
+            LEFT JOIN suivi_commande s ON s.suivi_id = (
+                SELECT MAX(suivi_id) FROM suivi_commande WHERE commande_id = c.commande_id
+            )
+        ';
 
-    $sql .= ' ORDER BY c.created_at DESC';
+        $countStmt = $this->db->prepare('SELECT COUNT(*) ' . $from . $where);
+        $countStmt->execute($params);
+        $total = (int) $countStmt->fetchColumn();
 
-    $stmt = $this->db->prepare($sql);
-    $stmt->execute($params);
-    return $stmt->fetchAll();
-}
+        $offset = ($page - 1) * $perPage;
+        $sql = 'SELECT c.*, m.titre AS menu_titre, u.nom, u.prenom, u.email, u.telephone, s.statut AS statut_actuel'
+             . $from . $where . ' ORDER BY c.created_at DESC LIMIT ' . $perPage . ' OFFSET ' . $offset;
 
-public function addSuivi(int $commandeId, string $statut, string $commentaire = ''): bool
-{
-    $stmt = $this->db->prepare('
-        INSERT INTO suivi_commande (commande_id, statut, commentaire)
-        VALUES (:commande_id, :statut, :commentaire)
-    ');
-    return $stmt->execute([
-        ':commande_id' => $commandeId,
-        ':statut'      => $statut,
-        ':commentaire' => $commentaire ?: null,
-    ]);
-}
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($params);
 
-public function getAvisEnAttente(): array
-{
-    $stmt = $this->db->query('
-        SELECT a.*, u.nom, u.prenom, m.titre AS menu_titre
-        FROM avis a
-        JOIN utilisateur u ON a.utilisateur_id = u.utilisateur_id
-        JOIN commande c ON a.commande_id = c.commande_id
-        JOIN menu m ON c.menu_id = m.menu_id
-        WHERE a.statut = "en_attente"
-        ORDER BY a.created_at DESC
-    ');
-    return $stmt->fetchAll();
-}
-
-public function updateAvis(int $id, string $statut): bool
-{
-    $stmt = $this->db->prepare('
-        UPDATE avis SET statut = :statut WHERE avis_id = :id
-    ');
-    return $stmt->execute([':statut' => $statut, ':id' => $id]);
-}
-
-public function getStatsByMenu(): array
-{
-    $stmt = $this->db->query('
-        SELECT 
-            m.titre,
-            COUNT(c.commande_id) AS nb_commandes,
-            SUM(c.prix_total) AS chiffre_affaires
-        FROM commande c
-        JOIN menu m ON c.menu_id = m.menu_id
-        GROUP BY c.menu_id, m.titre
-        ORDER BY nb_commandes DESC
-    ');
-    return $stmt->fetchAll();
-}
-
-public function saveStatToMongo(int $commandeId, int $menuId, string $menuTitre, float $prixTotal): void
-{
-    try {
-        $collection = MongoStats::getCollection('statistiques');
-        $collection->insertOne([
-            'commande_id'  => $commandeId,
-            'menu_id'      => $menuId,
-            'menu_titre'   => $menuTitre,
-            'prix_total'   => $prixTotal,
-            'created_at'   => new \MongoDB\BSON\UTCDateTime(),
-        ]);
-    } catch (\Exception $e) {
-        // On ne bloque pas si MongoDB est down
-    }
-}
-
-public function getStatsFromMongo(): array
-{
-    try {
-        $collection = MongoStats::getCollection('statistiques');
-        $pipeline = [
-            [
-                '$group' => [
-                    '_id'              => '$menu_titre',
-                    'nb_commandes'     => ['$sum' => 1],
-                    'chiffre_affaires' => ['$sum' => '$prix_total'],
-                ]
-            ],
-            ['$sort' => ['nb_commandes' => -1]]
+        return [
+            'data'       => $stmt->fetchAll(),
+            'total'      => $total,
+            'page'       => $page,
+            'perPage'    => $perPage,
+            'totalPages' => max(1, (int) ceil($total / $perPage)),
         ];
-        $result = $collection->aggregate($pipeline)->toArray();
-        return array_map(fn($r) => [
-            'titre'            => $r['_id'],
-            'nb_commandes'     => $r['nb_commandes'],
-            'chiffre_affaires' => $r['chiffre_affaires'],
-        ], $result);
-    } catch (\Exception $e) {
-        return [];
     }
-}
+
+    public function addSuivi(int $commandeId, string $statut, string $commentaire = ''): bool
+    {
+        // Remet le menu en stock à la première annulation
+        if ($statut === 'annulee' && !$this->hasStatut($commandeId, 'annulee')) {
+            $this->restock($commandeId);
+        }
+
+        $stmt = $this->db->prepare('
+            INSERT INTO suivi_commande (commande_id, statut, commentaire)
+            VALUES (:commande_id, :statut, :commentaire)
+        ');
+        return $stmt->execute([
+            ':commande_id' => $commandeId,
+            ':statut'      => $statut,
+            ':commentaire' => $commentaire ?: null,
+        ]);
+    }
+
+    private function hasStatut(int $commandeId, string $statut): bool
+    {
+        $stmt = $this->db->prepare('
+            SELECT 1 FROM suivi_commande
+            WHERE commande_id = :id AND statut = :statut
+            LIMIT 1
+        ');
+        $stmt->execute([':id' => $commandeId, ':statut' => $statut]);
+        return (bool)$stmt->fetch();
+    }
+
+    private function restock(int $commandeId): void
+    {
+        $stmt = $this->db->prepare('
+            UPDATE menu m
+            JOIN commande c ON c.menu_id = m.menu_id
+            SET m.stock = m.stock + 1
+            WHERE c.commande_id = :id
+        ');
+        $stmt->execute([':id' => $commandeId]);
+    }
+
+    public function getAvisEnAttente(): array
+    {
+        $stmt = $this->db->query('
+            SELECT a.*, u.nom, u.prenom, m.titre AS menu_titre
+            FROM avis a
+            JOIN utilisateur u ON a.utilisateur_id = u.utilisateur_id
+            JOIN commande c ON a.commande_id = c.commande_id
+            JOIN menu m ON c.menu_id = m.menu_id
+            WHERE a.statut = "en_attente"
+            ORDER BY a.created_at DESC
+        ');
+        return $stmt->fetchAll();
+    }
+
+    public function updateAvis(int $id, string $statut): bool
+    {
+        $stmt = $this->db->prepare('
+            UPDATE avis SET statut = :statut WHERE avis_id = :id
+        ');
+        return $stmt->execute([':statut' => $statut, ':id' => $id]);
+    }
+
+    public function getStatsByMenu(): array
+    {
+        $stmt = $this->db->query('
+            SELECT
+                m.titre,
+                COUNT(c.commande_id) AS nb_commandes,
+                SUM(c.prix_total) AS chiffre_affaires
+            FROM commande c
+            JOIN menu m ON c.menu_id = m.menu_id
+            GROUP BY c.menu_id, m.titre
+            ORDER BY nb_commandes DESC
+        ');
+        return $stmt->fetchAll();
+    }
+
+    public function saveStatToMongo(int $commandeId, int $menuId, string $menuTitre, float $prixTotal): void
+    {
+        try {
+            $collection = MongoStats::getCollection('statistiques');
+            $collection->insertOne([
+                'commande_id'  => $commandeId,
+                'menu_id'      => $menuId,
+                'menu_titre'   => $menuTitre,
+                'prix_total'   => $prixTotal,
+                'created_at'   => new \MongoDB\BSON\UTCDateTime(),
+            ]);
+        } catch (\Exception $e) {
+        }
+    }
+
+    public function getStatsFromMongo(): array
+    {
+        try {
+            $collection = MongoStats::getCollection('statistiques');
+            $pipeline = [
+                [
+                    '$group' => [
+                        '_id'              => '$menu_titre',
+                        'nb_commandes'     => ['$sum' => 1],
+                        'chiffre_affaires' => ['$sum' => '$prix_total'],
+                    ]
+                ],
+                ['$sort' => ['nb_commandes' => -1]]
+            ];
+            $result = $collection->aggregate($pipeline)->toArray();
+            return array_map(fn($r) => [
+                'titre'            => $r['_id'],
+                'nb_commandes'     => $r['nb_commandes'],
+                'chiffre_affaires' => $r['chiffre_affaires'],
+            ], $result);
+        } catch (\Exception $e) {
+            return [];
+        }
+    }
 }

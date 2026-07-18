@@ -4,7 +4,7 @@ RUN docker-php-ext-install pdo pdo_mysql
 
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
-RUN a2enmod rewrite
+RUN a2enmod rewrite expires deflate
 
 RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
 

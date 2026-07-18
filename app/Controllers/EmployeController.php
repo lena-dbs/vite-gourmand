@@ -30,14 +30,16 @@ class EmployeController extends Controller
 
         $statut    = $_GET['statut'] ?? '';
         $search    = $_GET['search'] ?? '';
-        $commandes = $this->commandeModel->getAllFiltered($statut, $search);
+        $page      = max(1, (int)($_GET['page'] ?? 1));
+        $result    = $this->commandeModel->getAllFiltered($statut, $search, $page);
 
         $this->render('employe/index', [
-            'title'     => 'Espace employé',
-            'commandes' => $commandes,
-            'statut'    => $statut,
-            'search'    => $search,
-            'csrf'      => $this->csrfField(),
+            'title'      => 'Espace employé',
+            'commandes'  => $result['data'],
+            'statut'     => $statut,
+            'search'     => $search,
+            'pagination' => $result,
+            'csrf'       => $this->csrfField(),
         ]);
     }
 
@@ -84,7 +86,7 @@ class EmployeController extends Controller
     public function menus(): void
     {
         $this->requireEmploye();
-        $menus = $this->menuModel->getAll();
+        $menus = $this->menuModel->getAllAdmin();
 
         $this->render('employe/menus', [
             'title' => 'Gestion des menus',

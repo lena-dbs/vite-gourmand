@@ -87,6 +87,27 @@
                 </tbody>
             </table>
         </div>
+
+        <?php if ($pagination['totalPages'] > 1): ?>
+        <div class="pagination">
+            <?php
+            $params = [];
+            if ($statut) $params['statut'] = $statut;
+            if ($search) $params['search'] = $search;
+            $baseUrl = '/admin';
+            ?>
+            <?php if ($pagination['page'] > 1): ?>
+                <a href="<?= $baseUrl . '?' . http_build_query(array_merge($params, ['page' => $pagination['page'] - 1])) ?>" class="pagination-link">&laquo; Précédent</a>
+            <?php endif; ?>
+            <?php for ($i = 1; $i <= $pagination['totalPages']; $i++): ?>
+                <a href="<?= $baseUrl . '?' . http_build_query(array_merge($params, ['page' => $i])) ?>"
+                   class="pagination-link <?= $i === $pagination['page'] ? 'pagination-active' : '' ?>"><?= $i ?></a>
+            <?php endfor; ?>
+            <?php if ($pagination['page'] < $pagination['totalPages']): ?>
+                <a href="<?= $baseUrl . '?' . http_build_query(array_merge($params, ['page' => $pagination['page'] + 1])) ?>" class="pagination-link">Suivant &raquo;</a>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
     </div>
 
 </section>

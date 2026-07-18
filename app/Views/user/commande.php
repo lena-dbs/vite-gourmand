@@ -9,6 +9,12 @@
         </div>
     </div>
 
+    <div class="user-nav">
+        <a href="/mon-compte" class="user-nav-link active">Mes commandes</a>
+        <a href="/mon-compte/profil" class="user-nav-link">Mon profil</a>
+        <form method="POST" action="/deconnexion" style="display:inline;"><?= $csrf ?><button type="submit" class="user-nav-link user-nav-logout">Se déconnecter</button></form>
+    </div>
+
     <div class="wrap">
         <div class="commande-detail-grid">
 
@@ -22,7 +28,7 @@
                     </tr>
                     <tr>
                         <td>Heure de livraison</td>
-                        <td><?= $commande['heure_livraison'] ?></td>
+                        <td><?= htmlspecialchars($commande['heure_livraison']) ?></td>
                     </tr>
                     <tr>
                         <td>Nombre de personnes</td>
@@ -45,6 +51,10 @@
                     <tr class="commande-table-total">
                         <td>Total</td>
                         <td><?= number_format($commande['prix_total'], 2, ',', ' ') ?> €</td>
+                    </tr>
+                    <tr>
+                        <td>Paiement</td>
+                        <td>À la livraison (espèces ou CB)</td>
                     </tr>
                 </table>
 

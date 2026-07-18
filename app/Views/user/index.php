@@ -39,9 +39,9 @@
                             </span>
                         </div>
                         <div class="commande-card-infos">
-                            <span>📅 <?= date('d/m/Y', strtotime($commande['date_livraison'])) ?></span>
-                            <span>👥 <?= $commande['nb_personnes'] ?> personnes</span>
-                            <span>💰 <?= number_format($commande['prix_total'], 2, ',', ' ') ?> €</span>
+                            <span><span role="img" aria-label="Date">📅</span> <?= date('d/m/Y', strtotime($commande['date_livraison'])) ?></span>
+                            <span><span role="img" aria-label="Personnes">👥</span> <?= $commande['nb_personnes'] ?> personnes</span>
+                            <span><span role="img" aria-label="Prix">💰</span> <?= number_format($commande['prix_total'], 2, ',', ' ') ?> €</span>
                         </div>
                         <a href="/mon-compte/commandes/<?= $commande['commande_id'] ?>" class="menu-link">
                             Voir le détail →

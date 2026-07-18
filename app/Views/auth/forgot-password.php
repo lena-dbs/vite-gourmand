@@ -1,5 +1,5 @@
 <main>
-<section class="auth-s" style="background-image: url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1800&q=85&auto=format&fit=crop'); background-size: cover; background-position: center;">
+<section class="auth-s" style="background-image: url('/assets/images/auth-bg.jpg'); background-size: cover; background-position: center;">
     <div class="auth-overlay"></div>
     <div class="auth-card">
 

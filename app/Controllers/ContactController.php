@@ -22,7 +22,7 @@ class ContactController extends Controller
             } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $error = 'Email invalide.';
             } else {
-                mail(
+                @mail(
                     'jose@vitegourmand.fr',
                     '[Contact] ' . $titre,
                     "De : $email\n\n$message",

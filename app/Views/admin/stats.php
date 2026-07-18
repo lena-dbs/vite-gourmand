@@ -47,13 +47,13 @@
 
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js" integrity="sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ" crossorigin="anonymous"></script>
+<script nonce="<?= CSP_NONCE ?>">
 const ctx = document.getElementById('statsChart').getContext('2d');
 new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: <?= json_encode(array_column($stats, 'titre')) ?>,
+        labels: <?= json_encode(array_column($stats, 'titre'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
         datasets: [{
             label: 'Nombre de commandes',
             data: <?= json_encode(array_column($stats, 'nb_commandes')) ?>,

@@ -89,7 +89,7 @@
                         <span>Commander ce menu</span>
                     </a>
                 <?php else: ?>
-                    <a href="/connexion?redirect=/menus/<?= $menu['menu_id'] ?>" class="hbtn">
+                    <a href="/connexion?redirect=<?= urlencode('/commande?menu_id=' . $menu['menu_id']) ?>" class="hbtn">
                         <span>Se connecter pour commander</span>
                     </a>
                 <?php endif; ?>

@@ -59,7 +59,7 @@
                     <h2 class="contact-info-titre">Vite & Gourmand</h2>
 
                     <div class="contact-info-item">
-                        <div class="contact-info-icon">📍</div>
+                        <div class="contact-info-icon" role="img" aria-label="Adresse">📍</div>
                         <div>
                             <p class="contact-info-label">Adresse</p>
                             <p class="contact-info-val">1 rue Sainte-Catherine<br>33000 Bordeaux</p>
@@ -67,7 +67,7 @@
                     </div>
 
                     <div class="contact-info-item">
-                        <div class="contact-info-icon">📞</div>
+                        <div class="contact-info-icon" role="img" aria-label="Téléphone">📞</div>
                         <div>
                             <p class="contact-info-label">Téléphone</p>
                             <a href="tel:+33600000001" class="contact-info-val contact-info-link">06 00 00 00 01</a>
@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="contact-info-item">
-                        <div class="contact-info-icon">✉️</div>
+                        <div class="contact-info-icon" role="img" aria-label="Email">✉️</div>
                         <div>
                             <p class="contact-info-label">Email</p>
                             <a href="mailto:jose@vitegourmand.fr" class="contact-info-val contact-info-link">jose@vitegourmand.fr</a>
@@ -83,7 +83,7 @@
                     </div>
 
                     <div class="contact-info-item">
-                        <div class="contact-info-icon">🕐</div>
+                        <div class="contact-info-icon" role="img" aria-label="Horaires">🕐</div>
                         <div>
                             <p class="contact-info-label">Horaires</p>
                             <p class="contact-info-val">Lun–Ven : 9h – 18h<br>Samedi : 10h – 20h<br>Dimanche : fermé</p>

@@ -40,7 +40,14 @@
                         <td><?= htmlspecialchars($menu['theme']) ?></td>
                         <td><?= htmlspecialchars($menu['regime']) ?></td>
                         <td><?= number_format($menu['prix_base'], 2, ',', ' ') ?> €</td>
-                        <td><?= $menu['stock'] ?></td>
+                        <td>
+                            <form method="POST" action="/admin/menus/stock" class="stock-form">
+                                <?= $csrf ?>
+                                <input type="hidden" name="menu_id" value="<?= $menu['menu_id'] ?>">
+                                <input type="number" name="stock" value="<?= (int)$menu['stock'] ?>" min="0" max="999" class="stock-input">
+                                <button type="submit" class="commande-annuler-btn">OK</button>
+                            </form>
+                        </td>
                         <td>
                             <span class="commande-statut <?= $menu['actif'] ? 'commande-statut-livree' : 'commande-statut-annulee' ?>">
                                 <?= $menu['actif'] ? 'Actif' : 'Inactif' ?>

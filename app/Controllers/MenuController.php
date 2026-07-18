@@ -28,16 +28,16 @@ class MenuController extends Controller
 
         if (!$menu) {
             http_response_code(404);
-            echo '404 - Menu introuvable';
+            $this->render('errors/404', ['title' => 'Menu introuvable']);
             return;
         }
 
         $plats     = $this->menuModel->getPlats($id);
         $conditions = $this->menuModel->getConditions($id);
 
-        // Ajoute les allergènes à chaque plat
+        $allergenes = $this->menuModel->getAllergenesParPlat(array_column($plats, 'plat_id'));
         foreach ($plats as &$plat) {
-            $plat['allergenes'] = $this->menuModel->getAllergenes($plat['plat_id']);
+            $plat['allergenes'] = $allergenes[$plat['plat_id']] ?? [];
         }
 
         $this->render('menus/detail', [

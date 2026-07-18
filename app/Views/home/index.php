@@ -20,7 +20,7 @@
 </section>
 
 <!-- Marquee -->
-<div class="marquee-outer">
+<div class="marquee-outer" role="marquee" aria-label="Points forts de Vite & Gourmand">
     <div class="marquee-track">
         <div class="m-item">Traiteur artisanal<div class="m-dot"></div></div>
         <div class="m-item">Bordeaux depuis 1999<div class="m-dot"></div></div>
@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="menu-row-img">
-                <img src="https://images.unsplash.com/photo-1580554530778-ca36943938b2?q=80&w=764&auto=format&fit=crop" alt="Menu Noël Prestige">
+                <img src="/assets/images/menu-noel.jpg" alt="Menu Noël Prestige">
             </div>
         </article>
 
@@ -88,7 +88,7 @@
                 </div>
             </div>
             <div class="menu-row-img">
-               <img src="https://plus.unsplash.com/premium_photo-1663852706079-c609d8ce1057?q=80&w=687&auto=format&fit=crop" alt="Brunch Pâques Végétarien">
+               <img src="/assets/images/brunch-paques.jpg" alt="Brunch Pâques Végétarien">
             </div>
         </article>
 
@@ -100,7 +100,7 @@
     <div class="wrap">
         <div class="artisans-grid">
             <div class="img-frame reveal-l">
-                <img id="tilt" src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=900&q=85" alt="Chef en cuisine" loading="lazy">
+                <img id="tilt" src="/assets/images/chef-cuisine.jpg" alt="Chef en cuisine" loading="lazy">
                 <div class="img-deco"></div>
                 <div class="img-badge">
                     <div class="img-badge-n">25</div>

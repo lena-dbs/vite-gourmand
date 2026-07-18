@@ -1,5 +1,5 @@
 <main>
-<section class="auth-s" style="background-image: url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1800&q=85&auto=format&fit=crop'); background-size: cover; background-position: center;">
+<section class="auth-s" style="background-image: url('/assets/images/auth-bg.jpg'); background-size: cover; background-position: center;">
     <div class="auth-overlay"></div>
     <div class="auth-card">
 
@@ -20,6 +20,11 @@
                     <input type="password" id="password" name="password" required
                            placeholder="••••••••••">
                     <span class="form-hint">10 caractères min., une majuscule, une minuscule, un chiffre et un caractère spécial.</span>
+                </div>
+                <div class="form-group">
+                    <label for="password_confirm">Confirmer le mot de passe</label>
+                    <input type="password" id="password_confirm" name="password_confirm" required
+                           placeholder="••••••••••">
                 </div>
                 <button type="submit" class="hbtn" style="width:100%;justify-content:center;">
                     <span>Réinitialiser le mot de passe</span>

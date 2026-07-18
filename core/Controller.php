@@ -13,9 +13,9 @@ abstract class Controller
             die('Vue introuvable : ' . $view);
         }
 
-        require_once VIEWS_PATH . '/layouts/header.php';
-        require_once $viewPath;
-        require_once VIEWS_PATH . '/layouts/footer.php';
+        require VIEWS_PATH . '/layouts/header.php';
+        require $viewPath;
+        require VIEWS_PATH . '/layouts/footer.php';
     }
 
     protected function redirect(string $url): void
@@ -34,6 +34,15 @@ abstract class Controller
         if (!$this->isLogged()) {
             $this->redirect('/connexion');
         }
+
+        $db = Database::getInstance();
+        $stmt = $db->prepare('SELECT actif FROM utilisateur WHERE utilisateur_id = :id');
+        $stmt->execute([':id' => $_SESSION['user']['id']]);
+        $user = $stmt->fetch();
+        if (!$user || !$user['actif']) {
+            session_destroy();
+            $this->redirect('/connexion');
+        }
     }
 
     protected function generateCsrfToken(): string
@@ -47,6 +56,13 @@ abstract class Controller
     protected function csrfField(): string
     {
         return '<input type="hidden" name="csrf_token" value="' . htmlspecialchars($this->generateCsrfToken()) . '">';
+    }
+
+    protected function clientIp(): string
+    {
+        // Fly-Client-IP est posé par le proxy fly.io ; en local on retombe sur REMOTE_ADDR
+        $ip = $_SERVER['HTTP_FLY_CLIENT_IP'] ?? $_SERVER['REMOTE_ADDR'] ?? '';
+        return substr($ip, 0, 45);
     }
 
     protected function verifyCsrf(): void
