@@ -1,5 +1,8 @@
 .git
 .env
+vendor
+.impeccable
+.claude
 .idea
 .vscode
 *.log
