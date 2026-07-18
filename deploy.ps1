@@ -71,3 +71,4 @@ if ($csp -match "pexels" -and $csp -match "plus\.unsplash" -and $csp -match "non
 }
 
 Write-Host "`nDéploiement terminé : $base" -ForegroundColor Green
+exit 0
