@@ -26,6 +26,10 @@
         <div class="m-item">Bordeaux depuis 1999<div class="m-dot"></div></div>
         <div class="m-item">Noël · Pâques · Événements<div class="m-dot"></div></div>
         <div class="m-item">Livraison à domicile<div class="m-dot"></div></div>
+        <div class="m-item" aria-hidden="true">Traiteur artisanal<div class="m-dot"></div></div>
+        <div class="m-item" aria-hidden="true">Bordeaux depuis 1999<div class="m-dot"></div></div>
+        <div class="m-item" aria-hidden="true">Noël · Pâques · Événements<div class="m-dot"></div></div>
+        <div class="m-item" aria-hidden="true">Livraison à domicile<div class="m-dot"></div></div>
     </div>
 </div>
 

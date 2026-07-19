@@ -12,7 +12,6 @@ class Database
             self::connect();
         }
 
-        // La connexion persistante peut être périmée : un seul ping par requête HTTP
         if (!self::$pingDone) {
             self::$pingDone = true;
             try {
@@ -37,8 +36,6 @@ class Database
                     PDO::ATTR_ERRMODE                  => PDO::ERRMODE_EXCEPTION,
                     PDO::ATTR_DEFAULT_FETCH_MODE       => PDO::FETCH_ASSOC,
                     PDO::ATTR_EMULATE_PREPARES         => false,
-                    // Connexion réutilisée entre les requêtes : économise le handshake
-                    // TCP à chaque page (la base distante est à ~300 ms de latence)
                     PDO::ATTR_PERSISTENT               => true,
                     PDO::MYSQL_ATTR_INIT_COMMAND       => "SET NAMES 'utf8mb4'",
                     PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true,

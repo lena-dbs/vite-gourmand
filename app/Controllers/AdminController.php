@@ -188,12 +188,9 @@ class AdminController extends Controller
     {
         $this->requireAdmin();
 
-        $statsMongoRaw = $this->commandeModel->getStatsFromMongo();
-        $stats = !empty($statsMongoRaw) ? $statsMongoRaw : $this->commandeModel->getStatsByMenu();
-
         $this->render('admin/stats', [
             'title' => 'Statistiques',
-            'stats' => $stats,
+            'stats' => $this->commandeModel->getStatsByMenu(),
         ]);
     }
 }

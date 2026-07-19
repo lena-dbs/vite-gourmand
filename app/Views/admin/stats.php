@@ -39,15 +39,17 @@
             </table>
         </div>
 
-        <div class="stats-chart-wrap reveal">
-            <h2 class="menu-detail-section-title">Commandes par menu</h2>
-            <canvas id="statsChart" height="100"></canvas>
+        <div class="stats-chart-wrap">
+            <h2 class="menu-detail-section-title">Commandes et chiffre d'affaires par menu</h2>
+            <div class="stats-chart-canvas">
+                <canvas id="statsChart"></canvas>
+            </div>
         </div>
     </div>
 
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js" integrity="sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1" integrity="sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ" crossorigin="anonymous"></script>
 <script nonce="<?= CSP_NONCE ?>">
 const ctx = document.getElementById('statsChart').getContext('2d');
 new Chart(ctx, {
@@ -57,24 +59,53 @@ new Chart(ctx, {
         datasets: [{
             label: 'Nombre de commandes',
             data: <?= json_encode(array_column($stats, 'nb_commandes')) ?>,
-            backgroundColor: 'rgba(196, 82, 10, 0.7)',
-            borderColor: '#C4520A',
-            borderWidth: 1
+            backgroundColor: 'rgba(196, 82, 10, 0.75)',
+            borderRadius: 4,
+            yAxisID: 'y'
         }, {
             label: 'Chiffre d\'affaires (€)',
             data: <?= json_encode(array_column($stats, 'chiffre_affaires')) ?>,
-            backgroundColor: 'rgba(46, 64, 53, 0.7)',
-            borderColor: '#2E4035',
-            borderWidth: 1
+            backgroundColor: 'rgba(46, 64, 53, 0.75)',
+            borderRadius: 4,
+            yAxisID: 'y1'
         }]
     },
     options: {
         responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
         plugins: {
-            legend: { position: 'top' }
+            legend: { position: 'top', labels: { font: { family: 'DM Sans' } } },
+            tooltip: {
+                callbacks: {
+                    label: function (c) {
+                        if (c.dataset.yAxisID === 'y1') {
+                            return c.dataset.label + ' : ' + c.parsed.y.toLocaleString('fr-FR', { minimumFractionDigits: 2 }) + ' €';
+                        }
+                        return c.dataset.label + ' : ' + c.parsed.y;
+                    }
+                }
+            }
         },
         scales: {
-            y: { beginAtZero: true }
+            y: {
+                position: 'left',
+                beginAtZero: true,
+                ticks: { precision: 0, color: '#C4520A' },
+                title: { display: true, text: 'Commandes', color: '#C4520A' },
+                grid: { color: 'rgba(38,26,13,.06)' }
+            },
+            y1: {
+                position: 'right',
+                beginAtZero: true,
+                ticks: { color: '#2E4035', callback: v => v.toLocaleString('fr-FR') + ' €' },
+                title: { display: true, text: "Chiffre d'affaires", color: '#2E4035' },
+                grid: { drawOnChartArea: false }
+            },
+            x: {
+                ticks: { color: '#261A0D', font: { family: 'DM Sans' } },
+                grid: { display: false }
+            }
         }
     }
 });

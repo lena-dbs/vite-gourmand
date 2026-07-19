@@ -60,7 +60,6 @@ abstract class Controller
 
     protected function clientIp(): string
     {
-        // Fly-Client-IP est posé par le proxy fly.io ; en local on retombe sur REMOTE_ADDR
         $ip = $_SERVER['HTTP_FLY_CLIENT_IP'] ?? $_SERVER['REMOTE_ADDR'] ?? '';
         return substr($ip, 0, 45);
     }

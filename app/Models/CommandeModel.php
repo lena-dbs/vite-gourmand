@@ -150,7 +150,6 @@ class CommandeModel extends Model
 
     public function addSuivi(int $commandeId, string $statut, string $commentaire = ''): bool
     {
-        // Remet le menu en stock à la première annulation
         if ($statut === 'annulee' && !$this->hasStatut($commandeId, 'annulee')) {
             $this->restock($commandeId);
         }
@@ -250,6 +249,8 @@ class CommandeModel extends Model
 
     public function getStatsByMenu(): array
     {
+        // Ne compte que les commandes réellement honorées (livrées, retour matériel, terminées).
+        // Les commandes en attente, en préparation, prêtes ou annulées sont exclues.
         $stmt = $this->db->query('
             SELECT
                 m.titre,
@@ -257,6 +258,10 @@ class CommandeModel extends Model
                 SUM(c.prix_total) AS chiffre_affaires
             FROM commande c
             JOIN menu m ON c.menu_id = m.menu_id
+            JOIN suivi_commande s ON s.suivi_id = (
+                SELECT MAX(suivi_id) FROM suivi_commande WHERE commande_id = c.commande_id
+            )
+            WHERE s.statut IN ("livree", "retour_materiel", "terminee")
             GROUP BY c.menu_id, m.titre
             ORDER BY nb_commandes DESC
         ');
@@ -275,31 +280,6 @@ class CommandeModel extends Model
                 'created_at'   => new \MongoDB\BSON\UTCDateTime(),
             ]);
         } catch (\Exception $e) {
-        }
-    }
-
-    public function getStatsFromMongo(): array
-    {
-        try {
-            $collection = MongoStats::getCollection('statistiques');
-            $pipeline = [
-                [
-                    '$group' => [
-                        '_id'              => '$menu_titre',
-                        'nb_commandes'     => ['$sum' => 1],
-                        'chiffre_affaires' => ['$sum' => '$prix_total'],
-                    ]
-                ],
-                ['$sort' => ['nb_commandes' => -1]]
-            ];
-            $result = $collection->aggregate($pipeline)->toArray();
-            return array_map(fn($r) => [
-                'titre'            => $r['_id'],
-                'nb_commandes'     => $r['nb_commandes'],
-                'chiffre_affaires' => $r['chiffre_affaires'],
-            ], $result);
-        } catch (\Exception $e) {
-            return [];
         }
     }
 }

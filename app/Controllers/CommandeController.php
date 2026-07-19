@@ -99,7 +99,6 @@ class CommandeController extends Controller
         $prixLivraison = strtolower($ville) === 'bordeaux' ? 0.00 : 5.00;
         $prixReduction = 0.00;
 
-        // Réduction 10% si 5 personnes de plus que le minimum
         if ($nbPersonnes >= $menu['nb_personnes_min'] + 5) {
             $prixReduction = $prixMenu * 0.10;
         }

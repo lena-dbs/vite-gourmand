@@ -21,7 +21,6 @@ class AuthController extends Controller
             $password = $_POST['password'] ?? '';
             $ip       = $this->clientIp();
 
-            // 5 échecs par email ou 20 par IP sur 15 minutes
             $tentatives = $this->userModel->countRecentAttempts($email, $ip, 'login', 900);
             if ($tentatives['par_email'] >= 5 || $tentatives['par_ip'] >= 20) {
                 $this->render('auth/login', [
@@ -34,7 +33,6 @@ class AuthController extends Controller
 
             $user = $this->userModel->findByEmail($email);
 
-            // Hash factice pour garder un temps de réponse identique que l'email existe ou non
             $hash = $user['password'] ?? '$2y$10$56IMWlKRuwxFpELbUN6v5uQCMjuKOyGqgtq0eRk40JSlGQc9MV75S';
 
             if (password_verify($password, $hash) && $user) {
@@ -140,7 +138,6 @@ class AuthController extends Controller
             $email = trim($_POST['email'] ?? '');
             $ip    = $this->clientIp();
 
-            // 3 demandes par email ou 10 par IP sur 10 minutes
             $tentatives = $this->userModel->countRecentAttempts($email, $ip, 'reset', 600);
             if ($tentatives['par_email'] >= 3 || $tentatives['par_ip'] >= 10) {
                 $this->render('auth/forgot-password', [

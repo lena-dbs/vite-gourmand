@@ -13,10 +13,6 @@ class HoraireModel extends Model
         return $stmt->fetchAll();
     }
 
-    /**
-     * Regroupe les jours consécutifs ayant les mêmes horaires.
-     * Retourne par ex. [['jours' => 'Lundi – Jeudi', 'heures' => '9h – 18h'], ...]
-     */
     public function getLignes(): array
     {
         $lignes = [];
