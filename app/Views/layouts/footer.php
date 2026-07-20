@@ -29,6 +29,7 @@ try {
             <p class="f-col-t">Légal</p>
             <a href="/mentions-legales">Mentions légales</a>
             <a href="/cgv">CGV</a>
+            <a href="#" id="cookie-manage">Gérer mes cookies</a>
         </div>
         <div class="f-col">
             <p class="f-col-t">Horaires</p>
