@@ -45,6 +45,7 @@ class MenuController extends Controller
             'menu'       => $menu,
             'plats'      => $plats,
             'conditions' => $conditions,
+            'avis'       => $this->menuModel->getAvisForMenu($id),
         ]);
     }
 }

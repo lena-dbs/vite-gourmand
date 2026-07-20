@@ -14,6 +14,17 @@
                 </span>
             </div>
             <h1 class="sec-h2"><?= htmlspecialchars($menu['titre']) ?></h1>
+            <?php $noteM = (float)$menu['note_moyenne']; $nbAvis = (int)$menu['nb_avis']; $pleines = (int)round($noteM); ?>
+            <div class="menu-rating menu-hero-rating">
+                <?php if ($nbAvis > 0): ?>
+                    <span class="menu-stars" aria-label="Note : <?= number_format($noteM, 1, ',', '') ?> sur 5">
+                        <?php for ($i = 1; $i <= 5; $i++): ?><span class="menu-star<?= $i <= $pleines ? ' on' : '' ?>">★</span><?php endfor; ?>
+                    </span>
+                    <span class="menu-rating-count"><?= number_format($noteM, 1, ',', '') ?> · <?= $nbAvis ?> avis</span>
+                <?php else: ?>
+                    <span class="menu-rating-none">Pas encore d'avis</span>
+                <?php endif; ?>
+            </div>
             <p class="menu-hero-desc"><?= htmlspecialchars($menu['description']) ?></p>
             <div class="menu-hero-prix">
                 <?= number_format($menu['prix_base'], 0, ',', ' ') ?> €
@@ -98,6 +109,24 @@
 
             </div>
         </div>
+
+        <?php if (!empty($avis)): ?>
+        <div class="menu-avis-section reveal">
+            <h2 class="menu-detail-section-title">Avis clients (<?= count($avis) ?>)</h2>
+            <div class="avis-grid">
+                <?php foreach ($avis as $a): ?>
+                <div class="avis-card">
+                    <div class="avis-c-stars"><?= str_repeat('★', (int)$a['note']) . str_repeat('☆', 5 - (int)$a['note']) ?></div>
+                    <blockquote class="avis-c-q">"<?= htmlspecialchars($a['commentaire']) ?>"</blockquote>
+                    <p class="avis-c-auth">
+                        <strong><?= htmlspecialchars($a['prenom'] . ' ' . mb_substr($a['nom'], 0, 1)) ?>.</strong>
+                        · <?= htmlspecialchars(date('d/m/Y', strtotime($a['created_at']))) ?>
+                    </p>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <?php endif; ?>
 
     </div>
 </section>

@@ -51,7 +51,7 @@ class MenuModel extends Model
     public function getById(int $id): array|false
     {
         $stmt = $this->db->prepare('
-            SELECT 
+            SELECT
                 m.menu_id,
                 m.titre,
                 m.description,
@@ -60,7 +60,13 @@ class MenuModel extends Model
                 m.stock,
                 m.image,
                 t.libelle AS theme,
-                r.libelle AS regime
+                r.libelle AS regime,
+                (SELECT COALESCE(AVG(a.note), 0)
+                   FROM avis a JOIN commande c ON a.commande_id = c.commande_id
+                   WHERE c.menu_id = m.menu_id AND a.statut = "valide") AS note_moyenne,
+                (SELECT COUNT(*)
+                   FROM avis a JOIN commande c ON a.commande_id = c.commande_id
+                   WHERE c.menu_id = m.menu_id AND a.statut = "valide") AS nb_avis
             FROM menu m
             JOIN theme t ON m.theme_id = t.theme_id
             JOIN regime r ON m.regime_id = r.regime_id
@@ -68,6 +74,20 @@ class MenuModel extends Model
         ');
         $stmt->execute([':id' => $id]);
         return $stmt->fetch();
+    }
+
+    public function getAvisForMenu(int $menuId): array
+    {
+        $stmt = $this->db->prepare('
+            SELECT a.note, a.commentaire, a.created_at, u.prenom, u.nom
+            FROM avis a
+            JOIN commande c ON a.commande_id = c.commande_id
+            JOIN utilisateur u ON a.utilisateur_id = u.utilisateur_id
+            WHERE c.menu_id = :id AND a.statut = "valide"
+            ORDER BY a.created_at DESC
+        ');
+        $stmt->execute([':id' => $menuId]);
+        return $stmt->fetchAll();
     }
 
     public function getPlats(int $menuId): array

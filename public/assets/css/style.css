@@ -1205,6 +1205,15 @@ footer {
     margin-left: 8px;
 }
 
+/* Note dans l'en-tête sombre du menu */
+.menu-hero-rating { margin-bottom: 20px; }
+.menu-hero-rating .menu-star { color: rgba(247, 241, 232, .25); }
+.menu-hero-rating .menu-star.on { color: #E8B86D; }
+.menu-hero-rating .menu-rating-count { color: rgba(247, 241, 232, .6); }
+.menu-hero-rating .menu-rating-none { color: rgba(247, 241, 232, .5); }
+
+.menu-avis-section { margin-top: 56px; }
+
 .menu-detail-grid {
     margin-top: 52px;
     display: grid;
