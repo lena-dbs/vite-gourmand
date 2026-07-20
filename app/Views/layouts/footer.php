@@ -53,12 +53,13 @@ try {
     <p>
         <strong id="cookie-title">Vos préférences de cookies</strong>
         <span id="cookie-description">Ce site utilise uniquement des cookies techniques nécessaires à son fonctionnement
-        (session de connexion). Aucun cookie publicitaire ni de suivi.
+        (session de connexion), sans consentement requis. La page Contact peut afficher une carte Google Maps qui,
+        elle, dépose des cookies tiers : elle ne se charge que si vous l'acceptez.
         <a href="/mentions-legales">En savoir plus</a>.</span>
     </p>
     <div class="cookie-actions">
-        <button type="button" id="cookie-essential" class="cookie-essential">Continuer</button>
-        <button type="button" id="cookie-ok" class="cookie-ok">J'ai compris</button>
+        <button type="button" id="cookie-refuse" class="cookie-refuse">Refuser</button>
+        <button type="button" id="cookie-accept" class="cookie-accept">Accepter</button>
     </div>
 </div>
 

@@ -46,17 +46,44 @@ const io = new IntersectionObserver(es => {
 }, {threshold:.1, rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => io.observe(el));
 
-/* COOKIES */
+/* COOKIES + CONSENTEMENT CARTE */
 (function () {
+  var KEY = 'vg_cookie_consent'; // 'accepted' | 'refused'
+  var choice = localStorage.getItem(KEY);
   var banner = document.getElementById('cookie-banner');
-  if (!banner || sessionStorage.getItem('vg_cookie_notice') === '1') return;
-  banner.hidden = false;
-  function closeBanner() {
-    sessionStorage.setItem('vg_cookie_notice', '1');
-    banner.hidden = true;
+  var frame = document.getElementById('map-frame');
+  var placeholder = document.getElementById('map-placeholder');
+
+  function loadMap() {
+    if (frame && !frame.src && frame.dataset.src) {
+      frame.src = frame.dataset.src;
+      frame.hidden = false;
+      if (placeholder) placeholder.hidden = true;
+    }
   }
-  document.getElementById('cookie-ok').addEventListener('click', closeBanner);
-  document.getElementById('cookie-essential').addEventListener('click', closeBanner);
+  function hideBanner() { if (banner) banner.hidden = true; }
+
+  // Choix déjà fait : on charge la carte seulement si accepté.
+  if (choice === 'accepted') loadMap();
+
+  // Bannière affichée tant qu'aucun choix n'a été fait.
+  if (banner && !choice) {
+    banner.hidden = false;
+    var accept = document.getElementById('cookie-accept');
+    var refuse = document.getElementById('cookie-refuse');
+    if (accept) accept.addEventListener('click', function () {
+      localStorage.setItem(KEY, 'accepted'); hideBanner(); loadMap();
+    });
+    if (refuse) refuse.addEventListener('click', function () {
+      localStorage.setItem(KEY, 'refused'); hideBanner();
+    });
+  }
+
+  // Bouton du cadre : charger la carte à la demande vaut acceptation.
+  var mapLoad = document.getElementById('map-load');
+  if (mapLoad) mapLoad.addEventListener('click', function () {
+    localStorage.setItem(KEY, 'accepted'); hideBanner(); loadMap();
+  });
 })();
 
 /* CURSEUR */

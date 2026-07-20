@@ -99,15 +99,22 @@
                     </div>
                 </div>
 
-                <!-- Carte Google Maps -->
+                <!-- Carte Google Maps (chargée uniquement après consentement) -->
                 <div class="contact-map">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2826.8!2d-0.5752!3d44.8378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527f4639f1d15%3A0x9a6b7b3e3e3e3e3e!2s1+Rue+Sainte-Catherine%2C+33000+Bordeaux!5e0!3m2!1sfr!2sfr!4v1620000000000!5m2!1sfr!2sfr" 
-                        width="100%" 
-                        height="250" 
-                        style="border:0;border-radius:2px;" 
-                        allowfullscreen="" 
-                        loading="lazy">
+                    <div class="map-placeholder" id="map-placeholder">
+                        <p>La localisation est affichée via Google Maps, un service tiers qui dépose des cookies.</p>
+                        <button type="button" id="map-load" class="map-load">Afficher la carte</button>
+                    </div>
+                    <iframe
+                        id="map-frame"
+                        data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2826.8!2d-0.5752!3d44.8378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527f4639f1d15%3A0x9a6b7b3e3e3e3e3e!2s1+Rue+Sainte-Catherine%2C+33000+Bordeaux!5e0!3m2!1sfr!2sfr!4v1620000000000!5m2!1sfr!2sfr"
+                        width="100%"
+                        height="250"
+                        style="border:0;border-radius:2px;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        title="Carte — 1 rue Sainte-Catherine, 33000 Bordeaux"
+                        hidden>
                     </iframe>
                 </div>
 

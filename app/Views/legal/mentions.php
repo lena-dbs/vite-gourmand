@@ -30,7 +30,8 @@
             <p>Conformément au RGPD et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification et de suppression de vos données personnelles. Pour exercer ce droit, contactez-nous à jose@vitegourmand.fr.</p>
 
             <h2>Cookies</h2>
-            <p>Ce site utilise uniquement des cookies techniques nécessaires au bon fonctionnement de l'application (session utilisateur). Aucun cookie publicitaire ou de tracking n'est utilisé.</p>
+            <p>Ce site utilise des cookies techniques nécessaires à son fonctionnement (session utilisateur), qui ne requièrent pas de consentement. Aucun cookie publicitaire n'est utilisé.</p>
+            <p>La page Contact propose une carte fournie par Google Maps. Ce service tiers dépose des cookies susceptibles de servir au suivi par Google. Cette carte ne se charge donc qu'après votre consentement explicite ; à défaut, elle reste masquée. Vous pouvez accepter ou refuser ce dépôt via le bandeau de cookies, et revenir sur votre choix à tout moment.</p>
 
         </div>
 

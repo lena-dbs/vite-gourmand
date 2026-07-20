@@ -130,9 +130,10 @@ img{
     text-decoration: underline;
 }
 
-.cookie-ok,
-.cookie-essential {
+.cookie-accept,
+.cookie-refuse {
     flex-shrink: 0;
+    min-width: 120px;
     padding: 9px 22px;
     background: #C4520A;
     color: #fff;
@@ -147,15 +148,57 @@ img{
     transition: background .25s;
 }
 
-.cookie-ok:hover { background: #8B3A00; }
+.cookie-accept:hover { background: #8B3A00; }
 
-.cookie-essential {
+.cookie-refuse {
     color: #261A0D;
     background: transparent;
     border: 1px solid #8B3A00;
 }
 
-.cookie-essential:hover { background: #fff; }
+.cookie-refuse:hover { background: #fff; }
+
+/* Carte : cadre de consentement */
+.map-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    height: 250px;
+    padding: 20px;
+    text-align: center;
+    background: #F5EDE1;
+    color: #261A0D;
+}
+
+.map-placeholder p {
+    font-size: 13px;
+    line-height: 1.5;
+    max-width: 340px;
+}
+
+.map-placeholder[hidden],
+#map-frame[hidden] {
+    display: none;
+}
+
+.map-load {
+    padding: 9px 22px;
+    background: #C4520A;
+    color: #fff;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background .25s;
+}
+
+.map-load:hover { background: #8B3A00; }
 
 a:focus-visible,
 button:focus-visible,
