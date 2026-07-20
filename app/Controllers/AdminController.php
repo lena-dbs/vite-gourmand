@@ -189,8 +189,9 @@ class AdminController extends Controller
         $this->requireAdmin();
 
         $this->render('admin/stats', [
-            'title' => 'Statistiques',
-            'stats' => $this->commandeModel->getStatsByMenu(),
+            'title'     => 'Statistiques',
+            'stats'     => $this->commandeModel->getStatsByMenu(),
+            'statsMois' => $this->commandeModel->getStatsByMonth(),
         ]);
     }
 }

@@ -268,6 +268,25 @@ class CommandeModel extends Model
         return $stmt->fetchAll();
     }
 
+    public function getStatsByMonth(): array
+    {
+        // Commandes honorées regroupées par mois de livraison (AAAA-MM).
+        $stmt = $this->db->query('
+            SELECT
+                DATE_FORMAT(c.date_livraison, "%Y-%m") AS periode,
+                COUNT(c.commande_id) AS nb_commandes,
+                SUM(c.prix_total) AS chiffre_affaires
+            FROM commande c
+            JOIN suivi_commande s ON s.suivi_id = (
+                SELECT MAX(suivi_id) FROM suivi_commande WHERE commande_id = c.commande_id
+            )
+            WHERE s.statut IN ("livree", "retour_materiel", "terminee")
+            GROUP BY DATE_FORMAT(c.date_livraison, "%Y-%m")
+            ORDER BY periode ASC
+        ');
+        return $stmt->fetchAll();
+    }
+
     public function saveStatToMongo(int $commandeId, int $menuId, string $menuTitre, float $prixTotal): void
     {
         try {
