@@ -1,77 +1,58 @@
 # Vite & Gourmand
 
-Application web de commande de menus traiteur pour Julie et José Santos, traiteurs artisanaux à Bordeaux depuis 1999.
+Application web de commande de menus traiteur, réalisée pour Julie et José (traiteurs à Bordeaux depuis 25 ans) dans le cadre du TP Développeur Web et Web Mobile.
 
-**URL de production** : https://vite-gourmand-old-lagoon-1903.fly.dev/
+URL de prod : https://vite-gourmand-old-lagoon-1903.fly.dev/
 
-## Stack technique
+## Ce que fait l'appli
 
-| Couche | Technologie |
-|---|---|
-| Front-end | HTML5, CSS3, JavaScript vanilla |
-| Back-end | PHP 8.2, architecture MVC maison |
-| BDD relationnelle | MySQL 8.0 (PDO) |
-| BDD NoSQL | MongoDB 6.0 |
-| Serveur | Apache 2.4 |
-| Déploiement | Docker + fly.io |
+Côté visiteur : présentation de l'entreprise et avis clients sur la page d'accueil, liste des menus avec filtres (prix min/max, thème, régime, nombre de personnes) qui se met à jour sans recharger la page, et le détail de chaque menu (plats, allergènes, conditions, stock restant).
 
-## Prérequis
+Côté utilisateur connecté : inscription, connexion, mot de passe oublié, commande d'un menu avec calcul du prix (frais de livraison au km si hors Bordeaux, -10% à partir de 5 personnes au-dessus du minimum), suivi et annulation de commande tant qu'elle n'est pas acceptée, et un avis à laisser une fois la commande terminée.
 
-- PHP 8.1+ avec extensions `pdo_mysql`, `mbstring`
-- MySQL 8.0+ ou MariaDB 10.5+
-- Composer 2.x
-- Apache avec `mod_rewrite` activé
-- MongoDB 6.0+ (pour les statistiques admin)
-- Extension PHP MongoDB (`pecl install mongodb`)
+Côté employé : gestion des menus, plats et horaires, suivi des commandes avec changement de statut (acceptée, en préparation, en livraison, livrée, retour matériel, terminée), et validation/refus des avis clients.
 
-## Installation locale (XAMPP)
+Côté admin : les mêmes droits qu'un employé, plus la création/désactivation de comptes employés et des statistiques (nombre de commandes et CA par menu, filtrable par période) avec des graphiques Chart.js branchés sur MongoDB.
 
-### 1. Cloner le dépôt
+Il y a aussi un bandeau cookies (accepter/refuser, modifiable depuis le pied de page), les mentions légales et CGV, et un effort sur l'accessibilité (RGAA).
+
+## Stack
+
+- Front : HTML/CSS/JS vanilla, pas de framework front
+- Back : PHP 8.2 en MVC fait maison (pas de framework type Symfony/Laravel)
+- BDD relationnelle : MySQL (via PDO)
+- BDD NoSQL : MongoDB, utilisée uniquement pour les stats admin
+- Serveur : Apache
+- Déploiement : Docker sur fly.io
+
+## Installer en local (XAMPP)
+
+Prérequis : PHP 8.1+, MySQL/MariaDB, Composer, Apache avec mod_rewrite, et MongoDB + son extension PHP si on veut tester les stats admin.
+
+1. Cloner le repo
 
 ```bash
 git clone https://github.com/lena-dbs/vite-gourmand.git
 cd vite-gourmand
 ```
 
-### 2. Installer les dépendances
+2. Installer les dépendances
 
 ```bash
 composer install
 ```
 
-### 3. Créer la base de données
-
-Importer le fichier SQL dans MySQL :
+3. Créer la base et importer le schéma
 
 ```bash
 mysql -u root -p < database/database.sql
 ```
 
-Ou via phpMyAdmin :
-1. Créer une base de données `vite_gourmand`
-2. Importer `database/database.sql`
+(ou via phpMyAdmin : créer une base `vite_gourmand` puis importer `database/database.sql`)
 
-### 4. Configurer les variables d'environnement
+4. Copier `.env.example` en `.env` et renseigner ses propres valeurs (DB_HOST, DB_NAME, DB_USER, DB_PASS, DB_PORT, MONGO_URI, APP_URL). Le fichier `.env` n'est pas versionné (voir `.gitignore`), donc chacun garde ses propres identifiants en local.
 
-Copier `.env.example` vers `.env`, puis renseigner les valeurs propres à votre environnement. Le fichier `.env` est ignoré par Git et ne doit jamais être partagé ni versionné.
-
-```env
-DB_HOST=localhost
-DB_NAME=vite_gourmand
-DB_USER=root
-DB_PASS=à-renseigner-localement
-DB_PORT=3306
-
-MONGO_URI=à-renseigner-localement
-
-APP_URL=http://localhost
-```
-
-### 5. Configurer Apache
-
-Le `DocumentRoot` doit pointer vers le dossier `public/` du projet.
-
-**XAMPP** : dans `httpd-vhosts.conf` :
+5. Pointer le DocumentRoot Apache vers `public/`. Sous XAMPP, dans `httpd-vhosts.conf` :
 
 ```apache
 <VirtualHost *:80>
@@ -83,98 +64,80 @@ Le `DocumentRoot` doit pointer vers le dossier `public/` du projet.
 </VirtualHost>
 ```
 
-S'assurer que `mod_rewrite` est activé dans `httpd.conf`.
+Vérifier que `mod_rewrite` est activé dans `httpd.conf`.
 
-### 6. Lancer l'application
+6. Démarrer Apache + MySQL depuis XAMPP, puis aller sur `http://localhost`.
 
-Démarrer Apache et MySQL depuis le panneau XAMPP, puis accéder à :
+### Comptes de test
 
-```
-http://localhost
-```
+Le script SQL crée trois comptes (admin, employé, client), désactivés par défaut et avec un mot de passe haché en bcrypt. Je ne mets pas de mot de passe en clair dans ce dépôt, qui est public sur GitHub. Les identifiants pour tester les parcours sont donnés dans le manuel d'utilisation fourni à part (livrable PDF). Pour activer un compte en local, il faut passer `actif` à 1 dans la table `utilisateur` et régénérer un hash avec `password_hash()`.
 
-## Déploiement sur fly.io
-
-### 1. Installer la CLI fly.io
+## Déployer sur fly.io
 
 ```bash
-curl -L https://fly.io/install.sh | sh
 fly auth login
-```
-
-### 2. Créer l'application
-
-```bash
 fly launch
-```
-
-### 3. Configurer les secrets
-
-Configurer les variables `DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASS`, `DB_PORT`, `MONGO_URI` et `APP_URL` dans le gestionnaire de secrets de Fly.io. Ne les ajoutez jamais au dépôt, au README ou aux scripts de déploiement.
-
-### 4. Déployer
-
-```bash
 fly deploy
 ```
 
-L'application est containerisée via le `Dockerfile` inclus (PHP 8.2 + Apache + mod_rewrite).
+Les secrets (DB_HOST, DB_NAME, DB_USER, DB_PASS, DB_PORT, MONGO_URI, APP_URL) se configurent dans les secrets fly.io, jamais dans le dépôt.
 
-## Structure du projet
+L'app tourne dans un conteneur Docker (PHP 8.2 + Apache).
+
+Si un déploiement ajoute une table (ex: `login_attempt`), il faut lancer la migration :
+
+```bash
+fly ssh console -a vite-gourmand-old-lagoon-1903 -C "php /var/www/html/database/migrate.php"
+```
+
+`deploy.ps1` enchaîne tout ça automatiquement (lint PHP, commit, push, deploy, migration, quelques vérifs après déploiement).
+
+## Structure
 
 ```
 vite-gourmand/
 ├── app/
-│   ├── Controllers/       # 9 contrôleurs (Admin, Auth, Commande, Contact, Employe, Home, Legal, Menu, User)
-│   ├── Models/            # 3 modèles (Commande, Menu, User)
-│   └── Views/             # Templates PHP organisés par section
-│       ├── admin/         # Vues espace administrateur
-│       ├── auth/          # Connexion, inscription, reset password
-│       ├── commande/      # Formulaire de commande
-│       ├── contact/       # Page contact
-│       ├── employe/       # Vues espace employé
-│       ├── errors/        # Pages d'erreur (404)
-│       ├── home/          # Page d'accueil
-│       ├── layouts/       # Header et footer communs
-│       ├── legal/         # Mentions légales, CGV
-│       ├── menus/         # Liste et détail des menus
-│       └── user/          # Espace client (dashboard, commandes, profil)
+│   ├── Controllers/    Admin, Auth, Commande, Contact, Employe, Home, Legal, Menu, User
+│   ├── Models/         Commande, Horaire, Menu, User
+│   └── Views/          templates PHP rangés par section (admin, auth, commande, contact,
+│                       employe, errors, home, layouts, legal, menus, user)
 ├── config/
-│   └── config.php         # Configuration BDD et constantes
+│   └── config.php      config BDD et constantes
 ├── core/
-│   ├── autoload.php       # Chargement automatique des classes
-│   ├── Controller.php     # Contrôleur de base (render, CSRF, redirect)
-│   ├── Database.php       # Singleton PDO avec auto-reconnexion
-│   ├── Model.php          # Modèle de base
-│   ├── MongoStats.php     # Client MongoDB pour les statistiques
-│   └── Router.php         # Routeur URL → Contrôleur
+│   ├── autoload.php
+│   ├── Controller.php  contrôleur de base (render, CSRF, redirect)
+│   ├── Database.php    singleton PDO
+│   ├── Model.php
+│   ├── MongoStats.php  client MongoDB pour les stats
+│   └── Router.php
 ├── database/
-│   └── database.sql       # Schéma + données de démonstration
+│   ├── database.sql    schéma + données de démo
+│   └── migrate.php     migrations à lancer en CLI
 ├── public/
-│   ├── index.php          # Front controller (point d'entrée unique)
-│   ├── .htaccess          # Réécriture URL Apache
-│   └── assets/
-│       ├── css/style.css  # Feuille de style unique
-│       ├── js/main.js     # JavaScript (filtres AJAX, menu burger, animations)
-│       └── images/        # Photos des menus et illustrations
-├── .env                   # Variables d'environnement (non versionné)
-├── composer.json          # Dépendances PHP (mongodb, phpdotenv)
-├── Dockerfile             # Image Docker pour le déploiement
-├── fly.toml               # Configuration fly.io
-└── README.md              # Ce fichier
+│   ├── index.php       point d'entrée unique
+│   ├── .htaccess
+│   └── assets/         css, js, images
+├── .env                 pas versionné
+├── composer.json
+├── deploy.ps1
+├── Dockerfile
+├── fly.toml
+└── README.md
 ```
 
 ## Sécurité
 
-- Tokens CSRF sur tous les formulaires POST
-- Mots de passe hachés en bcrypt (`PASSWORD_BCRYPT`)
-- Requêtes SQL préparées (PDO) contre les injections
-- Protection XSS via `htmlspecialchars()` sur toutes les sorties
-- Headers HTTP de sécurité (CSP, X-Frame-Options, HSTS, etc.)
-- Session sécurisée (httponly, samesite Strict, timeout 30 min)
-- Variables d'environnement via `.env` (phpdotenv)
-- Aucun identifiant ni secret de démonstration n'est publié dans ce dépôt
+Quelques points que j'ai essayé de couvrir :
+
+- CSRF sur tous les formulaires en POST
+- mots de passe en bcrypt
+- requêtes préparées PDO partout, pas de concaténation SQL
+- échappement systématique en sortie (`htmlspecialchars`) contre le XSS
+- headers de sécurité (CSP, X-Frame-Options, HSTS...)
+- sessions en httponly / samesite strict, expiration à 30 min
+- limitation du nombre de tentatives de connexion (table `login_attempt`)
+- rien de sensible dans le dépôt : les valeurs de prod sont dans les secrets fly.io, les valeurs locales dans un `.env` ignoré par git, et les identifiants de démo sont donnés à part dans le manuel d'utilisation plutôt que sur GitHub
 
 ## Licence
 
-Projet réalisé dans le cadre du TP Développeur Web et Web Mobile — Studi / FastDev.
+Projet réalisé dans le cadre du TP Développeur Web et Web Mobile, Studi / FastDev.
