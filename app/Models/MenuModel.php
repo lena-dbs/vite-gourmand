@@ -5,8 +5,9 @@ class MenuModel extends Model
 {
     public function getAll(): array
     {
+        // La note d'un menu = moyenne des avis validés sur les commandes de ce menu.
         $stmt = $this->db->query('
-            SELECT 
+            SELECT
                 m.menu_id,
                 m.titre,
                 m.description,
@@ -16,7 +17,13 @@ class MenuModel extends Model
                 m.image,
                 m.actif,
                 t.libelle AS theme,
-                r.libelle AS regime
+                r.libelle AS regime,
+                (SELECT COALESCE(AVG(a.note), 0)
+                   FROM avis a JOIN commande c ON a.commande_id = c.commande_id
+                   WHERE c.menu_id = m.menu_id AND a.statut = "valide") AS note_moyenne,
+                (SELECT COUNT(*)
+                   FROM avis a JOIN commande c ON a.commande_id = c.commande_id
+                   WHERE c.menu_id = m.menu_id AND a.statut = "valide") AS nb_avis
             FROM menu m
             JOIN theme t ON m.theme_id = t.theme_id
             JOIN regime r ON m.regime_id = r.regime_id

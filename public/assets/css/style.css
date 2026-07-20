@@ -760,6 +760,17 @@ html.js .reveal-r.in { opacity: 1; transform: none; }
     overflow: hidden;
 }
 
+.menu-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.menu-stars { display: inline-flex; gap: 2px; font-size: 14px; line-height: 1; }
+.menu-star { color: #D9CFC2; }
+.menu-star.on { color: #C4520A; }
+.menu-rating-count { font-size: 11px; color: #776855; letter-spacing: .02em; }
+.menu-rating-none { font-size: 11px; color: #A89A88; font-style: italic; }
+
 .menu-row-foot { display: flex; align-items: center; gap: 16px; }
 
 .menu-cond { font-size: 10px; color: #776855; letter-spacing: .04em; }
@@ -1087,6 +1098,29 @@ footer {
 .filtre-group input:focus {
     border-color: #C4520A;
 }
+
+.filtre-reset-group {
+    flex: 0 0 auto;
+    min-width: auto;
+    justify-content: flex-end;
+}
+
+.filtre-reset {
+    padding: 10px 18px;
+    background: transparent;
+    border: 1px solid rgba(196,82,10,.35);
+    color: #C4520A;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background .2s, color .2s;
+    white-space: nowrap;
+}
+.filtre-reset:hover { background: #C4520A; color: #fff; }
 
 .stock-form {
     display: flex;
