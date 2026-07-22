@@ -3,6 +3,24 @@ declare(strict_types=1);
 
 class CommandeModel extends Model
 {
+    /** Statuts de commande dans l'ordre du cycle de vie, avec leur libellé. */
+    public const STATUT_LABELS = [
+        'en_attente'      => 'En attente',
+        'acceptee'        => 'Acceptée',
+        'en_preparation'  => 'En préparation',
+        'en_livraison'    => 'En cours de livraison',
+        'livree'          => 'Livrée',
+        'retour_materiel' => 'En attente du retour de matériel',
+        'terminee'        => 'Terminée',
+        'annulee'         => 'Annulée',
+    ];
+
+    /** Libellé lisible d'un statut (avec accents). */
+    public static function statutLabel(string $statut): string
+    {
+        return self::STATUT_LABELS[$statut] ?? ucfirst(str_replace('_', ' ', $statut));
+    }
+
     public function create(array $data): int
     {
         $stmt = $this->db->prepare('
@@ -247,11 +265,32 @@ class CommandeModel extends Model
         return $stmt->fetchAll();
     }
 
-    public function getStatsByMenu(): array
+    /** Construit la clause de filtre commune aux stats (par menu et sur une durée). */
+    private function statsFiltre(?int $menuId, ?string $from, ?string $to): array
+    {
+        $sql = '';
+        $params = [];
+        if ($menuId) {
+            $sql .= ' AND c.menu_id = :menu';
+            $params[':menu'] = $menuId;
+        }
+        if ($from && preg_match('/^\d{4}-\d{2}-\d{2}$/', $from)) {
+            $sql .= ' AND c.date_livraison >= :from';
+            $params[':from'] = $from;
+        }
+        if ($to && preg_match('/^\d{4}-\d{2}-\d{2}$/', $to)) {
+            $sql .= ' AND c.date_livraison <= :to';
+            $params[':to'] = $to;
+        }
+        return [$sql, $params];
+    }
+
+    public function getStatsByMenu(?int $menuId = null, ?string $from = null, ?string $to = null): array
     {
         // Ne compte que les commandes réellement honorées (livrées, retour matériel, terminées).
-        // Les commandes en attente, en préparation, prêtes ou annulées sont exclues.
-        $stmt = $this->db->query('
+        // Filtrable par menu et sur une durée (dates de livraison).
+        [$filtreSql, $params] = $this->statsFiltre($menuId, $from, $to);
+        $stmt = $this->db->prepare('
             SELECT
                 m.titre,
                 COUNT(c.commande_id) AS nb_commandes,
@@ -261,17 +300,19 @@ class CommandeModel extends Model
             JOIN suivi_commande s ON s.suivi_id = (
                 SELECT MAX(suivi_id) FROM suivi_commande WHERE commande_id = c.commande_id
             )
-            WHERE s.statut IN ("livree", "retour_materiel", "terminee")
+            WHERE s.statut IN ("livree", "retour_materiel", "terminee")' . $filtreSql . '
             GROUP BY c.menu_id, m.titre
             ORDER BY nb_commandes DESC
         ');
+        $stmt->execute($params);
         return $stmt->fetchAll();
     }
 
-    public function getStatsByMonth(): array
+    public function getStatsByMonth(?int $menuId = null, ?string $from = null, ?string $to = null): array
     {
-        // Commandes honorées regroupées par mois de livraison (AAAA-MM).
-        $stmt = $this->db->query('
+        // Commandes honorées regroupées par mois de livraison (AAAA-MM), mêmes filtres.
+        [$filtreSql, $params] = $this->statsFiltre($menuId, $from, $to);
+        $stmt = $this->db->prepare('
             SELECT
                 DATE_FORMAT(c.date_livraison, "%Y-%m") AS periode,
                 COUNT(c.commande_id) AS nb_commandes,
@@ -280,25 +321,80 @@ class CommandeModel extends Model
             JOIN suivi_commande s ON s.suivi_id = (
                 SELECT MAX(suivi_id) FROM suivi_commande WHERE commande_id = c.commande_id
             )
-            WHERE s.statut IN ("livree", "retour_materiel", "terminee")
+            WHERE s.statut IN ("livree", "retour_materiel", "terminee")' . $filtreSql . '
             GROUP BY DATE_FORMAT(c.date_livraison, "%Y-%m")
             ORDER BY periode ASC
         ');
+        $stmt->execute($params);
         return $stmt->fetchAll();
     }
 
-    public function saveStatToMongo(int $commandeId, int $menuId, string $menuTitre, float $prixTotal): void
+    public function saveStatToMongo(int $commandeId, int $menuId, string $menuTitre, float $prixTotal, string $dateLivraison = ''): void
     {
         try {
             $collection = MongoStats::getCollection('statistiques');
-            $collection->insertOne([
-                'commande_id'  => $commandeId,
-                'menu_id'      => $menuId,
-                'menu_titre'   => $menuTitre,
-                'prix_total'   => $prixTotal,
-                'created_at'   => new \MongoDB\BSON\UTCDateTime(),
-            ]);
+            // upsert par commande_id pour rester idempotent
+            $collection->updateOne(
+                ['commande_id' => $commandeId],
+                ['$set' => [
+                    'commande_id'    => $commandeId,
+                    'menu_id'        => $menuId,
+                    'menu_titre'     => $menuTitre,
+                    'prix_total'     => $prixTotal,
+                    'date_livraison' => $dateLivraison,
+                    'created_at'     => new \MongoDB\BSON\UTCDateTime(),
+                ]],
+                ['upsert' => true]
+            );
         } catch (\Exception $e) {
+        }
+    }
+
+    /**
+     * Nombre de commandes et chiffre d'affaires par menu, lus depuis MongoDB (base non relationnelle).
+     * Filtrable par menu et sur une durée (dates de livraison). Renvoie le même format que getStatsByMenu.
+     */
+    public function getStatsByMenuMongo(?int $menuId = null, ?string $from = null, ?string $to = null): array
+    {
+        try {
+            $match = [];
+            if ($menuId) {
+                $match['menu_id'] = $menuId;
+            }
+            $dateCond = [];
+            if ($from && preg_match('/^\d{4}-\d{2}-\d{2}$/', $from)) {
+                $dateCond['$gte'] = $from;
+            }
+            if ($to && preg_match('/^\d{4}-\d{2}-\d{2}$/', $to)) {
+                $dateCond['$lte'] = $to;
+            }
+            if ($dateCond) {
+                $match['date_livraison'] = $dateCond;
+            }
+
+            $pipeline = [];
+            if ($match) {
+                $pipeline[] = ['$match' => $match];
+            }
+            $pipeline[] = ['$group' => [
+                '_id'              => '$menu_titre',
+                'nb_commandes'     => ['$sum' => 1],
+                'chiffre_affaires' => ['$sum' => '$prix_total'],
+            ]];
+            $pipeline[] = ['$sort' => ['nb_commandes' => -1]];
+
+            $cursor = MongoStats::getCollection('statistiques')->aggregate($pipeline);
+            $out = [];
+            foreach ($cursor as $doc) {
+                $out[] = [
+                    'titre'            => (string)$doc['_id'],
+                    'nb_commandes'     => (int)$doc['nb_commandes'],
+                    'chiffre_affaires' => (float)$doc['chiffre_affaires'],
+                ];
+            }
+            return $out;
+        } catch (\Throwable $e) {
+            return [];
         }
     }
 }

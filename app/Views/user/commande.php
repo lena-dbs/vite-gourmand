@@ -120,7 +120,7 @@
                     <div class="suivi-etape">
                         <div class="suivi-dot"></div>
                         <div class="suivi-content">
-                            <p class="suivi-statut"><?= htmlspecialchars(ucfirst(str_replace('_', ' ', $etape['statut']))) ?></p>
+                            <p class="suivi-statut"><?= htmlspecialchars(CommandeModel::statutLabel($etape['statut'])) ?></p>
                             <?php if ($etape['commentaire']): ?>
                                 <p class="suivi-commentaire"><?= htmlspecialchars($etape['commentaire']) ?></p>
                             <?php endif; ?>

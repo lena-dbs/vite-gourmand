@@ -57,10 +57,12 @@ class CommandeController extends Controller
 
         $dateLivraison  = $_POST['date_livraison'] ?? '';
         $heureLivraison = $_POST['heure_livraison'] ?? '';
+        $adresse        = trim($_POST['adresse'] ?? '');
+        $codePostal     = trim($_POST['code_postal'] ?? '');
         $ville          = trim($_POST['ville'] ?? '');
 
-        if ($ville === '') {
-            $_SESSION['flash_error'] = 'La ville de livraison est obligatoire.';
+        if ($adresse === '' || $codePostal === '' || $ville === '') {
+            $_SESSION['flash_error'] = 'L\'adresse de livraison complète (rue, code postal, ville) est obligatoire.';
             $this->redirect('/commande?menu_id=' . $menuId);
             return;
         }
@@ -96,7 +98,13 @@ class CommandeController extends Controller
         }
 
         $prixMenu      = (float)$menu['prix_base'];
-        $prixLivraison = strtolower($ville) === 'bordeaux' ? 0.00 : 5.00;
+        if (strtolower($ville) === 'bordeaux') {
+            $prixLivraison = 0.00;
+        } else {
+            // Distance calculée automatiquement à partir de l'adresse complète (géocodage).
+            $distanceKm = $this->distanceDepuisBordeaux($adresse . ' ' . $codePostal . ' ' . $ville);
+            $prixLivraison = round(5.00 + 0.59 * $distanceKm, 2);
+        }
         $prixReduction = 0.00;
 
         if ($nbPersonnes >= $menu['nb_personnes_min'] + 5) {
@@ -138,7 +146,7 @@ class CommandeController extends Controller
             return;
         }
 
-        $this->commandeModel->saveStatToMongo($commandeId, $menuId, $menu['titre'], $prixTotal);
+        $this->commandeModel->saveStatToMongo($commandeId, $menuId, $menu['titre'], $prixTotal, $dateLivraison);
 
         $userEmail = $_SESSION['user']['email'] ?? '';
         if ($userEmail) {
@@ -156,5 +164,45 @@ class CommandeController extends Controller
         }
 
         $this->redirect('/mon-compte/commandes/' . $commandeId);
+    }
+
+    /**
+     * Distance routière approximative (km) entre Bordeaux et une adresse,
+     * calculée automatiquement par géocodage via l'API Adresse (data.gouv.fr, gratuite, sans clé).
+     * Renvoie 0 en cas d'échec (le forfait de 5 € s'appliquera seul).
+     */
+    private function distanceDepuisBordeaux(string $adresseComplete): float
+    {
+        // Bordeaux centre
+        $latB = 44.837789;
+        $lonB = -0.579180;
+
+        try {
+            $url = 'https://api-adresse.data.gouv.fr/search/?limit=1&q=' . rawurlencode($adresseComplete);
+            $ctx = stream_context_create(['http' => ['timeout' => 4, 'header' => "User-Agent: ViteGourmand/1.0\r\n"]]);
+            $json = @file_get_contents($url, false, $ctx);
+            if ($json === false) {
+                return 0.0;
+            }
+            $data = json_decode($json, true);
+            $coord = $data['features'][0]['geometry']['coordinates'] ?? null; // [lon, lat]
+            if (!$coord) {
+                return 0.0;
+            }
+            $lon = (float)$coord[0];
+            $lat = (float)$coord[1];
+
+            // Distance à vol d'oiseau (Haversine)
+            $R = 6371.0;
+            $dLat = deg2rad($lat - $latB);
+            $dLon = deg2rad($lon - $lonB);
+            $a = sin($dLat / 2) ** 2 + cos(deg2rad($latB)) * cos(deg2rad($lat)) * sin($dLon / 2) ** 2;
+            $vol = $R * 2 * atan2(sqrt($a), sqrt(1 - $a));
+
+            // Facteur ~1,3 pour approcher la distance réellement parcourue par la route
+            return round($vol * 1.3, 1);
+        } catch (\Throwable $e) {
+            return 0.0;
+        }
     }
 }

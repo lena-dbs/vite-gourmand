@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 class AdminController extends Controller
 {
-    private const STATUTS_COMMANDE = ['en_attente', 'en_preparation', 'prete', 'livree', 'retour_materiel', 'terminee', 'annulee'];
+    private const STATUTS_COMMANDE = ['en_attente', 'acceptee', 'en_preparation', 'en_livraison', 'livree', 'retour_materiel', 'terminee', 'annulee'];
     private const STATUTS_AVIS = ['valide', 'refuse'];
 
     private UserModel $userModel;
@@ -76,6 +76,22 @@ class AdminController extends Controller
             $this->redirect('/admin/commande?id=' . $id);
             return;
         }
+
+        // Annulation : le client doit avoir été contacté (appel GSM ou e-mail) + un motif est obligatoire.
+        if ($statut === 'annulee') {
+            $modes = ['appel' => 'appel GSM', 'mail' => 'e-mail'];
+            $modeContact = $_POST['mode_contact'] ?? '';
+            $motif       = trim($_POST['motif_annulation'] ?? '');
+            if (!isset($modes[$modeContact]) || $motif === '') {
+                $_SESSION['flash_error'] = "Pour annuler une commande, indiquez le mode de contact du client (appel GSM ou e-mail) et le motif.";
+                $this->redirect('/admin/commande?id=' . $id);
+                return;
+            }
+            $this->commandeModel->cancel($id, 'Contact : ' . $modes[$modeContact] . ' — Motif : ' . $motif);
+            $this->redirect('/admin/commande?id=' . $id);
+            return;
+        }
+
         $this->commandeModel->addSuivi($id, $statut, $commentaire);
         $this->redirect('/admin/commande?id=' . $id);
     }
@@ -188,10 +204,26 @@ class AdminController extends Controller
     {
         $this->requireAdmin();
 
+        $menuId = isset($_GET['menu_id']) && $_GET['menu_id'] !== '' ? (int)$_GET['menu_id'] : null;
+        $from   = $_GET['from'] ?? null;
+        $to     = $_GET['to'] ?? null;
+
+        // Indicateurs et évolution dans le temps : commandes honorées (MySQL).
+        $stats     = $this->commandeModel->getStatsByMenu($menuId, $from, $to);
+        // Répartition par menu : lue depuis MongoDB (base non relationnelle), repli SQL si Mongo indisponible.
+        $statsMongo = $this->commandeModel->getStatsByMenuMongo($menuId, $from, $to);
+        $statsMenu  = $statsMongo !== [] ? $statsMongo : $stats;
+
         $this->render('admin/stats', [
-            'title'     => 'Statistiques',
-            'stats'     => $this->commandeModel->getStatsByMenu(),
-            'statsMois' => $this->commandeModel->getStatsByMonth(),
+            'title'       => 'Statistiques',
+            'stats'       => $stats,
+            'statsMenu'   => $statsMenu,
+            'statsSource' => $statsMongo !== [] ? 'MongoDB' : 'MySQL (repli)',
+            'statsMois'   => $this->commandeModel->getStatsByMonth($menuId, $from, $to),
+            'menus'       => $this->menuModel->getAllAdmin(),
+            'fMenu'       => $menuId,
+            'fFrom'       => $from,
+            'fTo'         => $to,
         ]);
     }
 }

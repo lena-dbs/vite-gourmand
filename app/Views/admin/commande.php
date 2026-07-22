@@ -19,6 +19,10 @@
 
     <div class="wrap">
         <a href="/admin" class="menu-detail-back">← Retour aux commandes</a>
+        <?php if (!empty($_SESSION['flash_error'])): ?>
+            <div class="auth-error" style="margin:20px 0 0;"><?= htmlspecialchars($_SESSION['flash_error']) ?></div>
+            <?php unset($_SESSION['flash_error']); ?>
+        <?php endif; ?>
 
         <div class="commande-detail-grid">
 
@@ -104,15 +108,22 @@
                             <input type="hidden" name="commande_id" value="<?= $commande['commande_id'] ?>">
                             <div class="form-group">
                                 <label>Nouveau statut</label>
-                                <select name="statut">
-                                    <option value="en_attente">En attente</option>
-                                    <option value="en_preparation">En préparation</option>
-                                    <option value="prete">Prête</option>
-                                    <option value="livree">Livrée</option>
-                                    <option value="retour_materiel">Retour matériel</option>
-                                    <option value="terminee">Terminée</option>
-                                    <option value="annulee">Annulée</option>
+                                <select name="statut" id="statut-select">
+                                    <?php foreach (CommandeModel::STATUT_LABELS as $sVal => $sLbl): ?>
+                                        <option value="<?= $sVal ?>"><?= $sLbl ?></option>
+                                    <?php endforeach; ?>
                                 </select>
+                            </div>
+                            <div class="form-group" id="annulation-fields" style="display:none;">
+                                <label>Mode de contact du client</label>
+                                <select name="mode_contact">
+                                    <option value="">— Choisir —</option>
+                                    <option value="appel">Appel GSM</option>
+                                    <option value="mail">E-mail</option>
+                                </select>
+                                <label style="margin-top:10px;">Motif d'annulation</label>
+                                <input type="text" name="motif_annulation" placeholder="Motif de l'annulation">
+                                <span class="form-hint">Obligatoire : l'annulation nécessite d'avoir contacté le client (appel GSM ou e-mail) et de préciser un motif.</span>
                             </div>
                             <div class="form-group">
                                 <label>Commentaire</label>
@@ -120,6 +131,22 @@
                             </div>
                             <button type="submit" class="hbtn"><span>Mettre à jour</span></button>
                         </form>
+                        <script nonce="<?= CSP_NONCE ?>">
+                        (function () {
+                            var sel = document.getElementById('statut-select');
+                            var box = document.getElementById('annulation-fields');
+                            if (!sel || !box) return;
+                            var mc = box.querySelector('select[name=mode_contact]');
+                            var mo = box.querySelector('input[name=motif_annulation]');
+                            function toggle() {
+                                var on = sel.value === 'annulee';
+                                box.style.display = on ? 'block' : 'none';
+                                if (mc) mc.required = on;
+                                if (mo) mo.required = on;
+                            }
+                            sel.addEventListener('change', toggle); toggle();
+                        })();
+                        </script>
                     </div>
                 </div>
 
@@ -136,7 +163,7 @@
                             <div class="suivi-etape">
                                 <div class="suivi-dot"></div>
                                 <div class="suivi-content">
-                                    <p class="suivi-statut"><?= htmlspecialchars(ucfirst(str_replace('_', ' ', $etape['statut']))) ?></p>
+                                    <p class="suivi-statut"><?= htmlspecialchars(CommandeModel::statutLabel($etape['statut'])) ?></p>
                                     <?php if ($etape['commentaire']): ?>
                                         <p class="suivi-commentaire"><?= htmlspecialchars($etape['commentaire']) ?></p>
                                     <?php endif; ?>

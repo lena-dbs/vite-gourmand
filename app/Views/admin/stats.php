@@ -48,6 +48,30 @@ $annees = array_keys($parAnnee);
     </div>
 
     <div class="wrap">
+        <form method="GET" action="/admin/stats" class="commande-filtres" style="background:#fff;border:1px solid #e5ddd3;border-radius:6px;padding:20px 24px;margin-bottom:32px;display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;">
+            <div class="form-group" style="margin:0;">
+                <label>Menu</label>
+                <select name="menu_id">
+                    <option value="">Tous les menus</option>
+                    <?php foreach (($menus ?? []) as $mn): ?>
+                        <option value="<?= $mn['menu_id'] ?>" <?= (string)($fMenu ?? '') === (string)$mn['menu_id'] ? 'selected' : '' ?>><?= htmlspecialchars($mn['titre']) ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group" style="margin:0;">
+                <label>Du</label>
+                <input type="date" name="from" value="<?= htmlspecialchars($fFrom ?? '') ?>">
+            </div>
+            <div class="form-group" style="margin:0;">
+                <label>Au</label>
+                <input type="date" name="to" value="<?= htmlspecialchars($fTo ?? '') ?>">
+            </div>
+            <button type="submit" class="hbtn">Filtrer</button>
+            <?php if (!empty($fMenu) || !empty($fFrom) || !empty($fTo)): ?>
+                <a href="/admin/stats" class="menu-detail-back" style="align-self:center;">Réinitialiser</a>
+            <?php endif; ?>
+        </form>
+
         <div class="stats-kpis">
             <div class="stats-kpi">
                 <span class="stats-kpi-label">Commandes honorées</span>
@@ -93,6 +117,7 @@ $annees = array_keys($parAnnee);
 
         <div class="stats-chart-wrap" style="margin-bottom:48px;">
             <h2 class="menu-detail-section-title">Répartition par menu</h2>
+            <p class="form-hint" style="margin-top:-8px;margin-bottom:16px;">Nombre de commandes et chiffre d'affaires par menu — source : <?= htmlspecialchars($statsSource ?? 'MongoDB') ?> (base non relationnelle).</p>
             <div class="stats-chart-canvas">
                 <canvas id="statsChart"></canvas>
             </div>
@@ -108,7 +133,7 @@ $annees = array_keys($parAnnee);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($stats as $stat): ?>
+                    <?php foreach ($statsMenu as $stat): ?>
                     <tr>
                         <td><?= htmlspecialchars($stat['titre']) ?></td>
                         <td><?= $stat['nb_commandes'] ?></td>
@@ -217,12 +242,12 @@ const ctx = document.getElementById('statsChart').getContext('2d');
 new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: <?= json_encode(array_column($stats, 'titre'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+        labels: <?= json_encode(array_column($statsMenu, 'titre'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
         datasets: [{
-            label: 'Nombre de commandes', data: <?= json_encode(array_map(fn ($r) => (int)$r['nb_commandes'], $stats)) ?>,
+            label: 'Nombre de commandes', data: <?= json_encode(array_map(fn ($r) => (int)$r['nb_commandes'], $statsMenu)) ?>,
             backgroundColor: 'rgba(196, 82, 10, 0.75)', borderRadius: 4, yAxisID: 'y'
         }, {
-            label: 'Chiffre d\'affaires (€)', data: <?= json_encode(array_map(fn ($r) => (float)$r['chiffre_affaires'], $stats)) ?>,
+            label: 'Chiffre d\'affaires (€)', data: <?= json_encode(array_map(fn ($r) => (float)$r['chiffre_affaires'], $statsMenu)) ?>,
             backgroundColor: 'rgba(46, 64, 53, 0.75)', borderRadius: 4, yAxisID: 'y1'
         }]
     },

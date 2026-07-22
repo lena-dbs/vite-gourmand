@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 class EmployeController extends Controller
 {
-    private const STATUTS_COMMANDE = ['en_attente', 'en_preparation', 'prete', 'livree', 'retour_materiel', 'terminee', 'annulee'];
+    private const STATUTS_COMMANDE = ['en_attente', 'acceptee', 'en_preparation', 'en_livraison', 'livree', 'retour_materiel', 'terminee', 'annulee'];
     private const STATUTS_AVIS = ['valide', 'refuse'];
 
     private CommandeModel $commandeModel;
@@ -74,6 +74,21 @@ class EmployeController extends Controller
         $commentaire = trim($_POST['commentaire'] ?? '');
 
         if (!in_array($statut, self::STATUTS_COMMANDE, true)) {
+            $this->redirect('/employe/commande?id=' . $id);
+            return;
+        }
+
+        // Annulation : le client doit avoir été contacté (appel GSM ou e-mail) + un motif est obligatoire.
+        if ($statut === 'annulee') {
+            $modes = ['appel' => 'appel GSM', 'mail' => 'e-mail'];
+            $modeContact = $_POST['mode_contact'] ?? '';
+            $motif       = trim($_POST['motif_annulation'] ?? '');
+            if (!isset($modes[$modeContact]) || $motif === '') {
+                $_SESSION['flash_error'] = "Pour annuler une commande, indiquez le mode de contact du client (appel GSM ou e-mail) et le motif.";
+                $this->redirect('/employe/commande?id=' . $id);
+                return;
+            }
+            $this->commandeModel->cancel($id, 'Contact : ' . $modes[$modeContact] . ' — Motif : ' . $motif);
             $this->redirect('/employe/commande?id=' . $id);
             return;
         }

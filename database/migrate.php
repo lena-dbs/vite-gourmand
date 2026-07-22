@@ -35,3 +35,45 @@ $db->exec('
 ');
 
 echo "Migration OK : table login_attempt en place.\n";
+
+// Mise à jour de l'ENUM des statuts de commande (ajout de 'acceptee' et 'en_livraison',
+// migration des anciennes valeurs 'prete' vers 'en_livraison'). Idempotent.
+$db->exec("ALTER TABLE `suivi_commande` MODIFY `statut`
+    ENUM('en_attente','acceptee','en_preparation','en_livraison','prete','livree','annulee','retour_materiel','terminee')
+    NOT NULL DEFAULT 'en_attente'");
+$db->exec("UPDATE `suivi_commande` SET `statut` = 'en_livraison' WHERE `statut` = 'prete'");
+$db->exec("ALTER TABLE `suivi_commande` MODIFY `statut`
+    ENUM('en_attente','acceptee','en_preparation','en_livraison','livree','annulee','retour_materiel','terminee')
+    NOT NULL DEFAULT 'en_attente'");
+echo "Migration OK : statuts de commande mis a jour.\n";
+
+// Backfill des statistiques dans MongoDB (base non relationnelle) à partir des commandes.
+// Idempotent : upsert par commande_id, donc relançable sans créer de doublons.
+try {
+    $rows = $db->query('
+        SELECT c.commande_id, c.menu_id, m.titre AS menu_titre, c.prix_total, c.date_livraison
+        FROM commande c
+        JOIN menu m ON c.menu_id = m.menu_id
+    ')->fetchAll(PDO::FETCH_ASSOC);
+
+    $col = (new MongoDB\Client(MONGO_URI, ['serverSelectionTimeoutMS' => 2000]))
+        ->vite_gourmand->statistiques;
+
+    foreach ($rows as $r) {
+        $col->updateOne(
+            ['commande_id' => (int)$r['commande_id']],
+            ['$set' => [
+                'commande_id'    => (int)$r['commande_id'],
+                'menu_id'        => (int)$r['menu_id'],
+                'menu_titre'     => $r['menu_titre'],
+                'prix_total'     => (float)$r['prix_total'],
+                'date_livraison' => $r['date_livraison'],
+                'created_at'     => new MongoDB\BSON\UTCDateTime(strtotime($r['date_livraison']) * 1000),
+            ]],
+            ['upsert' => true]
+        );
+    }
+    echo 'Backfill MongoDB statistiques OK (' . count($rows) . " commandes).\n";
+} catch (\Throwable $e) {
+    echo 'Backfill MongoDB ignoré : ' . $e->getMessage() . "\n";
+}

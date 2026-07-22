@@ -70,7 +70,15 @@ Vérifier que `mod_rewrite` est activé dans `httpd.conf`.
 
 ### Comptes de test
 
-Le script SQL crée trois comptes (admin, employé, client), désactivés par défaut et avec un mot de passe haché en bcrypt. Je ne mets pas de mot de passe en clair dans ce dépôt, qui est public sur GitHub. Les identifiants pour tester les parcours sont donnés dans le manuel d'utilisation fourni à part (livrable PDF). Pour activer un compte en local, il faut passer `actif` à 1 dans la table `utilisateur` et régénérer un hash avec `password_hash()`.
+Le script SQL crée trois comptes de démonstration, actifs, pour tester les trois parcours. Le mot de passe est le même pour les trois : `password` (stocké haché en bcrypt, jamais en clair).
+
+| Rôle | Email | Mot de passe |
+|------|-------|--------------|
+| Administrateur | jose@vitegourmand.fr | password |
+| Employé | julie@vitegourmand.fr | password |
+| Utilisateur (client) | test@email.fr | password |
+
+Ces identifiants sont aussi rappelés dans le manuel d'utilisation (livrable PDF). En contexte réel, ces comptes de démonstration seraient retirés ou désactivés.
 
 ## Déployer sur fly.io
 
@@ -89,6 +97,8 @@ Si un déploiement ajoute une table (ex: `login_attempt`), il faut lancer la mig
 ```bash
 fly ssh console -a vite-gourmand-old-lagoon-1903 -C "php /var/www/html/database/migrate.php"
 ```
+
+`migrate.php` crée aussi (de façon idempotente) le backfill des statistiques dans MongoDB à partir des commandes MySQL. Les statistiques admin (nombre de commandes et CA par menu) sont lues depuis MongoDB ; il faut donc lancer cette migration au moins une fois après avoir importé `database.sql`, en local comme en production, pour que le graphique affiche les données de démonstration.
 
 `deploy.ps1` enchaîne tout ça automatiquement (lint PHP, commit, push, deploy, migration, quelques vérifs après déploiement).
 
@@ -136,7 +146,7 @@ Quelques points que j'ai essayé de couvrir :
 - headers de sécurité (CSP, X-Frame-Options, HSTS...)
 - sessions en httponly / samesite strict, expiration à 30 min
 - limitation du nombre de tentatives de connexion (table `login_attempt`)
-- rien de sensible dans le dépôt : les valeurs de prod sont dans les secrets fly.io, les valeurs locales dans un `.env` ignoré par git, et les identifiants de démo sont donnés à part dans le manuel d'utilisation plutôt que sur GitHub
+- rien de sensible dans le dépôt : les identifiants de base de données et l'URI MongoDB de prod sont dans les secrets fly.io, les valeurs locales dans un `.env` ignoré par git. Seuls les comptes de démonstration (mot de passe `password`) sont volontairement fournis pour l'évaluation ; ils seraient retirés en contexte réel
 
 ## Licence
 

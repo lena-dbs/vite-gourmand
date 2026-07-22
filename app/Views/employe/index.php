@@ -22,13 +22,9 @@
                 <label>Statut</label>
                 <select name="statut">
                     <option value="">Tous</option>
-                    <option value="en_attente" <?= $statut === 'en_attente' ? 'selected' : '' ?>>En attente</option>
-                    <option value="en_preparation" <?= $statut === 'en_preparation' ? 'selected' : '' ?>>En préparation</option>
-                    <option value="prete" <?= $statut === 'prete' ? 'selected' : '' ?>>Prête</option>
-                    <option value="livree" <?= $statut === 'livree' ? 'selected' : '' ?>>Livrée</option>
-                    <option value="annulee" <?= $statut === 'annulee' ? 'selected' : '' ?>>Annulée</option>
-                    <option value="retour_materiel" <?= $statut === 'retour_materiel' ? 'selected' : '' ?>>Retour matériel</option>
-                    <option value="terminee" <?= $statut === 'terminee' ? 'selected' : '' ?>>Terminée</option>
+                    <?php foreach (CommandeModel::STATUT_LABELS as $sVal => $sLbl): ?>
+                        <option value="<?= $sVal ?>" <?= $statut === $sVal ? 'selected' : '' ?>><?= $sLbl ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
             <div class="filtre-group">
@@ -71,7 +67,7 @@
                             <td><?= number_format($commande['prix_total'], 2, ',', ' ') ?> €</td>
                             <td>
                                 <span class="commande-statut commande-statut-<?= htmlspecialchars($commande['statut_actuel']) ?>">
-                                    <?= htmlspecialchars(ucfirst(str_replace('_', ' ', $commande['statut_actuel']))) ?>
+                                    <?= htmlspecialchars(CommandeModel::statutLabel($commande['statut_actuel'])) ?>
                                 </span>
                             </td>
                             <td>

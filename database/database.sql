@@ -177,7 +177,7 @@ CREATE TABLE `suivi_commande` (
     `suivi_id`        INT          NOT NULL AUTO_INCREMENT, 
     `commande_id`     INT          NOT NULL,
     `commentaire`     TEXT         NULL,
-    `statut`        ENUM('en_attente', 'en_preparation', 'prete', 'livree', 'annulee', 'retour_materiel', 'terminee') NOT NULL DEFAULT 'en_attente',
+    `statut`        ENUM('en_attente', 'acceptee', 'en_preparation', 'en_livraison', 'livree', 'annulee', 'retour_materiel', 'terminee') NOT NULL DEFAULT 'en_attente',
     `created_at`      DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`suivi_id`),
     CONSTRAINT `fk_suivi_commande` FOREIGN KEY (`commande_id`) REFERENCES `commande`(`commande_id`)
@@ -248,34 +248,35 @@ INSERT INTO `horaire` (`jour`, `heure_ouverture`, `heure_fermeture`, `ferme`) VA
   ('dimanche', NULL, NULL, 1);
 
 -- Données pour la table utilisateur 
+-- Comptes de démonstration (mot de passe : password) — actifs pour permettre de tester les parcours.
 INSERT INTO `utilisateur` (`role_id`, `email`, `password`, `nom`, `prenom`, `telephone`, `adresse`, `ville`, `code_postal`, `pays`, `actif`) VALUES
-(1, 'admin@example.invalid', '$2y$10$llIvzTaYButq8kehBEVtleX0/pZL1yKBeJCiIe0R26DRlBLt67GVe', 'Administrateur', 'Compte', '', '', '', '', 'France', 0),
-(2, 'employe@example.invalid', '$2y$10$NHQ2tSj5Qj7.wC2aGuNjYO59EvCr5cHygt6SJh4zayLWg5q3VPsfu', 'Employé', 'Compte', '', '', '', '', 'France', 0),
-(3, 'client@example.invalid', '$2y$10$n/C//PZMlhlqSlI6llGb0O4nLWlnniHAsIgiccyhphtxXj2Umnhui', 'Client', 'Compte', '', '', '', '', 'France', 0);
+(1, 'jose@vitegourmand.fr', '$2y$10$BT2Dy3h901a3aWNfsquUi.sm2N0e9UABMBTgGxK8MgDoW3c2Ms/Pm', 'Santos', 'José', '0600000001', '1 rue Sainte-Catherine', 'Bordeaux', '33000', 'France', 1),
+(2, 'julie@vitegourmand.fr', '$2y$10$BT2Dy3h901a3aWNfsquUi.sm2N0e9UABMBTgGxK8MgDoW3c2Ms/Pm', 'Santos', 'Julie', '0600000002', '1 rue Sainte-Catherine', 'Bordeaux', '33000', 'France', 1),
+(3, 'test@email.fr', '$2y$10$BT2Dy3h901a3aWNfsquUi.sm2N0e9UABMBTgGxK8MgDoW3c2Ms/Pm', 'Durand', 'Marie', '0600000003', '12 rue des Remparts', 'Bordeaux', '33000', 'France', 1);
 
 
 -- Données pour la table plat 
 INSERT INTO `plat` (`nom`, `type`, `description`, `photo`) VALUES
-('Foie gras mi-cuit aux figues', 'entree', 'foie gras mi-cuit aux figues confites, toast de pain brioché et gelée de Sauternes', 'foie_gras.jpg'),
-('Magret de canard confit aux épices', 'plat', 'Magret de canard confit aux épices de Noël, sauce au miel et au poivre, gratin dauphinois maison', 'magret.jpg'),
-('Bûche artisanale chocolat Valrhona', 'dessert', 'Bûche artisanale au chocolat grand cru Valrhona, insert praliné noisette et glaçage miroir', 'buche.jpg'),
-('Tarte salée poireaux et chèvre', 'entree', 'Tarte fine aux poireaux fondants, fromage de chèvre frais et thym citronné', 'tarte_poireaux.jpg'),
-('Salade printanière aux fleurs comestibles', 'plat', 'Mélange de jeunes pousses, radis, concombre et fleurs comestibles, vinaigrette au miel', 'salade_printaniere.jpg'),
-('Sablés décorés maison', 'dessert', 'Sablés bretons décorés à la royale, parfumés à la vanille de Madagascar', 'sables.jpg'),
-('Verrines avocat-crevettes', 'entree', 'Verrines fraîcheur avocat, crevettes roses et sauce cocktail maison', 'verrines.jpg'),
-('Planches charcuterie et fromages affinés', 'plat', 'Sélection de charcuteries ibériques et fromages affinés, accompagnés de confiture de figues', 'charcuterie.jpg'),
-('Mignardises et macarons maison', 'dessert', 'Assortiment de mignardises et macarons aux parfums de saison', 'mignardise.jpg'),
-('Carpaccio de saint-jacques et agrumes', 'entree', 'Carpaccio de noix de saint-jacques, vinaigrette aux agrumes et zestes de citron vert', 'carpaccio.jpg'),
-('Filet de boeuf sauce bordelaise', 'plat', 'Filet de boeuf sauce bordelaise au vin rouge, légumes rôtis de saison', 'filet_boeuf.jpg'),
-('Fondant chocolat sans gluten', 'dessert', 'Fondant au chocolat noir sans gluten, coulis de framboises et chantilly maison', 'fondant.jpg');
+('Foie gras mi-cuit aux figues', 'entree', 'foie gras mi-cuit aux figues confites, toast de pain brioché et gelée de Sauternes', '/assets/images/noel-foie-gras.jpg'),
+('Magret de canard confit aux épices', 'plat', 'Magret de canard confit aux épices de Noël, sauce au miel et au poivre, gratin dauphinois maison', '/assets/images/menu-noel.jpg'),
+('Bûche artisanale chocolat Valrhona', 'dessert', 'Bûche artisanale au chocolat grand cru Valrhona, insert praliné noisette et glaçage miroir', '/assets/images/noel-buche.jpg'),
+('Tarte salée poireaux et chèvre', 'entree', 'Tarte fine aux poireaux fondants, fromage de chèvre frais et thym citronné', '/assets/images/brunch-tarte.jpg'),
+('Salade printanière aux fleurs comestibles', 'plat', 'Mélange de jeunes pousses, radis, concombre et fleurs comestibles, vinaigrette au miel', '/assets/images/brunch-paques.jpg'),
+('Sablés décorés maison', 'dessert', 'Sablés bretons décorés à la royale, parfumés à la vanille de Madagascar', '/assets/images/brunch-sables.jpg'),
+('Verrines avocat-crevettes', 'entree', 'Verrines fraîcheur avocat, crevettes roses et sauce cocktail maison', '/assets/images/cocktail-verrines.jpg'),
+('Planches charcuterie et fromages affinés', 'plat', 'Sélection de charcuteries ibériques et fromages affinés, accompagnés de confiture de figues', '/assets/images/cocktail-planche.jpg'),
+('Mignardises et macarons maison', 'dessert', 'Assortiment de mignardises et macarons aux parfums de saison', '/assets/images/cocktail-macaron.jpg'),
+('Carpaccio de saint-jacques et agrumes', 'entree', 'Carpaccio de noix de saint-jacques, vinaigrette aux agrumes et zestes de citron vert', '/assets/images/anniversaire-carpaccio.jpg'),
+('Filet de boeuf sauce bordelaise', 'plat', 'Filet de boeuf sauce bordelaise au vin rouge, légumes rôtis de saison', '/assets/images/menu-anniversaire.jpg'),
+('Fondant chocolat sans gluten', 'dessert', 'Fondant au chocolat noir sans gluten, coulis de framboises et chantilly maison', '/assets/images/anniversaire-fondant.jpg');
 
 
 -- Données pour la table menu 
 INSERT INTO `menu` (`titre`, `theme_id`, `regime_id`, `nb_personnes_min`, `prix_base`, `stock`,`image`, `description`) VALUES 
-('Noël Prestige', 1, 5, '10', '890.00', '25', 'menu_noel.jpg', 'Un menu d''exception pour célébrer Noël en grande pompe. Foie gras mi-cuit, magret de canard confit aux épices et bûche artisanale chocolat Valrhona pour un repas inoubliable.' ),
-('Brunch Pâques Végétarien', 2, 1, '6', '252.00', '20', 'menu_paques.jpg', 'Un brunch printanier et végétarien pour fêter Pâques en famille. Tarte salée, salade aux fleurs comestibles et sablés décorés maison pour une table colorée et gourmande.' ),
-('Cocktail Dînatoire Prestige', 4, 5,'8', '280.00', '20','menu_cocktail.jpg', 'Un cocktail dînatoire raffiné pour vos événements professionnels ou personnels. Verrines, planches de charcuterie et fromages affinés, mignardises et macarons maison.' ),
-('Anniversaire Sans Gluten', 6, 3, '10', '350.00', '25', 'menu_anniversaire.jpg', 'Un menu festif et accessible à tous, entièrement sans gluten. Carpaccio de saint-jacques, filet de bœuf sauce bordelaise et fondant au chocolat pour un anniversaire mémorable.' );
+('Noël Prestige', 1, 5, '10', '890.00', '25', '/assets/images/menu-noel.jpg', 'Un menu d''exception pour célébrer Noël en grande pompe. Foie gras mi-cuit, magret de canard confit aux épices et bûche artisanale chocolat Valrhona pour un repas inoubliable.' ),
+('Brunch Pâques Végétarien', 2, 1, '6', '252.00', '20', '/assets/images/brunch-paques.jpg', 'Un brunch printanier et végétarien pour fêter Pâques en famille. Tarte salée, salade aux fleurs comestibles et sablés décorés maison pour une table colorée et gourmande.' ),
+('Cocktail Dînatoire Prestige', 4, 5,'8', '280.00', '20','/assets/images/menu-cocktail.jpg', 'Un cocktail dînatoire raffiné pour vos événements professionnels ou personnels. Verrines, planches de charcuterie et fromages affinés, mignardises et macarons maison.' ),
+('Anniversaire Sans Gluten', 6, 3, '10', '350.00', '25', '/assets/images/menu-anniversaire.jpg', 'Un menu festif et accessible à tous, entièrement sans gluten. Carpaccio de saint-jacques, filet de bœuf sauce bordelaise et fondant au chocolat pour un anniversaire mémorable.' );
 
 
 -- Données pour la table menu_plat
@@ -345,13 +346,15 @@ INSERT INTO `commande` (`utilisateur_id`, `menu_id`, `nb_personnes`, `date_livra
 -- Données pour la table suivi de commande
 INSERT INTO `suivi_commande` (`commande_id`, `statut`, `commentaire`) VALUES
 (1, 'en_attente', NULL),
+(1, 'acceptee', 'Commande validée par l''équipe'),
 (1, 'en_preparation', 'Commande prise en charge par Julie'),
-(1, 'prete', 'Commande prête pour livraison'),
+(1, 'en_livraison', 'Commande en cours de livraison'),
 (1, 'livree', 'Livraison effectuée à 11h10'),
 (1, 'terminee', 'Commande clôturée'),
 (2, 'en_attente', NULL ),
+(2, 'acceptee', 'Commande validée par l''équipe'),
 (2, 'en_preparation', 'Commande prise en charge par Julie'),
-(2, 'prete', 'Commande prête pour livraison'),
+(2, 'en_livraison', 'Commande en cours de livraison'),
 (2, 'livree', 'Livraison effectuée à 9h00'),
 (2, 'retour_materiel', 'Matériel retourné à temps'),
 (2, 'terminee', 'Commande clôturée'),

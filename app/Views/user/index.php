@@ -35,7 +35,7 @@
                         <div class="commande-card-head">
                             <h2 class="commande-card-titre"><?= htmlspecialchars($commande['menu_titre']) ?></h2>
                             <span class="commande-statut commande-statut-<?= htmlspecialchars($commande['statut_actuel']) ?>">
-                                <?= htmlspecialchars(ucfirst(str_replace('_', ' ', $commande['statut_actuel']))) ?>
+                                <?= htmlspecialchars(CommandeModel::statutLabel($commande['statut_actuel'])) ?>
                             </span>
                         </div>
                         <div class="commande-card-infos">
