@@ -38,14 +38,54 @@ echo "Migration OK : table login_attempt en place.\n";
 
 // Mise à jour de l'ENUM des statuts de commande (ajout de 'acceptee' et 'en_livraison',
 // migration des anciennes valeurs 'prete' vers 'en_livraison'). Idempotent.
-$db->exec("ALTER TABLE `suivi_commande` MODIFY `statut`
-    ENUM('en_attente','acceptee','en_preparation','en_livraison','prete','livree','annulee','retour_materiel','terminee')
-    NOT NULL DEFAULT 'en_attente'");
-$db->exec("UPDATE `suivi_commande` SET `statut` = 'en_livraison' WHERE `statut` = 'prete'");
-$db->exec("ALTER TABLE `suivi_commande` MODIFY `statut`
-    ENUM('en_attente','acceptee','en_preparation','en_livraison','livree','annulee','retour_materiel','terminee')
-    NOT NULL DEFAULT 'en_attente'");
-echo "Migration OK : statuts de commande mis a jour.\n";
+try {
+    $db->exec("ALTER TABLE `suivi_commande` MODIFY `statut`
+        ENUM('en_attente','acceptee','en_preparation','en_livraison','prete','livree','annulee','retour_materiel','terminee')
+        NOT NULL DEFAULT 'en_attente'");
+    $db->exec("UPDATE `suivi_commande` SET `statut` = 'en_livraison' WHERE `statut` = 'prete'");
+    $db->exec("ALTER TABLE `suivi_commande` MODIFY `statut`
+        ENUM('en_attente','acceptee','en_preparation','en_livraison','livree','annulee','retour_materiel','terminee')
+        NOT NULL DEFAULT 'en_attente'");
+    echo "Migration OK : statuts de commande mis a jour.\n";
+} catch (\Throwable $e) {
+    echo "Migration statuts ignoree : " . $e->getMessage() . "\n";
+}
+
+// Synchronisation des chemins d'images (menus + plats) vers les fichiers du dépôt. Idempotent.
+try {
+    $menusImg = [
+        'Noël Prestige'                => '/assets/images/menu-noel.jpg',
+        'Brunch Pâques Végétarien'     => '/assets/images/brunch-paques.jpg',
+        'Cocktail Dînatoire Prestige'  => '/assets/images/menu-cocktail.jpg',
+        'Anniversaire Sans Gluten'     => '/assets/images/menu-anniversaire.jpg',
+    ];
+    $stmtM = $db->prepare('UPDATE `menu` SET `image` = :img WHERE `titre` = :t');
+    foreach ($menusImg as $t => $img) {
+        $stmtM->execute([':img' => $img, ':t' => $t]);
+    }
+
+    $platsImg = [
+        'Foie gras mi-cuit aux figues'               => '/assets/images/noel-foie-gras.jpg',
+        'Magret de canard confit aux épices'         => '/assets/images/menu-noel.jpg',
+        'Bûche artisanale chocolat Valrhona'         => '/assets/images/noel-buche.jpg',
+        'Tarte salée poireaux et chèvre'             => '/assets/images/brunch-tarte.jpg',
+        'Salade printanière aux fleurs comestibles'  => '/assets/images/brunch-paques.jpg',
+        'Sablés décorés maison'                      => '/assets/images/brunch-sables.jpg',
+        'Verrines avocat-crevettes'                  => '/assets/images/cocktail-verrines.jpg',
+        'Planches charcuterie et fromages affinés'   => '/assets/images/cocktail-planche.jpg',
+        'Mignardises et macarons maison'             => '/assets/images/cocktail-macaron.jpg',
+        'Carpaccio de saint-jacques et agrumes'      => '/assets/images/anniversaire-carpaccio.jpg',
+        'Filet de boeuf sauce bordelaise'            => '/assets/images/menu-anniversaire.jpg',
+        'Fondant chocolat sans gluten'               => '/assets/images/anniversaire-fondant.jpg',
+    ];
+    $stmtP = $db->prepare('UPDATE `plat` SET `photo` = :p WHERE `nom` = :n');
+    foreach ($platsImg as $n => $p) {
+        $stmtP->execute([':p' => $p, ':n' => $n]);
+    }
+    echo "Migration OK : images des menus et plats synchronisees.\n";
+} catch (\Throwable $e) {
+    echo "Migration images ignoree : " . $e->getMessage() . "\n";
+}
 
 // Backfill des statistiques dans MongoDB (base non relationnelle) à partir des commandes.
 // Idempotent : upsert par commande_id, donc relançable sans créer de doublons.
