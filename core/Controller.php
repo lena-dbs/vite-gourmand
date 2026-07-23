@@ -72,4 +72,38 @@ abstract class Controller
             die('Jeton de sécurité invalide. Veuillez rafraîchir la page et réessayer.');
         }
     }
+
+    // Notifie le client par e-mail sur certains changements de statut :
+    // - retour_materiel : rappel de restitution sous 10 jours ouvrés, sinon 600 € de frais (cf. CGV)
+    // - terminee : invitation à se connecter pour laisser un avis
+    protected function notifierChangementStatut(array $commande, string $statut): void
+    {
+        $email = $commande['email'] ?? '';
+        if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return;
+        }
+
+        $prenom = $commande['prenom'] ?? '';
+        $menu   = $commande['menu_titre'] ?? '';
+        $numero = $commande['commande_id'] ?? '';
+        $from   = 'From: noreply@vitegourmand.fr';
+
+        if ($statut === 'retour_materiel') {
+            $sujet = 'Vite & Gourmand — Retour du matériel prêté';
+            $corps = "Bonjour $prenom,\n\n"
+                . "Votre commande #$numero ($menu) est terminée et du matériel vous a été prêté.\n"
+                . "Merci de nous le restituer sous 10 jours ouvrés. Passé ce délai, des frais de 600 € "
+                . "seront facturés, conformément à nos conditions générales de vente.\n\n"
+                . "Pour organiser le retour, contactez-nous par retour de mail ou par téléphone.\n\n"
+                . "L'équipe Vite & Gourmand";
+            @mail($email, $sujet, $corps, $from);
+        } elseif ($statut === 'terminee') {
+            $sujet = 'Vite & Gourmand — Votre avis nous intéresse';
+            $corps = "Bonjour $prenom,\n\n"
+                . "Votre commande #$numero ($menu) est terminée. Nous espérons que tout s'est bien passé !\n"
+                . "Connectez-vous à votre espace pour laisser un avis sur cette commande.\n\n"
+                . "Merci de votre confiance,\nL'équipe Vite & Gourmand";
+            @mail($email, $sujet, $corps, $from);
+        }
+    }
 }

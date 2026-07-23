@@ -95,6 +95,11 @@ class EmployeController extends Controller
 
         $this->commandeModel->addSuivi($id, $statut, $commentaire);
 
+        $commande = $this->commandeModel->getById($id);
+        if ($commande) {
+            $this->notifierChangementStatut($commande, $statut);
+        }
+
         $this->redirect('/employe/commande?id=' . $id);
     }
 

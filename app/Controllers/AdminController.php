@@ -93,6 +93,12 @@ class AdminController extends Controller
         }
 
         $this->commandeModel->addSuivi($id, $statut, $commentaire);
+
+        $commande = $this->commandeModel->getById($id);
+        if ($commande) {
+            $this->notifierChangementStatut($commande, $statut);
+        }
+
         $this->redirect('/admin/commande?id=' . $id);
     }
 
