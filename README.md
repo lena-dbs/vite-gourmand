@@ -27,7 +27,7 @@ Il y a aussi un bandeau cookies (accepter/refuser, modifiable depuis le pied de 
 
 ## Installer en local (XAMPP)
 
-Prérequis : PHP 8.1+, MySQL/MariaDB, Composer, Apache avec mod_rewrite, et MongoDB + son extension PHP si on veut tester les stats admin.
+Prérequis : PHP 8.2, MySQL/MariaDB, Composer, Apache avec mod_rewrite, et MongoDB + son extension PHP si on veut tester les stats admin.
 
 1. Cloner le repo
 
@@ -123,6 +123,8 @@ vite-gourmand/
 ├── database/
 │   ├── database.sql    schéma + données de démo
 │   └── migrate.php     migrations à lancer en CLI
+├── docs/                livrables PDF (manuel d'utilisation, documentation technique,
+│                       charte graphique, gestion de projet)
 ├── public/
 │   ├── index.php       point d'entrée unique
 │   ├── .htaccess

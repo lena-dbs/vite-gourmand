@@ -51,7 +51,12 @@ Stop-OnError "flyctl deploy"
 Write-Host "5/6 Migration base de données..." -ForegroundColor Cyan
 $base = "https://$App.fly.dev"
 Invoke-WebRequest -Uri $base -UseBasicParsing | Out-Null
+# flyctl écrit "Connecting to..." sur stderr : avec ErrorActionPreference=Stop,
+# PowerShell le prend pour une erreur. On le tolère le temps de la commande.
+$eap = $ErrorActionPreference
+$ErrorActionPreference = "Continue"
 $sortie = flyctl ssh console -a $App -C "php /var/www/html/database/migrate.php" 2>&1 | Out-String
+$ErrorActionPreference = $eap
 if ($sortie -notmatch "Migration OK") {
     Write-Host $sortie -ForegroundColor Red
     Write-Host "ÉCHEC à l'étape : migration" -ForegroundColor Red
