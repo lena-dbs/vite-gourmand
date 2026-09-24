@@ -64,6 +64,10 @@ try {
     </div>
 </div>
 
-<script src="/assets/js/main.js"></script>
+<script src="/assets/js/common/navbar.js"></script>
+<script src="/assets/js/common/reveal.js"></script>
+<script src="/assets/js/common/cookies.js"></script>
+<script src="/assets/js/common/cursor.js"></script>
+<script src="/assets/js/common/tilt.js"></script>
 </body>
 </html>

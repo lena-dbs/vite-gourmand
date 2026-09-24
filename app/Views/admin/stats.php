@@ -147,119 +147,21 @@ $annees = array_keys($parAnnee);
 
 </section>
 
-<script src="/assets/js/chart.umd.min.js"></script>
 <script nonce="<?= CSP_NONCE ?>">
-const COL_CMD = '#C4520A';
-const COL_CA  = '#2E4035';
-
-const euro = v => v.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
-
-const tooltipLabel = c => c.dataset.yAxisID === 'y1'
-    ? c.dataset.label + ' : ' + euro(c.parsed.y)
-    : c.dataset.label + ' : ' + c.parsed.y;
-
-const dualAxes = {
-    y:  { position: 'left',  beginAtZero: true, ticks: { precision: 0, color: COL_CMD },
-          title: { display: true, text: 'Commandes', color: COL_CMD }, grid: { color: 'rgba(38,26,13,.06)' } },
-    y1: { position: 'right', beginAtZero: true, ticks: { color: COL_CA, callback: v => v.toLocaleString('fr-FR') + ' €' },
-          title: { display: true, text: "Chiffre d'affaires", color: COL_CA }, grid: { drawOnChartArea: false } },
-    x:  { ticks: { color: '#261A0D', font: { family: 'DM Sans' } }, grid: { display: false } }
+window.VG_STATS = {
+    moisLabels: <?= json_encode($moisLabels, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+    statsMois: <?= json_encode(array_map(fn ($r) => [
+        'nb_commandes' => (int)$r['nb_commandes'],
+        'chiffre_affaires' => (float)$r['chiffre_affaires']
+    ], $statsMois)) ?>,
+    parAnnee: <?= json_encode($parAnnee, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+    statsMenu: <?= json_encode(array_map(fn ($r) => [
+        'titre' => $r['titre'],
+        'nb_commandes' => (int)$r['nb_commandes'],
+        'chiffre_affaires' => (float)$r['chiffre_affaires']
+    ], $statsMenu), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
 };
-
-// --- Graphique : évolution dans le temps ---
-const moisFull = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
-
-const dataMois = {
-    labels: <?= json_encode($moisLabels, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
-    commandes: <?= json_encode(array_map(fn ($r) => (int)$r['nb_commandes'], $statsMois)) ?>,
-    ca: <?= json_encode(array_map(fn ($r) => (float)$r['chiffre_affaires'], $statsMois)) ?>
-};
-const parAnnee = <?= json_encode($parAnnee, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
-
-const yearSelect = document.getElementById('statsYear');
-const yearField  = document.querySelector('[data-role="year"]');
-const emptyMsg   = document.getElementById('statsTimeEmpty');
-let periode = 'mois';
-
-function currentData() {
-    if (periode === 'annee') {
-        const a = parAnnee[yearSelect.value] || { commandes: [], ca: [] };
-        return { labels: moisFull, commandes: a.commandes, ca: a.ca };
-    }
-    return dataMois;
-}
-
-const timeCtx = document.getElementById('statsTimeChart').getContext('2d');
-const timeChart = new Chart(timeCtx, {
-    type: 'line',
-    data: {
-        labels: dataMois.labels,
-        datasets: [{
-            label: 'Nombre de commandes', data: dataMois.commandes,
-            borderColor: COL_CMD, backgroundColor: 'rgba(196, 82, 10, 0.12)',
-            fill: true, tension: 0.3, pointRadius: 3, yAxisID: 'y'
-        }, {
-            label: 'Chiffre d\'affaires (€)', data: dataMois.ca,
-            borderColor: COL_CA, backgroundColor: 'rgba(46, 64, 53, 0.12)',
-            fill: true, tension: 0.3, pointRadius: 3, yAxisID: 'y1'
-        }]
-    },
-    options: {
-        responsive: true, maintainAspectRatio: false,
-        interaction: { mode: 'index', intersect: false },
-        plugins: {
-            legend: { position: 'top', labels: { font: { family: 'DM Sans' } } },
-            tooltip: { callbacks: { label: tooltipLabel } }
-        },
-        scales: dualAxes
-    }
-});
-
-function refreshTime() {
-    const d = currentData();
-    const hasData = d.commandes.some(v => v > 0);
-    timeChart.data.labels = d.labels;
-    timeChart.data.datasets[0].data = d.commandes;
-    timeChart.data.datasets[1].data = d.ca;
-    timeChart.update();
-    emptyMsg.hidden = hasData;
-}
-
-document.querySelectorAll('.stats-toggle-btn').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-        periode = btn.dataset.periode;
-        document.querySelectorAll('.stats-toggle-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        yearField.style.display = periode === 'annee' ? '' : 'none';
-        refreshTime();
-    });
-});
-yearSelect.addEventListener('change', refreshTime);
-yearField.style.display = 'none';
-
-// --- Graphique : répartition par menu ---
-const ctx = document.getElementById('statsChart').getContext('2d');
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: <?= json_encode(array_column($statsMenu, 'titre'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
-        datasets: [{
-            label: 'Nombre de commandes', data: <?= json_encode(array_map(fn ($r) => (int)$r['nb_commandes'], $statsMenu)) ?>,
-            backgroundColor: 'rgba(196, 82, 10, 0.75)', borderRadius: 4, yAxisID: 'y'
-        }, {
-            label: 'Chiffre d\'affaires (€)', data: <?= json_encode(array_map(fn ($r) => (float)$r['chiffre_affaires'], $statsMenu)) ?>,
-            backgroundColor: 'rgba(46, 64, 53, 0.75)', borderRadius: 4, yAxisID: 'y1'
-        }]
-    },
-    options: {
-        responsive: true, maintainAspectRatio: false,
-        interaction: { mode: 'index', intersect: false },
-        plugins: {
-            legend: { position: 'top', labels: { font: { family: 'DM Sans' } } },
-            tooltip: { callbacks: { label: tooltipLabel } }
-        },
-        scales: dualAxes
-    }
-});
 </script>
+<script src="/assets/js/vendor/chart.umd.min.js"></script>
+<script src="/assets/js/pages/admin-stats.js"></script>
 </main>
