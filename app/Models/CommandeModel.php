@@ -41,7 +41,7 @@ class CommandeModel extends Model
 
         $suivi = $this->db->prepare('
             INSERT INTO suivi_commande (commande_id, statut)
-            VALUES (:commande_id, "en_attente")
+            VALUES (:commande_id, \'en_attente\')
         ');
         $suivi->execute([':commande_id' => $commandeId]);
 
@@ -213,7 +213,7 @@ class CommandeModel extends Model
             JOIN utilisateur u ON a.utilisateur_id = u.utilisateur_id
             JOIN commande c ON a.commande_id = c.commande_id
             JOIN menu m ON c.menu_id = m.menu_id
-            WHERE a.statut = "en_attente"
+            WHERE a.statut = \'en_attente\'
             ORDER BY a.created_at DESC
         ');
         return $stmt->fetchAll();
@@ -258,7 +258,7 @@ class CommandeModel extends Model
             JOIN utilisateur u ON a.utilisateur_id = u.utilisateur_id
             JOIN commande c ON a.commande_id = c.commande_id
             JOIN menu m ON c.menu_id = m.menu_id
-            WHERE a.statut = "valide"
+            WHERE a.statut = \'valide\'
             ORDER BY a.created_at DESC
             LIMIT ' . $limit);
         $stmt->execute();
@@ -300,7 +300,7 @@ class CommandeModel extends Model
             JOIN suivi_commande s ON s.suivi_id = (
                 SELECT MAX(suivi_id) FROM suivi_commande WHERE commande_id = c.commande_id
             )
-            WHERE s.statut IN ("livree", "retour_materiel", "terminee")' . $filtreSql . '
+            WHERE s.statut IN (\'livree\', \'retour_materiel\', \'terminee\')' . $filtreSql . '
             GROUP BY c.menu_id, m.titre
             ORDER BY nb_commandes DESC
         ');
@@ -314,15 +314,15 @@ class CommandeModel extends Model
         [$filtreSql, $params] = $this->statsFiltre($menuId, $from, $to);
         $stmt = $this->db->prepare('
             SELECT
-                DATE_FORMAT(c.date_livraison, "%Y-%m") AS periode,
+                DATE_FORMAT(c.date_livraison, \'%Y-%m\') AS periode,
                 COUNT(c.commande_id) AS nb_commandes,
                 SUM(c.prix_total) AS chiffre_affaires
             FROM commande c
             JOIN suivi_commande s ON s.suivi_id = (
                 SELECT MAX(suivi_id) FROM suivi_commande WHERE commande_id = c.commande_id
             )
-            WHERE s.statut IN ("livree", "retour_materiel", "terminee")' . $filtreSql . '
-            GROUP BY DATE_FORMAT(c.date_livraison, "%Y-%m")
+            WHERE s.statut IN (\'livree\', \'retour_materiel\', \'terminee\')' . $filtreSql . '
+            GROUP BY DATE_FORMAT(c.date_livraison, \'%Y-%m\')
             ORDER BY periode ASC
         ');
         $stmt->execute($params);

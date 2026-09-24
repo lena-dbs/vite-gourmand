@@ -92,7 +92,7 @@ class UserModel extends Model
         $stmt = $this->db->prepare('
             INSERT INTO utilisateur
             (role_id, email, `password`, nom, prenom, telephone, adresse, ville, code_postal, pays)
-            VALUES (2, :email, :password, "", "", "", "", "", "", "France")
+            VALUES (2, :email, :password, \'\', \'\', \'\', \'\', \'\', \'\', \'France\')
         ');
         return $stmt->execute([
             ':email'    => $email,

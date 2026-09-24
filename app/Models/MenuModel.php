@@ -20,10 +20,10 @@ class MenuModel extends Model
                 r.libelle AS regime,
                 (SELECT COALESCE(AVG(a.note), 0)
                    FROM avis a JOIN commande c ON a.commande_id = c.commande_id
-                   WHERE c.menu_id = m.menu_id AND a.statut = "valide") AS note_moyenne,
+                   WHERE c.menu_id = m.menu_id AND a.statut = \'valide\') AS note_moyenne,
                 (SELECT COUNT(*)
                    FROM avis a JOIN commande c ON a.commande_id = c.commande_id
-                   WHERE c.menu_id = m.menu_id AND a.statut = "valide") AS nb_avis
+                   WHERE c.menu_id = m.menu_id AND a.statut = \'valide\') AS nb_avis
             FROM menu m
             JOIN theme t ON m.theme_id = t.theme_id
             JOIN regime r ON m.regime_id = r.regime_id
@@ -63,10 +63,10 @@ class MenuModel extends Model
                 r.libelle AS regime,
                 (SELECT COALESCE(AVG(a.note), 0)
                    FROM avis a JOIN commande c ON a.commande_id = c.commande_id
-                   WHERE c.menu_id = m.menu_id AND a.statut = "valide") AS note_moyenne,
+                   WHERE c.menu_id = m.menu_id AND a.statut = \'valide\') AS note_moyenne,
                 (SELECT COUNT(*)
                    FROM avis a JOIN commande c ON a.commande_id = c.commande_id
-                   WHERE c.menu_id = m.menu_id AND a.statut = "valide") AS nb_avis
+                   WHERE c.menu_id = m.menu_id AND a.statut = \'valide\') AS nb_avis
             FROM menu m
             JOIN theme t ON m.theme_id = t.theme_id
             JOIN regime r ON m.regime_id = r.regime_id
@@ -83,7 +83,7 @@ class MenuModel extends Model
             FROM avis a
             JOIN commande c ON a.commande_id = c.commande_id
             JOIN utilisateur u ON a.utilisateur_id = u.utilisateur_id
-            WHERE c.menu_id = :id AND a.statut = "valide"
+            WHERE c.menu_id = :id AND a.statut = \'valide\'
             ORDER BY a.created_at DESC
         ');
         $stmt->execute([':id' => $menuId]);
@@ -102,7 +102,7 @@ class MenuModel extends Model
             FROM plat p
             JOIN menu_plat mp ON p.plat_id = mp.plat_id
             WHERE mp.menu_id = :id
-            ORDER BY FIELD(p.type, "entree", "plat", "dessert")
+            ORDER BY FIELD(p.type, \'entree\', \'plat\', \'dessert\')
         ');
         $stmt->execute([':id' => $menuId]);
         return $stmt->fetchAll();
