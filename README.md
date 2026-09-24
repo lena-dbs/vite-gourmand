@@ -124,11 +124,16 @@ vite-gourmand/
 │   ├── database.sql    schéma + données de démo
 │   └── migrate.php     migrations à lancer en CLI
 ├── docs/                livrables PDF (manuel d'utilisation, documentation technique,
-│                       charte graphique, gestion de projet)
+│   │                   charte graphique, gestion de projet, maquettes)
+│   └── conception/     MCD, MLD, cas d'utilisation, diagrammes de séquence (draw.io)
 ├── public/
 │   ├── index.php       point d'entrée unique
 │   ├── .htaccess
 │   └── assets/         css, js, images
+│       └── js/
+│           ├── common/ scripts chargés sur toutes les pages (navbar, reveal, cookies, curseur, tilt)
+│           ├── pages/  scripts propres à une page (filtres menus, formulaire de commande, stats admin...)
+│           └── vendor/ bibliothèques tierces (Chart.js)
 ├── .env                 pas versionné
 ├── composer.json
 ├── deploy.ps1

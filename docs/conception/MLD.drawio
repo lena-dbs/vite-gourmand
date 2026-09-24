@@ -1,0 +1,1228 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.5.1 Chrome/142.0.7444.265 Electron/39.6.1 Safari/537.36" version="29.5.1">
+  <diagram name="Page-1" id="VOcYh_zUkBKN5j9dyjaX">
+    <mxGraphModel dx="3724" dy="1201" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1920" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="UcoUJlN-tefJob-VIpPI-145" parent="1" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" value="menu" vertex="1">
+          <mxGeometry height="360" width="491" x="1176" y="986" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-146" parent="UcoUJlN-tefJob-VIpPI-145" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" value="" vertex="1">
+          <mxGeometry height="30" width="491" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-147" parent="UcoUJlN-tefJob-VIpPI-146" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="PK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-148" parent="UcoUJlN-tefJob-VIpPI-146" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="menu_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT AU&lt;/span&gt;TO_INCREMENT&amp;nbsp;&lt;/span&gt;NOT NULL" vertex="1">
+          <mxGeometry height="30" width="461" x="30" as="geometry">
+            <mxRectangle height="30" width="461" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-161" parent="UcoUJlN-tefJob-VIpPI-145" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" vertex="1">
+          <mxGeometry height="30" width="491" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-162" parent="UcoUJlN-tefJob-VIpPI-161" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="FK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-163" parent="UcoUJlN-tefJob-VIpPI-161" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="regime_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="461" x="30" as="geometry">
+            <mxRectangle height="30" width="461" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-158" parent="UcoUJlN-tefJob-VIpPI-145" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" vertex="1">
+          <mxGeometry height="30" width="491" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-159" parent="UcoUJlN-tefJob-VIpPI-158" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="FK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-160" parent="UcoUJlN-tefJob-VIpPI-158" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="theme_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="461" x="30" as="geometry">
+            <mxRectangle height="30" width="461" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-149" parent="UcoUJlN-tefJob-VIpPI-145" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="491" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-150" parent="UcoUJlN-tefJob-VIpPI-149" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-151" parent="UcoUJlN-tefJob-VIpPI-149" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="titre&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;VARCHAR (150) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="461" x="30" as="geometry">
+            <mxRectangle height="30" width="461" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-152" parent="UcoUJlN-tefJob-VIpPI-145" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="491" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-153" parent="UcoUJlN-tefJob-VIpPI-152" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-154" parent="UcoUJlN-tefJob-VIpPI-152" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="description&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;TEXT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="461" x="30" as="geometry">
+            <mxRectangle height="30" width="461" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-155" parent="UcoUJlN-tefJob-VIpPI-145" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="491" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-156" parent="UcoUJlN-tefJob-VIpPI-155" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-157" parent="UcoUJlN-tefJob-VIpPI-155" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="nb_personne_min&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT&lt;/span&gt;&amp;nbsp;NOT NULL" vertex="1">
+          <mxGeometry height="30" width="461" x="30" as="geometry">
+            <mxRectangle height="30" width="461" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-170" parent="UcoUJlN-tefJob-VIpPI-145" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="491" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-171" parent="UcoUJlN-tefJob-VIpPI-170" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-172" parent="UcoUJlN-tefJob-VIpPI-170" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="prix_base&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;DECIMAL(10,2) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="461" x="30" as="geometry">
+            <mxRectangle height="30" width="461" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-167" parent="UcoUJlN-tefJob-VIpPI-145" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="491" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-168" parent="UcoUJlN-tefJob-VIpPI-167" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-169" parent="UcoUJlN-tefJob-VIpPI-167" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="stock&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="461" x="30" as="geometry">
+            <mxRectangle height="30" width="461" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-164" parent="UcoUJlN-tefJob-VIpPI-145" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="491" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-165" parent="UcoUJlN-tefJob-VIpPI-164" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-166" parent="UcoUJlN-tefJob-VIpPI-164" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="image&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;VARCHAR(255) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="461" x="30" as="geometry">
+            <mxRectangle height="30" width="461" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-445" parent="UcoUJlN-tefJob-VIpPI-145" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="491" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-446" parent="UcoUJlN-tefJob-VIpPI-445" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-447" parent="UcoUJlN-tefJob-VIpPI-445" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="actif&amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;BOOLEAN NOT NULL DEFAULT 1" vertex="1">
+          <mxGeometry height="30" width="461" x="30" as="geometry">
+            <mxRectangle height="30" width="461" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-448" parent="UcoUJlN-tefJob-VIpPI-145" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="491" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-449" parent="UcoUJlN-tefJob-VIpPI-448" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-450" parent="UcoUJlN-tefJob-VIpPI-448" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="created_at&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP" vertex="1">
+          <mxGeometry height="30" width="461" x="30" as="geometry">
+            <mxRectangle height="30" width="461" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-173" parent="1" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" value="commande" vertex="1">
+          <mxGeometry height="507" width="491.75" x="1178" y="353" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-174" parent="UcoUJlN-tefJob-VIpPI-173" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" value="" vertex="1">
+          <mxGeometry height="30" width="491.75" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-175" parent="UcoUJlN-tefJob-VIpPI-174" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="PK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-176" parent="UcoUJlN-tefJob-VIpPI-174" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="commande_id&amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT AUTO_INCREMENT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="461.75" x="30" as="geometry">
+            <mxRectangle height="30" width="461.75" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-190" parent="UcoUJlN-tefJob-VIpPI-173" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" vertex="1">
+          <mxGeometry height="30" width="491.75" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-191" parent="UcoUJlN-tefJob-VIpPI-190" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="FK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-192" parent="UcoUJlN-tefJob-VIpPI-190" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="utilisateur_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="461.75" x="30" as="geometry">
+            <mxRectangle height="30" width="461.75" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-187" parent="UcoUJlN-tefJob-VIpPI-173" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" vertex="1">
+          <mxGeometry height="30" width="491.75" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-188" parent="UcoUJlN-tefJob-VIpPI-187" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="FK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-189" parent="UcoUJlN-tefJob-VIpPI-187" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="menu_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="461.75" x="30" as="geometry">
+            <mxRectangle height="30" width="461.75" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-177" parent="UcoUJlN-tefJob-VIpPI-173" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="491.75" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-178" parent="UcoUJlN-tefJob-VIpPI-177" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-179" parent="UcoUJlN-tefJob-VIpPI-177" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="nb_personnes&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="461.75" x="30" as="geometry">
+            <mxRectangle height="30" width="461.75" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-211" parent="UcoUJlN-tefJob-VIpPI-173" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="491.75" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-212" parent="UcoUJlN-tefJob-VIpPI-211" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-213" parent="UcoUJlN-tefJob-VIpPI-211" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="date_livraison&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;DATE NOT NULL" vertex="1">
+          <mxGeometry height="30" width="461.75" x="30" as="geometry">
+            <mxRectangle height="30" width="461.75" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-208" parent="UcoUJlN-tefJob-VIpPI-173" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="491.75" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-209" parent="UcoUJlN-tefJob-VIpPI-208" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-210" parent="UcoUJlN-tefJob-VIpPI-208" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="adresse_livraison&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;VARCHAR(200) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="461.75" x="30" as="geometry">
+            <mxRectangle height="30" width="461.75" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-205" parent="UcoUJlN-tefJob-VIpPI-173" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="491.75" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-206" parent="UcoUJlN-tefJob-VIpPI-205" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-207" parent="UcoUJlN-tefJob-VIpPI-205" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="ville_livraison&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;VARCHAR(100) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="461.75" x="30" as="geometry">
+            <mxRectangle height="30" width="461.75" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-473" parent="UcoUJlN-tefJob-VIpPI-173" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="27" width="491.75" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-474" parent="UcoUJlN-tefJob-VIpPI-473" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="27" width="30" as="geometry">
+            <mxRectangle height="27" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-475" parent="UcoUJlN-tefJob-VIpPI-473" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="heure_livraison&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;TIME NOT NULL" vertex="1">
+          <mxGeometry height="27" width="461.75" x="30" as="geometry">
+            <mxRectangle height="27" width="461.75" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-202" parent="UcoUJlN-tefJob-VIpPI-173" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="491.75" y="267" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-203" parent="UcoUJlN-tefJob-VIpPI-202" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-204" parent="UcoUJlN-tefJob-VIpPI-202" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="prix_menu&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;DECIMAL(10,2) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="461.75" x="30" as="geometry">
+            <mxRectangle height="30" width="461.75" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-199" parent="UcoUJlN-tefJob-VIpPI-173" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="491.75" y="297" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-200" parent="UcoUJlN-tefJob-VIpPI-199" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-201" parent="UcoUJlN-tefJob-VIpPI-199" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="prix_livraison&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;DECIMAL(10,2) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="461.75" x="30" as="geometry">
+            <mxRectangle height="30" width="461.75" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-196" parent="UcoUJlN-tefJob-VIpPI-173" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="491.75" y="327" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-197" parent="UcoUJlN-tefJob-VIpPI-196" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-198" parent="UcoUJlN-tefJob-VIpPI-196" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="prix_reduction&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;DECIMAL(10,2)&lt;/span&gt;&amp;nbsp;NOT NULL" vertex="1">
+          <mxGeometry height="30" width="461.75" x="30" as="geometry">
+            <mxRectangle height="30" width="461.75" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-193" parent="UcoUJlN-tefJob-VIpPI-173" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="491.75" y="357" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-194" parent="UcoUJlN-tefJob-VIpPI-193" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-195" parent="UcoUJlN-tefJob-VIpPI-193" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="prix_total&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;DECIMAL(10,2) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="461.75" x="30" as="geometry">
+            <mxRectangle height="30" width="461.75" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-180" parent="UcoUJlN-tefJob-VIpPI-173" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="491.75" y="387" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-181" parent="UcoUJlN-tefJob-VIpPI-180" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-182" parent="UcoUJlN-tefJob-VIpPI-180" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="pret_materiel&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;BOOLEAN NOT NULL DEFAULT 0" vertex="1">
+          <mxGeometry height="30" width="461.75" x="30" as="geometry">
+            <mxRectangle height="30" width="461.75" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-183" parent="UcoUJlN-tefJob-VIpPI-173" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="491.75" y="417" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-184" parent="UcoUJlN-tefJob-VIpPI-183" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-185" parent="UcoUJlN-tefJob-VIpPI-183" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="restitution_materiel&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;BOOLEAN NOT NULL DEFAULT 0" vertex="1">
+          <mxGeometry height="30" width="461.75" x="30" as="geometry">
+            <mxRectangle height="30" width="461.75" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-442" parent="UcoUJlN-tefJob-VIpPI-173" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="491.75" y="447" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-443" parent="UcoUJlN-tefJob-VIpPI-442" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-444" parent="UcoUJlN-tefJob-VIpPI-442" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="motif_annulation&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;TEXT NULL" vertex="1">
+          <mxGeometry height="30" width="461.75" x="30" as="geometry">
+            <mxRectangle height="30" width="461.75" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-451" parent="UcoUJlN-tefJob-VIpPI-173" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="491.75" y="477" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-452" parent="UcoUJlN-tefJob-VIpPI-451" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-453" parent="UcoUJlN-tefJob-VIpPI-451" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="created_at&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP" vertex="1">
+          <mxGeometry height="30" width="461.75" x="30" as="geometry">
+            <mxRectangle height="30" width="461.75" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-214" parent="1" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" value="role" vertex="1">
+          <mxGeometry height="90" width="333" x="372" y="286" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-215" parent="UcoUJlN-tefJob-VIpPI-214" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" value="" vertex="1">
+          <mxGeometry height="30" width="333" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-216" parent="UcoUJlN-tefJob-VIpPI-215" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="PK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-217" parent="UcoUJlN-tefJob-VIpPI-215" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="role_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT AUTO_INCREMENT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="303" x="30" as="geometry">
+            <mxRectangle height="30" width="303" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-218" parent="UcoUJlN-tefJob-VIpPI-214" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="333" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-219" parent="UcoUJlN-tefJob-VIpPI-218" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-220" parent="UcoUJlN-tefJob-VIpPI-218" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="libelle&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;VARCHAR(50) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="303" x="30" as="geometry">
+            <mxRectangle height="30" width="303" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-227" parent="1" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" value="utilisateur" vertex="1">
+          <mxGeometry height="444" width="498" x="540" y="533" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-228" parent="UcoUJlN-tefJob-VIpPI-227" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" value="" vertex="1">
+          <mxGeometry height="30" width="498" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-229" parent="UcoUJlN-tefJob-VIpPI-228" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="PK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-230" parent="UcoUJlN-tefJob-VIpPI-228" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="utilisateur_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT AUTO_INCREMENT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="468" x="30" as="geometry">
+            <mxRectangle height="30" width="468" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-240" parent="UcoUJlN-tefJob-VIpPI-227" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" vertex="1">
+          <mxGeometry height="30" width="498" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-241" parent="UcoUJlN-tefJob-VIpPI-240" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="FK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-242" parent="UcoUJlN-tefJob-VIpPI-240" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="role_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="468" x="30" as="geometry">
+            <mxRectangle height="30" width="468" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-231" parent="UcoUJlN-tefJob-VIpPI-227" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="498" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-232" parent="UcoUJlN-tefJob-VIpPI-231" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-233" parent="UcoUJlN-tefJob-VIpPI-231" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="email&amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;VARCHAR(180) NOT NULL UNIQUE" vertex="1">
+          <mxGeometry height="30" width="468" x="30" as="geometry">
+            <mxRectangle height="30" width="468" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-234" parent="UcoUJlN-tefJob-VIpPI-227" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="498" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-235" parent="UcoUJlN-tefJob-VIpPI-234" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-236" parent="UcoUJlN-tefJob-VIpPI-234" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="password&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;VARCHAR(255) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="468" x="30" as="geometry">
+            <mxRectangle height="30" width="468" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-237" parent="UcoUJlN-tefJob-VIpPI-227" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="498" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-238" parent="UcoUJlN-tefJob-VIpPI-237" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-239" parent="UcoUJlN-tefJob-VIpPI-237" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="nom&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;VARCHAR(80) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="468" x="30" as="geometry">
+            <mxRectangle height="30" width="468" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-243" parent="UcoUJlN-tefJob-VIpPI-227" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="498" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-244" parent="UcoUJlN-tefJob-VIpPI-243" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-245" parent="UcoUJlN-tefJob-VIpPI-243" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="prenom&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;VARCHAR(80) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="468" x="30" as="geometry">
+            <mxRectangle height="30" width="468" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-246" parent="UcoUJlN-tefJob-VIpPI-227" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="498" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-247" parent="UcoUJlN-tefJob-VIpPI-246" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-248" parent="UcoUJlN-tefJob-VIpPI-246" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="telephone&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;VARCHAR(20) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="468" x="30" as="geometry">
+            <mxRectangle height="30" width="468" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-252" parent="UcoUJlN-tefJob-VIpPI-227" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="498" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-253" parent="UcoUJlN-tefJob-VIpPI-252" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-254" parent="UcoUJlN-tefJob-VIpPI-252" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="adresse&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;VARCHAR(200) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="468" x="30" as="geometry">
+            <mxRectangle height="30" width="468" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-249" parent="UcoUJlN-tefJob-VIpPI-227" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="498" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-250" parent="UcoUJlN-tefJob-VIpPI-249" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-251" parent="UcoUJlN-tefJob-VIpPI-249" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="ville&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;VARCHAR(100) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="468" x="30" as="geometry">
+            <mxRectangle height="30" width="468" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-258" parent="UcoUJlN-tefJob-VIpPI-227" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="498" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-259" parent="UcoUJlN-tefJob-VIpPI-258" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-260" parent="UcoUJlN-tefJob-VIpPI-258" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="code_postal&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;VARCHAR(10) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="468" x="30" as="geometry">
+            <mxRectangle height="30" width="468" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-255" parent="UcoUJlN-tefJob-VIpPI-227" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="498" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-256" parent="UcoUJlN-tefJob-VIpPI-255" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-257" parent="UcoUJlN-tefJob-VIpPI-255" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="pays&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;VARCHAR(50) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="468" x="30" as="geometry">
+            <mxRectangle height="30" width="468" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-457" parent="UcoUJlN-tefJob-VIpPI-227" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="498" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-458" parent="UcoUJlN-tefJob-VIpPI-457" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-459" parent="UcoUJlN-tefJob-VIpPI-457" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="actif&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;BOOLEAN NOT NULL DEFAULT 1" vertex="1">
+          <mxGeometry height="30" width="468" x="30" as="geometry">
+            <mxRectangle height="30" width="468" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-454" parent="UcoUJlN-tefJob-VIpPI-227" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="53" width="498" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-455" parent="UcoUJlN-tefJob-VIpPI-454" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="53" width="30" as="geometry">
+            <mxRectangle height="53" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-456" parent="UcoUJlN-tefJob-VIpPI-454" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="created_at&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP&amp;nbsp;" vertex="1">
+          <mxGeometry height="53" width="468" x="30" as="geometry">
+            <mxRectangle height="53" width="468" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-261" parent="1" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" value="avis" vertex="1">
+          <mxGeometry height="240" width="435" x="880" y="56" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-262" parent="UcoUJlN-tefJob-VIpPI-261" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" value="" vertex="1">
+          <mxGeometry height="30" width="435" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-263" parent="UcoUJlN-tefJob-VIpPI-262" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="PK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-264" parent="UcoUJlN-tefJob-VIpPI-262" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="avis_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;INT AUTO_INCREMENT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="405" x="30" as="geometry">
+            <mxRectangle height="30" width="405" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-277" parent="UcoUJlN-tefJob-VIpPI-261" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" vertex="1">
+          <mxGeometry height="30" width="435" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-278" parent="UcoUJlN-tefJob-VIpPI-277" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="FK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-279" parent="UcoUJlN-tefJob-VIpPI-277" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="utilisateur_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;INT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="405" x="30" as="geometry">
+            <mxRectangle height="30" width="405" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-274" parent="UcoUJlN-tefJob-VIpPI-261" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" vertex="1">
+          <mxGeometry height="30" width="435" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-275" parent="UcoUJlN-tefJob-VIpPI-274" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="FK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-276" parent="UcoUJlN-tefJob-VIpPI-274" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="commande_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;INT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="405" x="30" as="geometry">
+            <mxRectangle height="30" width="405" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-265" parent="UcoUJlN-tefJob-VIpPI-261" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="435" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-266" parent="UcoUJlN-tefJob-VIpPI-265" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-267" parent="UcoUJlN-tefJob-VIpPI-265" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="note&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;TINYINT NOT NULL CHECK (`note` BETWEEN 1 AND 5)" vertex="1">
+          <mxGeometry height="30" width="405" x="30" as="geometry">
+            <mxRectangle height="30" width="405" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-268" parent="UcoUJlN-tefJob-VIpPI-261" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="435" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-269" parent="UcoUJlN-tefJob-VIpPI-268" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-270" parent="UcoUJlN-tefJob-VIpPI-268" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="commentaire&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;TEXT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="405" x="30" as="geometry">
+            <mxRectangle height="30" width="405" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-271" parent="UcoUJlN-tefJob-VIpPI-261" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="435" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-272" parent="UcoUJlN-tefJob-VIpPI-271" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-273" parent="UcoUJlN-tefJob-VIpPI-271" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="statut&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;ENUM(&#39;en_attente&#39;,&#39;valide&#39;,&#39;refuse&#39;) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="405" x="30" as="geometry">
+            <mxRectangle height="30" width="405" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-280" parent="UcoUJlN-tefJob-VIpPI-261" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="435" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-281" parent="UcoUJlN-tefJob-VIpPI-280" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-282" parent="UcoUJlN-tefJob-VIpPI-280" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="created_at&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;DATETIME NOT NULL" vertex="1">
+          <mxGeometry height="30" width="405" x="30" as="geometry">
+            <mxRectangle height="30" width="405" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-284" parent="1" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" value="suivi_commande" vertex="1">
+          <mxGeometry height="198.75" width="793.75" x="1508" y="17" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-285" parent="UcoUJlN-tefJob-VIpPI-284" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" value="" vertex="1">
+          <mxGeometry height="30" width="793.75" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-286" parent="UcoUJlN-tefJob-VIpPI-285" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="PK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-287" parent="UcoUJlN-tefJob-VIpPI-285" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="suivi_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT AUTO_INCREMENT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="763.75" x="30" as="geometry">
+            <mxRectangle height="30" width="763.75" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-300" parent="UcoUJlN-tefJob-VIpPI-284" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" vertex="1">
+          <mxGeometry height="30" width="793.75" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-301" parent="UcoUJlN-tefJob-VIpPI-300" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="FK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-302" parent="UcoUJlN-tefJob-VIpPI-300" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="commande_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="763.75" x="30" as="geometry">
+            <mxRectangle height="30" width="763.75" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-288" parent="UcoUJlN-tefJob-VIpPI-284" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="793.75" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-289" parent="UcoUJlN-tefJob-VIpPI-288" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-290" parent="UcoUJlN-tefJob-VIpPI-288" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="commentaire&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;TEXT NULL" vertex="1">
+          <mxGeometry height="30" width="763.75" x="30" as="geometry">
+            <mxRectangle height="30" width="763.75" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-291" parent="UcoUJlN-tefJob-VIpPI-284" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="37" width="793.75" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-292" parent="UcoUJlN-tefJob-VIpPI-291" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="37" width="30" as="geometry">
+            <mxRectangle height="37" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-293" parent="UcoUJlN-tefJob-VIpPI-291" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="statut&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;ENUM(&#39;en_attente&#39;, &#39;validee&#39;, &#39;en_preparation&#39;, &#39;prete&#39;, &#39;livree&#39;, &#39;annulee&#39;, &#39;retour_materiel&#39;, &#39;terminee&#39;) NOT NULL" vertex="1">
+          <mxGeometry height="37" width="763.75" x="30" as="geometry">
+            <mxRectangle height="37" width="763.75" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-294" parent="UcoUJlN-tefJob-VIpPI-284" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="42" width="793.75" y="157" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-295" parent="UcoUJlN-tefJob-VIpPI-294" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="42" width="30" as="geometry">
+            <mxRectangle height="42" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-296" parent="UcoUJlN-tefJob-VIpPI-294" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="created_at&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;DATETIME NOT NULL" vertex="1">
+          <mxGeometry height="42" width="763.75" x="30" as="geometry">
+            <mxRectangle height="42" width="763.75" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-309" parent="1" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" value="horaire" vertex="1">
+          <mxGeometry height="180" width="630" x="1733" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-310" parent="UcoUJlN-tefJob-VIpPI-309" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" value="" vertex="1">
+          <mxGeometry height="30" width="630" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-311" parent="UcoUJlN-tefJob-VIpPI-310" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="PK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-312" parent="UcoUJlN-tefJob-VIpPI-310" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="horaire_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;INT AUTO_INCREMENT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="600" x="30" as="geometry">
+            <mxRectangle height="30" width="600" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-313" parent="UcoUJlN-tefJob-VIpPI-309" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="630" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-314" parent="UcoUJlN-tefJob-VIpPI-313" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-315" parent="UcoUJlN-tefJob-VIpPI-313" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="jour&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token token&quot; style=&quot;font-weight: bolder;&quot;&gt;ENUM&lt;/span&gt;&lt;span class=&quot;token token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token token&quot;&gt;&#39;lundi&#39;&lt;/span&gt;&lt;span class=&quot;token token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token token&quot;&gt;&#39;mardi&#39;&lt;/span&gt;&lt;span class=&quot;token token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token token&quot;&gt;&#39;mercredi&#39;&lt;/span&gt;&lt;span class=&quot;token token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token token&quot;&gt;&#39;jeudi&#39;&lt;/span&gt;&lt;span class=&quot;token token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token token&quot;&gt;&#39;vendredi&#39;&lt;/span&gt;&lt;span class=&quot;token token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token token&quot;&gt;&#39;samedi&#39;&lt;/span&gt;&lt;span class=&quot;token token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token token&quot;&gt;&#39;dimanche&#39;&lt;/span&gt;&lt;span class=&quot;token token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token token operator&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;token token boolean&quot;&gt;NULL&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="600" x="30" as="geometry">
+            <mxRectangle height="30" width="600" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-316" parent="UcoUJlN-tefJob-VIpPI-309" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="630" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-317" parent="UcoUJlN-tefJob-VIpPI-316" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-318" parent="UcoUJlN-tefJob-VIpPI-316" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="heure_ouverture&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;TIME NULL" vertex="1">
+          <mxGeometry height="30" width="600" x="30" as="geometry">
+            <mxRectangle height="30" width="600" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-319" parent="UcoUJlN-tefJob-VIpPI-309" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="630" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-320" parent="UcoUJlN-tefJob-VIpPI-319" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-321" parent="UcoUJlN-tefJob-VIpPI-319" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="heure_fermeture&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;TIME&amp;nbsp;NULL" vertex="1">
+          <mxGeometry height="30" width="600" x="30" as="geometry">
+            <mxRectangle height="30" width="600" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-322" parent="UcoUJlN-tefJob-VIpPI-309" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="630" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-323" parent="UcoUJlN-tefJob-VIpPI-322" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-324" parent="UcoUJlN-tefJob-VIpPI-322" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="ferme&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;BOOLEAN NOT NULL DEFAULT 0" vertex="1">
+          <mxGeometry height="30" width="600" x="30" as="geometry">
+            <mxRectangle height="30" width="600" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-326" edge="1" parent="1" source="UcoUJlN-tefJob-VIpPI-218" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=ERzeroToMany;endFill=0;startArrow=ERmandOne;startFill=0;" target="UcoUJlN-tefJob-VIpPI-227">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2viPuBsoDIH508IYnl3G-9" connectable="0" parent="UcoUJlN-tefJob-VIpPI-326" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="possede" vertex="1">
+          <mxGeometry relative="1" x="0.0897" y="5" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-328" parent="1" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" value="theme" vertex="1">
+          <mxGeometry height="90" width="353" x="1875" y="951" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-329" parent="UcoUJlN-tefJob-VIpPI-328" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" value="" vertex="1">
+          <mxGeometry height="30" width="353" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-330" parent="UcoUJlN-tefJob-VIpPI-329" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="PK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-331" parent="UcoUJlN-tefJob-VIpPI-329" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="theme_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT AUTO_INCREMENT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="323" x="30" as="geometry">
+            <mxRectangle height="30" width="323" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-332" parent="UcoUJlN-tefJob-VIpPI-328" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="353" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-333" parent="UcoUJlN-tefJob-VIpPI-332" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-334" parent="UcoUJlN-tefJob-VIpPI-332" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="libelle&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;VARCHAR(80) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="323" x="30" as="geometry">
+            <mxRectangle height="30" width="323" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-341" parent="1" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" value="regime" vertex="1">
+          <mxGeometry height="90" width="362" x="1875" y="1171" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-342" parent="UcoUJlN-tefJob-VIpPI-341" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" value="" vertex="1">
+          <mxGeometry height="30" width="362" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-343" parent="UcoUJlN-tefJob-VIpPI-342" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="PK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-344" parent="UcoUJlN-tefJob-VIpPI-342" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="regime_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT AUTO_INCREMENT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="332" x="30" as="geometry">
+            <mxRectangle height="30" width="332" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-345" parent="UcoUJlN-tefJob-VIpPI-341" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="362" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-346" parent="UcoUJlN-tefJob-VIpPI-345" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-347" parent="UcoUJlN-tefJob-VIpPI-345" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="libelle&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;VARCHAR(80) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="332" x="30" as="geometry">
+            <mxRectangle height="30" width="332" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-358" parent="1" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" value="condition_menu" vertex="1">
+          <mxGeometry height="120" width="370" x="1711" y="1400" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-359" parent="UcoUJlN-tefJob-VIpPI-358" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" value="" vertex="1">
+          <mxGeometry height="30" width="370" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-360" parent="UcoUJlN-tefJob-VIpPI-359" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="PK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-361" parent="UcoUJlN-tefJob-VIpPI-359" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="condition_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT AUTO_INCREMENT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="340" x="30" as="geometry">
+            <mxRectangle height="30" width="340" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-371" parent="UcoUJlN-tefJob-VIpPI-358" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" vertex="1">
+          <mxGeometry height="30" width="370" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-372" parent="UcoUJlN-tefJob-VIpPI-371" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="FK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-373" parent="UcoUJlN-tefJob-VIpPI-371" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="menu_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="340" x="30" as="geometry">
+            <mxRectangle height="30" width="340" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-362" parent="UcoUJlN-tefJob-VIpPI-358" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="370" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-363" parent="UcoUJlN-tefJob-VIpPI-362" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-364" parent="UcoUJlN-tefJob-VIpPI-362" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="description&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;TEXT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="340" x="30" as="geometry">
+            <mxRectangle height="30" width="340" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-374" parent="1" style="shape=table;startSize=29;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" value="plat" vertex="1">
+          <mxGeometry height="180" width="397" x="369" y="1248" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-375" parent="UcoUJlN-tefJob-VIpPI-374" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" value="" vertex="1">
+          <mxGeometry height="30" width="397" y="29" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-376" parent="UcoUJlN-tefJob-VIpPI-375" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="PK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-377" parent="UcoUJlN-tefJob-VIpPI-375" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="plat_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;INT AUTO_INCREMENT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="367" x="30" as="geometry">
+            <mxRectangle height="30" width="367" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-378" parent="UcoUJlN-tefJob-VIpPI-374" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="397" y="59" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-379" parent="UcoUJlN-tefJob-VIpPI-378" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-380" parent="UcoUJlN-tefJob-VIpPI-378" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="nom&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;VARCHAR(150) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="367" x="30" as="geometry">
+            <mxRectangle height="30" width="367" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-381" parent="UcoUJlN-tefJob-VIpPI-374" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="397" y="89" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-382" parent="UcoUJlN-tefJob-VIpPI-381" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-383" parent="UcoUJlN-tefJob-VIpPI-381" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="type&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;ENUM(&#39;entree&#39;,&#39;plat&#39;,&#39;dessert&#39;) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="367" x="30" as="geometry">
+            <mxRectangle height="30" width="367" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-384" parent="UcoUJlN-tefJob-VIpPI-374" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="397" y="119" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-385" parent="UcoUJlN-tefJob-VIpPI-384" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-386" parent="UcoUJlN-tefJob-VIpPI-384" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="description&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;TEXT NULL" vertex="1">
+          <mxGeometry height="30" width="367" x="30" as="geometry">
+            <mxRectangle height="30" width="367" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-413" parent="UcoUJlN-tefJob-VIpPI-374" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
+          <mxGeometry height="30" width="397" y="149" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-414" parent="UcoUJlN-tefJob-VIpPI-413" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-415" parent="UcoUJlN-tefJob-VIpPI-413" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="photo&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;VARCHAR(300) NULL" vertex="1">
+          <mxGeometry height="30" width="367" x="30" as="geometry">
+            <mxRectangle height="30" width="367" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-387" parent="1" style="shape=table;startSize=28;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" value="allergene" vertex="1">
+          <mxGeometry height="90" width="387" x="-577" y="1272" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-388" parent="UcoUJlN-tefJob-VIpPI-387" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" value="" vertex="1">
+          <mxGeometry height="30" width="387" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-389" parent="UcoUJlN-tefJob-VIpPI-388" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="PK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-390" parent="UcoUJlN-tefJob-VIpPI-388" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="allergene_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT AUTO_INCREMENT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="357" x="30" as="geometry">
+            <mxRectangle height="30" width="357" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-391" parent="UcoUJlN-tefJob-VIpPI-387" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="387" y="58" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-392" parent="UcoUJlN-tefJob-VIpPI-391" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-393" parent="UcoUJlN-tefJob-VIpPI-391" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="libelle&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;VARCHAR(100) NOT NULL" vertex="1">
+          <mxGeometry height="30" width="357" x="30" as="geometry">
+            <mxRectangle height="30" width="357" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-400" parent="1" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" value="plat_allergene" vertex="1">
+          <mxGeometry height="90" width="291" x="-43" y="1084" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-401" parent="UcoUJlN-tefJob-VIpPI-400" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" value="" vertex="1">
+          <mxGeometry height="30" width="291" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-402" parent="UcoUJlN-tefJob-VIpPI-401" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="FK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-403" parent="UcoUJlN-tefJob-VIpPI-401" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="plat_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="261" x="30" as="geometry">
+            <mxRectangle height="30" width="261" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-416" parent="UcoUJlN-tefJob-VIpPI-400" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" vertex="1">
+          <mxGeometry height="30" width="291" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-417" parent="UcoUJlN-tefJob-VIpPI-416" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="FK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-418" parent="UcoUJlN-tefJob-VIpPI-416" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="allergene_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="261" x="30" as="geometry">
+            <mxRectangle height="30" width="261" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-419" parent="1" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" value="menu_plat" vertex="1">
+          <mxGeometry height="90" width="264" x="884" y="1346" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-423" parent="UcoUJlN-tefJob-VIpPI-419" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" vertex="1">
+          <mxGeometry height="30" width="264" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-424" parent="UcoUJlN-tefJob-VIpPI-423" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="FK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-425" parent="UcoUJlN-tefJob-VIpPI-423" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="menu_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;INT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="234" x="30" as="geometry">
+            <mxRectangle height="30" width="234" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-420" parent="UcoUJlN-tefJob-VIpPI-419" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" value="" vertex="1">
+          <mxGeometry height="30" width="264" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-421" parent="UcoUJlN-tefJob-VIpPI-420" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="FK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-422" parent="UcoUJlN-tefJob-VIpPI-420" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="plat_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="234" x="30" as="geometry">
+            <mxRectangle height="30" width="234" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-426" parent="1" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" value="password_reset" vertex="1">
+          <mxGeometry height="180" width="378" x="-9" y="508" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-427" parent="UcoUJlN-tefJob-VIpPI-426" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" value="" vertex="1">
+          <mxGeometry height="30" width="378" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-428" parent="UcoUJlN-tefJob-VIpPI-427" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="PK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-429" parent="UcoUJlN-tefJob-VIpPI-427" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="token_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT AUTO_INCREMENT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="348" x="30" as="geometry">
+            <mxRectangle height="30" width="348" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-439" parent="UcoUJlN-tefJob-VIpPI-426" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" vertex="1">
+          <mxGeometry height="30" width="378" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-440" parent="UcoUJlN-tefJob-VIpPI-439" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="FK" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-441" parent="UcoUJlN-tefJob-VIpPI-439" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="utilisateur_id&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;INT NOT NULL" vertex="1">
+          <mxGeometry height="30" width="348" x="30" as="geometry">
+            <mxRectangle height="30" width="348" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-430" parent="UcoUJlN-tefJob-VIpPI-426" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="378" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-431" parent="UcoUJlN-tefJob-VIpPI-430" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-432" parent="UcoUJlN-tefJob-VIpPI-430" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="token&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;VARCHAR(255) NOT NULL UNIQUE" vertex="1">
+          <mxGeometry height="30" width="348" x="30" as="geometry">
+            <mxRectangle height="30" width="348" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-433" parent="UcoUJlN-tefJob-VIpPI-426" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="378" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-434" parent="UcoUJlN-tefJob-VIpPI-433" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-435" parent="UcoUJlN-tefJob-VIpPI-433" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="expires_at&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;DATETIME NOT NULL" vertex="1">
+          <mxGeometry height="30" width="348" x="30" as="geometry">
+            <mxRectangle height="30" width="348" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-436" parent="UcoUJlN-tefJob-VIpPI-426" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
+          <mxGeometry height="30" width="378" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-437" parent="UcoUJlN-tefJob-VIpPI-436" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" as="geometry">
+            <mxRectangle height="30" width="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-438" parent="UcoUJlN-tefJob-VIpPI-436" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="used&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;BOOLEAN NOT NULL DEFAULT 0" vertex="1">
+          <mxGeometry height="30" width="348" x="30" as="geometry">
+            <mxRectangle height="30" width="348" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-460" edge="1" parent="1" source="UcoUJlN-tefJob-VIpPI-430" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.003;entryY=0.2;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=ERzeroToMany;startFill=0;endArrow=ERmandOne;endFill=0;" target="UcoUJlN-tefJob-VIpPI-243">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2viPuBsoDIH508IYnl3G-8" connectable="0" parent="UcoUJlN-tefJob-VIpPI-460" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="reinitialise" vertex="1">
+          <mxGeometry relative="1" x="-0.0304" y="2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-461" edge="1" parent="1" source="UcoUJlN-tefJob-VIpPI-268" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.449;entryY=0.002;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=ERzeroToOne;startFill=0;endArrow=ERmandOne;endFill=0;" target="UcoUJlN-tefJob-VIpPI-173">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2viPuBsoDIH508IYnl3G-10" connectable="0" parent="UcoUJlN-tefJob-VIpPI-461" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="donne lieu a&amp;nbsp;" vertex="1">
+          <mxGeometry relative="1" x="0.1607" y="2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-462" edge="1" parent="1" source="UcoUJlN-tefJob-VIpPI-187" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.005;entryY=0.3;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=ERmandOne;startFill=0;endArrow=ERzeroToMany;endFill=0;" target="UcoUJlN-tefJob-VIpPI-288">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2viPuBsoDIH508IYnl3G-13" connectable="0" parent="UcoUJlN-tefJob-VIpPI-462" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="possede" vertex="1">
+          <mxGeometry relative="1" x="0.0764" y="-2" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-463" edge="1" parent="1" source="UcoUJlN-tefJob-VIpPI-146" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=ERzeroToMany;startFill=0;endArrow=ERmandOne;endFill=0;" target="UcoUJlN-tefJob-VIpPI-329">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2viPuBsoDIH508IYnl3G-1" connectable="0" parent="UcoUJlN-tefJob-VIpPI-463" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="appartient a" vertex="1">
+          <mxGeometry relative="1" x="0.0185" y="1" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-464" edge="1" parent="1" source="UcoUJlN-tefJob-VIpPI-167" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=ERmandOne;endFill=0;startArrow=ERzeroToMany;startFill=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="UcoUJlN-tefJob-VIpPI-342">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1663" y="1247" as="sourcePoint" />
+            <mxPoint x="1874.1719999999996" y="1225" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2viPuBsoDIH508IYnl3G-2" connectable="0" parent="UcoUJlN-tefJob-VIpPI-464" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="adapte a" vertex="1">
+          <mxGeometry relative="1" x="0.0072" y="-3" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-465" edge="1" parent="1" source="UcoUJlN-tefJob-VIpPI-448" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=ERmandOne;startFill=0;endArrow=ERzeroToMany;endFill=0;" target="UcoUJlN-tefJob-VIpPI-371">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2viPuBsoDIH508IYnl3G-3" connectable="0" parent="UcoUJlN-tefJob-VIpPI-465" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="a pour condition" vertex="1">
+          <mxGeometry relative="1" x="-0.214" y="-3" as="geometry">
+            <mxPoint y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-467" edge="1" parent="1" source="UcoUJlN-tefJob-VIpPI-164" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=ERmandOne;startFill=0;endArrow=ERzeroToMany;endFill=0;" target="UcoUJlN-tefJob-VIpPI-419">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2viPuBsoDIH508IYnl3G-5" connectable="0" parent="UcoUJlN-tefJob-VIpPI-467" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="compose" vertex="1">
+          <mxGeometry relative="1" x="-0.0524" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-468" edge="1" parent="1" source="UcoUJlN-tefJob-VIpPI-423" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=ERzeroToMany;startFill=0;endArrow=ERmandOne;endFill=0;" target="UcoUJlN-tefJob-VIpPI-374">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2viPuBsoDIH508IYnl3G-4" connectable="0" parent="UcoUJlN-tefJob-VIpPI-468" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="compose" vertex="1">
+          <mxGeometry relative="1" x="0.1111" y="-2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-469" edge="1" parent="1" source="UcoUJlN-tefJob-VIpPI-381" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=ERmandOne;startFill=0;endArrow=ERzeroToMany;endFill=0;" target="UcoUJlN-tefJob-VIpPI-400">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2viPuBsoDIH508IYnl3G-6" connectable="0" parent="UcoUJlN-tefJob-VIpPI-469" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="contient" vertex="1">
+          <mxGeometry relative="1" x="0.1366" y="4" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-470" edge="1" parent="1" source="UcoUJlN-tefJob-VIpPI-401" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1.001;entryY=0.192;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=ERzeroToMany;startFill=0;endArrow=ERmandOne;endFill=0;" target="UcoUJlN-tefJob-VIpPI-391">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2viPuBsoDIH508IYnl3G-7" connectable="0" parent="UcoUJlN-tefJob-VIpPI-470" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="contient" vertex="1">
+          <mxGeometry relative="1" x="0.0215" y="-2" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-471" edge="1" parent="1" source="UcoUJlN-tefJob-VIpPI-145" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.387;entryY=1.017;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=ERmandOne;startFill=0;endArrow=ERzeroToMany;endFill=0;" target="UcoUJlN-tefJob-VIpPI-451">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2viPuBsoDIH508IYnl3G-12" connectable="0" parent="UcoUJlN-tefJob-VIpPI-471" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="concerne&amp;nbsp;" vertex="1">
+          <mxGeometry relative="1" x="0.0404" y="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UcoUJlN-tefJob-VIpPI-472" edge="1" parent="1" source="UcoUJlN-tefJob-VIpPI-234" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=ERmandOne;startFill=0;endArrow=ERzeroToMany;endFill=0;" target="UcoUJlN-tefJob-VIpPI-208">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2viPuBsoDIH508IYnl3G-11" connectable="0" parent="UcoUJlN-tefJob-VIpPI-472" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="passe" vertex="1">
+          <mxGeometry relative="1" x="0.0165" y="2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
