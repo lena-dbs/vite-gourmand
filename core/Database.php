@@ -39,7 +39,7 @@ class Database
                     PDO::ATTR_PERSISTENT               => true,
                     PDO::MYSQL_ATTR_INIT_COMMAND       => "SET NAMES 'utf8mb4'",
                     PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true,
-                ]
+                ] + dbSslOptions()
             );
         } catch(PDOException $e) {
             error_log('Database connection error: ' . $e->getMessage());

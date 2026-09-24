@@ -11,6 +11,20 @@ define('DB_USER', $_ENV['DB_USER'] ?? getenv('DB_USER') ?: 'root');
 define('DB_PASS', $_ENV['DB_PASS'] ?? getenv('DB_PASS') ?: '');
 define('DB_CHARSET', 'utf8mb4');
 define('DB_PORT', $_ENV['DB_PORT'] ?? getenv('DB_PORT') ?: '3306');
+// TLS optionnel (hébergeurs MySQL managés) : DB_SSL=1, et DB_SSL_CA pour vérifier le certificat serveur
+define('DB_SSL', filter_var($_ENV['DB_SSL'] ?? getenv('DB_SSL') ?: '0', FILTER_VALIDATE_BOOLEAN));
+define('DB_SSL_CA', $_ENV['DB_SSL_CA'] ?? getenv('DB_SSL_CA') ?: '');
+
+function dbSslOptions(): array
+{
+    if (!DB_SSL) {
+        return [];
+    }
+    return [
+        PDO::MYSQL_ATTR_SSL_CA => DB_SSL_CA !== '' ? DB_SSL_CA : '/etc/ssl/certs/ca-certificates.crt',
+        PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => DB_SSL_CA !== '',
+    ];
+}
 
 // Application
 define('APP_NAME', 'Vite & Gourmand');
