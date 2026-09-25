@@ -10,8 +10,9 @@ COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
 RUN a2enmod rewrite expires deflate
 
-# Durcissement : php.ini de production (display_errors=Off, expose_php=Off) et Apache discret
+# Durcissement : php.ini de production (display_errors=Off), expose_php=Off et Apache discret
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
+    && printf 'expose_php=Off\n' > "$PHP_INI_DIR/conf.d/zz-hardening.ini" \
     && printf 'ServerTokens Prod\nServerSignature Off\nTraceEnable Off\n' > /etc/apache2/conf-available/zz-hardening.conf \
     && a2enconf zz-hardening
 
