@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 // Sessions stockées en base : elles survivent au redémarrage des machines fly.io
 // (disque éphémère) et sont partagées entre plusieurs machines.
-class DbSessionHandler implements SessionHandlerInterface
+class DbSessionHandler implements SessionHandlerInterface, SessionUpdateTimestampHandlerInterface
 {
     public function open(string $path, string $name): bool
     {
@@ -47,6 +47,32 @@ class DbSessionHandler implements SessionHandlerInterface
         $stmt = Database::getInstance()->prepare('DELETE FROM php_session WHERE updated_at < :t');
         $stmt->execute([':t' => time() - $max_lifetime]);
         return $stmt->rowCount();
+    }
+
+    public function validateId(string $id): bool
+    {
+        try {
+            return $this->exists($id);
+        } catch (PDOException $e) {
+            if ($e->getCode() !== '42S02') {
+                throw $e;
+            }
+            $this->createTable();
+            return false;
+        }
+    }
+
+    public function updateTimestamp(string $id, string $data): bool
+    {
+        return Database::getInstance()->prepare('UPDATE php_session SET updated_at = :t WHERE id = :id')
+            ->execute([':t' => time(), ':id' => $id]);
+    }
+
+    private function exists(string $id): bool
+    {
+        $stmt = Database::getInstance()->prepare('SELECT 1 FROM php_session WHERE id = :id');
+        $stmt->execute([':id' => $id]);
+        return (bool)$stmt->fetchColumn();
     }
 
     private function fetch(string $id): string

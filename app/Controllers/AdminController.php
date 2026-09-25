@@ -211,8 +211,8 @@ class AdminController extends Controller
         $this->requireAdmin();
 
         $menuId = isset($_GET['menu_id']) && $_GET['menu_id'] !== '' ? (int)$_GET['menu_id'] : null;
-        $from   = $_GET['from'] ?? null;
-        $to     = $_GET['to'] ?? null;
+        $from   = is_string($_GET['from'] ?? null) ? $_GET['from'] : null;
+        $to     = is_string($_GET['to'] ?? null) ? $_GET['to'] : null;
 
         // Indicateurs et évolution dans le temps : commandes honorées (MySQL).
         $stats     = $this->commandeModel->getStatsByMenu($menuId, $from, $to);
