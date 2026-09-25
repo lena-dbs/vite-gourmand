@@ -32,6 +32,7 @@ $sessionOptions = [
     'cookie_lifetime'  => 0,
 ];
 
+session_set_save_handler(new DbSessionHandler(), true);
 session_start($sessionOptions);
 
 if (isset($_SESSION['last_activity']) && time() - $_SESSION['last_activity'] > 1800) {
